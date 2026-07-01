@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>PMAB — Pro-Metabolic Animal-Based</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ═══════════════════════════════════════
+       PMAB LIGHT — Warm Parchment Design
+       Cream base · Forest green · Editorial
+    ═══════════════════════════════════════ */
+    :root {
+      --bg:        #F6F1E9;
+      --bg-card:   #FDFAF5;
+      --bg-card2:  #F0EBE0;
+      --bg-dark:   #1C1A16;
+
+      --border:    #E0D8C8;
+      --border-hi: #C8BFA8;
+
+      --text:      #1C1A16;
+      --text-2:    #4A4438;
+      --text-3:    #8B7B68;
+      --text-4:    #B8A898;
+
+      --green:     #2A6B48;
+      --green-hi:  #3A8A5C;
+      --green-lo:  rgba(42,107,72,0.08);
+      --green-bd:  rgba(42,107,72,0.2);
+      --green-mid: #4A7C59;
+
+      --font-d: 'Zilla Slab', Georgia, serif;
+      --font-b: 'Inter', system-ui, sans-serif;
+
+      --r:    6px;
+      --r-lg: 12px;
+      --ease: 140ms ease;
+
+      --container:      960px;
+      --container-wide: 1240px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ──────────────────────────────── */
+    /* ── LOGO STRIP — its own thin band ──────── */
+    .logo-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 40px 8px;
+      background: var(--bg);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-mark {
+      font-family: var(--font-d);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      line-height: 1;
+    }
+    .nav-mark em { color: var(--green); font-style: normal; }
+
+    .nav-sep { width: 1px; height: 16px; background: var(--border-hi); }
+
+    .nav-sub {
+      font-size: 9.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+    .nav-sub .sub-pm { color: var(--text); }
+    .nav-sub .sub-ab { color: var(--green); }
+
+    /* ── NAV LINKS — separate sticky band ────── */
+    .site-nav {
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 40px;
+      height: 50px;
+      position: sticky;
+      top: 0;
+      background: rgba(246,241,233,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 200;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1px;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 6px 12px;
+      border-radius: var(--r);
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-3);
+      transition: color var(--ease), background var(--ease);
+      border: 1px solid transparent;
+    }
+    .nav-links a:hover { color: var(--text-2); background: var(--bg-card2); }
+    .nav-links a.active {
+      color: var(--green);
+      background: var(--green-lo);
+      border-color: var(--green-bd);
+      font-weight: 600;
+    }
+
+    /* ── HERO — full bleed image splash ─────── */
+    .hero-splash {
+      position: relative;
+      width: 100%;
+      min-height: 58vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #1a1a14;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://cdn.pixabay.com/photo/2014/05/18/19/18/barn-347364_1280.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      background-repeat: no-repeat;
+      transform: scale(1.02);
+      transition: transform 8s ease;
+    }
+
+    /* multi-layer overlay: bottom-heavy dark gradient for text legibility,
+       slight vignette around edges, subtle warm colour cast */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(10,12,8,0.32) 0%,
+          rgba(10,12,8,0.28) 40%,
+          rgba(10,12,8,0.45) 70%,
+          rgba(10,12,8,0.62) 100%
+        ),
+        radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.32) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 40px 24px;
+    }
+
+    .hero-logo-mark {
+      font-family: var(--font-d);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      color: rgba(255,255,255,0.92);
+      text-shadow: 0 2px 14px rgba(0,0,0,0.45);
+      margin-bottom: 18px;
+    }
+    .hero-logo-mark em {
+      color: #7ecba0;
+      font-style: normal;
+    }
+
+    .hero-headline {
+      font-family: var(--font-d);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+      max-width: 720px;
+    }
+
+    .hero-headline em {
+      color: #7ecba0;
+      font-style: normal;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 480px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 11px 22px;
+      border-radius: var(--r);
+      font-family: var(--font-b);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--ease);
+      border: none;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    .btn-primary:hover { background: var(--green-hi); }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.9);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.22);
+      border-color: rgba(255,255,255,0.6);
+      color: #fff;
+    }
+
+    /* scroll cue */
+    .hero-scroll-cue {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.4);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      z-index: 2;
+      animation: bobble 2.4s ease-in-out infinite;
+    }
+
+    @keyframes bobble {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(5px); }
+    }
+
+    .hero-scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid rgba(255,255,255,0.4);
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      transform: rotate(45deg);
+      margin-top: -4px;
+    }
+
+
+
+    /* ── WHY SECTION ──────────────────────── */
+    .why-section {
+      padding: 96px 40px;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-d);
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+      margin-bottom: 48px;
+      max-width: 520px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .why-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--green);
+      border-radius: var(--r-lg);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: box-shadow var(--ease), transform var(--ease);
+    }
+    .why-card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+
+    .why-img-placeholder {
+      width: 100%;
+      aspect-ratio: 16/10;
+      border-radius: var(--r);
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-4);
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-img-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 10px,
+        rgba(0,0,0,0.018) 10px, rgba(0,0,0,0.018) 11px);
+    }
+
+    .why-title {
+      font-family: var(--font-d);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    .why-body {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.75;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .why-points {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .why-point {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      font-size: 12.5px;
+      color: var(--text-3);
+      line-height: 1.5;
+    }
+
+    .why-bullet {
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    /* ── IMAGE PAIR ───────────────────────── */
+    .img-pair-section {
+      border-top: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 88px 40px;
+    }
+
+    .img-pair-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .img-pair-text {}
+
+    .img-pair-title {
+      font-family: var(--font-d);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 12px 0 18px;
+    }
+
+    .img-pair-body {
+      font-size: 15px;
+      color: var(--text-2);
+      line-height: 1.78;
+      margin-bottom: 28px;
+    }
+
+    .img-pair-body p + p { margin-top: 14px; }
+
+    .img-pair-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green);
+      text-decoration: none;
+      transition: gap var(--ease);
+    }
+    .img-pair-link:hover { gap: 10px; }
+
+    .img-pair-imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .pair-img {
+      border-radius: var(--r);
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pair-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 10px,
+        rgba(0,0,0,0.015) 10px, rgba(0,0,0,0.015) 11px);
+    }
+
+    .pair-img:first-child {
+      grid-row: 1 / 3;
+      aspect-ratio: unset;
+      min-height: 280px;
+    }
+
+    .pair-img:not(:first-child) { aspect-ratio: 4/3; }
+
+    .pair-img-emoji { position: relative; z-index: 1; }
+
+    /* ── RESOURCES ────────────────────────── */
+    .resources-section {
+      padding: 96px 40px;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+
+    .resources-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .res-card {
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      background: var(--bg-card);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-decoration: none;
+      transition: border-color var(--ease), box-shadow var(--ease), transform var(--ease);
+    }
+    .res-card:hover {
+      border-color: var(--border-hi);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+
+    .res-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .res-emoji { font-size: 1.5rem; line-height: 1; }
+    .res-arrow {
+      font-size: 1.1rem;
+      color: var(--text-4);
+      transition: color var(--ease), transform var(--ease);
+    }
+    .res-card:hover .res-arrow { color: var(--green); transform: translate(2px,-2px); }
+
+    .res-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: var(--r);
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-4);
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+    .res-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 10px,
+        rgba(0,0,0,0.015) 10px, rgba(0,0,0,0.015) 11px);
+    }
+
+    .res-name {
+      font-family: var(--font-d);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .res-desc { font-size: 13px; color: var(--text-3); line-height: 1.55; flex: 1; }
+    .res-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+    }
+
+    /* ── COMMUNITY ────────────────────────── */
+    .community-section {
+      border-top: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 88px 40px;
+    }
+
+    .community-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .community-title {
+      font-family: var(--font-d);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 12px 0 16px;
+    }
+
+    .community-body {
+      font-size: 15px;
+      color: var(--text-2);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    .platform-card {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 13px 15px;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      background: var(--bg);
+      transition: border-color var(--ease), background var(--ease);
+    }
+    .platform-card:hover { border-color: var(--border-hi); background: var(--bg-card2); }
+
+    .p-icon-lg { font-size: 1.3rem; flex-shrink: 0; line-height: 1; }
+    .p-card-name { font-size: 13.5px; font-weight: 700; color: var(--text); line-height: 1.2; }
+    .p-card-status { font-size: 10.5px; font-weight: 600; color: var(--text-4); letter-spacing: 0.04em; }
+
+    .community-stats {
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .c-stat {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .c-stat:last-child { border-bottom: none; }
+
+    .c-stat-num {
+      font-family: var(--font-d);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .c-stat-label { font-size: 13px; color: var(--text-3); font-weight: 500; }
+
+    /* ── QUOTE ────────────────────────────── */
+    .quote-section {
+      border-top: 1px solid var(--border);
+      padding: 80px 40px;
+      text-align: center;
+      background: var(--bg-dark);
+    }
+
+    .quote-text {
+      font-family: var(--font-d);
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.5;
+      max-width: 620px;
+      margin: 0 auto 20px;
+      letter-spacing: -0.01em;
+    }
+    .quote-text strong { color: #fff; font-weight: 700; }
+
+    .quote-attr {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      font-weight: 600;
+    }
+
+    /* ── FOOTER ───────────────────────────── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: var(--bg-dark);
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-mark {
+      font-family: var(--font-d);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-mark em { color: var(--green); font-style: normal; }
+
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 500;
+      transition: color var(--ease);
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.75); }
+
+    /* ── SCROLLBAR ────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
+
+    /* ── RESPONSIVE ───────────────────────── */
+    @media (max-width: 900px) {
+      .hero-splash { min-height: 50vh; }
+      .hero-content { padding: 0 20px 40px; }
+      .hero-sub { max-width: 100%; }
+      .img-pair-inner { grid-template-columns: 1fr; }
+      .community-inner { grid-template-columns: 1fr; gap: 40px; }
+      .community-stats { display: none; }
+      .why-grid { grid-template-columns: 1fr; gap: 16px; }
+      .resources-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .logo-strip { padding: 12px 16px; }
+      .site-nav { padding: 0 16px; }
+      .nav-sep, .nav-sub { display: none; }
+      .why-section, .resources-section { padding: 64px 20px; }
+      .img-pair-section, .community-section { padding: 64px 20px; }
+      .resources-grid { grid-template-columns: 1fr; }
+      .site-footer { padding: 28px 20px; }
+      .quote-section { padding: 56px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="logo-strip">
+  <a class="nav-logo" href="index.html">
+    <span class="nav-mark">PM<em>AB</em></span>
+    <span class="nav-sep"></span>
+    <span class="nav-sub"><span class="sub-pm">Pro-Metabolic</span><br><span class="sub-ab">Animal-Based</span></span>
+  </a>
+</div>
+<nav class="site-nav">
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="framework.html">Framework</a></li>
+    <li><a href="foods.html">Food Database</a></li>
+    <li><a href="groceries.html">Groceries</a></li>
+    <li><a href="meals.html">Meals</a></li>
+    <li><a href="lifestyle.html">Lifestyle</a></li>
+    <li><a href="philosophy.html">Philosophy</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero-splash">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1 class="hero-headline">Fuel your <em>metabolism</em>.<br>Reclaim your health.</h1>
+    <p class="hero-sub">Most nutrition advice is confusing, contradictory, or trying to sell you something. PMAB is a free reference that cuts through it — built on the ideas of Ray Peat and Paul Saladino, focused on real food, and designed for real life.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="framework.html">Start with the Framework</a>
+      <a class="btn btn-ghost" href="resources.html">New to this? Start here →</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue">
+    <span>Scroll</span>
+    <div class="hero-scroll-arrow"></div>
+  </div>
+</section>
+
+
+
+<!-- WHY PMAB -->
+<section class="why-section">
+  <span class="section-eyebrow">Why PMAB</span>
+  <h2 class="section-title">Why PMAB works.</h2>
+  <div class="why-grid">
+
+    <div class="why-card">
+      <div class="why-img-placeholder">Photo · Metabolism</div>
+      <div class="why-title">Your metabolism matters more than your macros</div>
+      <div class="why-body">Most diets obsess over calories and macros. PMAB asks a different question: is your body actually producing energy well? When it is, digestion improves, sleep improves, energy stabilizes, and body composition tends to follow naturally.</div>
+      <div class="why-points">
+        <div class="why-point"><div class="why-bullet">·</div><div>Prioritize foods that support your thyroid and energy</div></div>
+        <div class="why-point"><div class="why-bullet">·</div><div>Fruit and natural sugar aren't the enemy here</div></div>
+        <div class="why-point"><div class="why-bullet">·</div><div>Fat from animals is a foundation, not something to fear</div></div>
+      </div>
+    </div>
+
+    <div class="why-card">
+      <div class="why-img-placeholder">Photo · Real Food</div>
+      <div class="why-title">Real, accessible food — not a science project</div>
+      <div class="why-body">This isn't rocket science. Eggs, milk, beef, potatoes, fruit. The stuff your grandmother could buy at a normal grocery store. Your body knows exactly what to do with whole food — it doesn't know what to do with a lab-engineered seed oil or a 12-ingredient bar.</div>
+      <div class="why-points">
+        <div class="why-point"><div class="why-bullet">·</div><div>No exotic ingredients, no complicated shopping list</div></div>
+        <div class="why-point"><div class="why-bullet">·</div><div>If it didn't exist 100 years ago, be skeptical of it</div></div>
+        <div class="why-point"><div class="why-bullet">·</div><div>Whole food over processed — the actual dividing line</div></div>
+      </div>
+    </div>
+
+    <div class="why-card">
+      <div class="why-img-placeholder">Photo · Peat &amp; Saladino</div>
+      <div class="why-title">Two very different people landed on the same food list</div>
+      <div class="why-body">Ray Peat was a biologist who spent decades studying cells. Paul Saladino is a physician focused on evolutionary health. They came from completely different directions — and ended up recommending the same foods. That's worth paying attention to.</div>
+      <div class="why-points">
+        <div class="why-point"><div class="why-bullet">·</div><div>Both cut out seed oils — no debate there</div></div>
+        <div class="why-point"><div class="why-bullet">·</div><div>Both eat meat, organs, fruit, and real dairy</div></div>
+        <div class="why-point"><div class="why-bullet">·</div><div>When smart people independently agree, it's a useful signal</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- IMAGE PAIR — Peat + Saladino context -->
+<div class="img-pair-section">
+  <div class="img-pair-inner">
+    <div class="img-pair-text">
+      <span class="section-eyebrow">The foundation</span>
+      <h2 class="img-pair-title">Where did this come from?</h2>
+      <div class="img-pair-body">
+        <p>Ray Peat was a biologist who spent his career researching how food affects energy, hormones, and aging. Paul Saladino is a physician who built a case for eating more like our ancestors — lots of meat, organs, and fruit, fewer industrial foods.</p>
+        <p>PMAB pulls from both. Where they agree is where we're most confident. Where they disagree, we lay out both sides honestly and let you decide what fits your life.</p>
+      </div>
+      <a class="img-pair-link" href="philosophy.html">Read the full philosophy →</a>
+    </div>
+    <div class="img-pair-imgs">
+      <div class="pair-img"><span class="pair-img-emoji">🧬</span></div>
+      <div class="pair-img"><span class="pair-img-emoji">📖</span></div>
+      <div class="pair-img"><span class="pair-img-emoji">🥩</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- RESOURCES -->
+<section class="resources-section">
+  <div class="resources-header">
+    <div>
+      <span class="section-eyebrow">On this site</span>
+      <h2 class="section-title" style="margin-bottom:0;">What's on this site</h2>
+    </div>
+    <a class="btn btn-ghost" href="framework.html">Start with the Framework →</a>
+  </div>
+
+  <div class="resources-grid">
+    <a class="res-card" href="framework.html">
+      <div class="res-card-top">
+        <span class="res-emoji">🔺</span>
+        <span class="res-arrow">↗</span>
+      </div>
+      <div class="res-img">Food pyramid preview</div>
+      <div class="res-name">PMAB Food Pyramid</div>
+      <div class="res-desc">A visual breakdown of the framework — the hierarchy, the tiers, and the logic behind each one.</div>
+      <div class="res-tag">Visual · Start here</div>
+    </a>
+    <a class="res-card" href="philosophy.html">
+      <div class="res-card-top">
+        <span class="res-emoji">📖</span>
+        <span class="res-arrow">↗</span>
+      </div>
+      <div class="res-img">Philosophy preview</div>
+      <div class="res-name">Philosophy</div>
+      <div class="res-desc">Where Peat and Saladino converge, where they diverge, and the science behind the framework.</div>
+      <div class="res-tag">Reading · Context</div>
+    </a>
+    <a class="res-card" href="foods.html">
+      <div class="res-card-top">
+        <span class="res-emoji">🔍</span>
+        <span class="res-arrow">↗</span>
+      </div>
+      <div class="res-img">Food database preview</div>
+      <div class="res-name">Food Database</div>
+      <div class="res-desc">Search any food. Get a PMAB score, Peat's view, Saladino's view, and a consensus verdict.</div>
+      <div class="res-tag">Interactive · 20+ foods</div>
+    </a>
+    <a class="res-card" href="groceries.html">
+      <div class="res-card-top">
+        <span class="res-emoji">🛒</span>
+        <span class="res-arrow">↗</span>
+      </div>
+      <div class="res-img">Grocery list preview</div>
+      <div class="res-name">Grocery List</div>
+      <div class="res-desc">120+ foods across 8 categories. Check off, filter by category, and export a clean list.</div>
+      <div class="res-tag">Interactive · Exportable</div>
+    </a>
+    <a class="res-card" href="meals.html">
+      <div class="res-card-top">
+        <span class="res-emoji">🍳</span>
+        <span class="res-arrow">↗</span>
+      </div>
+      <div class="res-img">Meal library preview</div>
+      <div class="res-name">Meal Library</div>
+      <div class="res-desc">35 recipes built from the food list. Every meal has a "why" grounded in the framework.</div>
+      <div class="res-tag">35 Recipes · Filterable</div>
+    </a>
+    <a class="res-card" href="framework.html#agreement-map">
+      <div class="res-card-top">
+        <span class="res-emoji">⚖️</span>
+        <span class="res-arrow">↗</span>
+      </div>
+      <div class="res-img">Agreement map preview</div>
+      <div class="res-name">Agreement Map</div>
+      <div class="res-desc">Peat vs. Saladino on every major food — now part of the Framework page.</div>
+      <div class="res-tag">On Framework page</div>
+    </a>
+    <a class="res-card" href="resources.html#starter-guides">
+      <div class="res-card-top">
+        <span class="res-emoji">📋</span>
+        <span class="res-arrow">↗</span>
+      </div>
+      <div class="res-img">Guides preview</div>
+      <div class="res-name">Beginner Guides</div>
+      <div class="res-desc">PMAB in 10 minutes. Budget eating. Costco list. What to eat tomorrow — now on the Resources page.</div>
+      <div class="res-tag">On Resources page</div>
+    </a>
+    <a class="res-card" href="#community">
+      <div class="res-card-top">
+        <span class="res-emoji">🌐</span>
+        <span class="res-arrow">↓</span>
+      </div>
+      <div class="res-img">Community preview</div>
+      <div class="res-name">Community</div>
+      <div class="res-desc">Discord, Reddit, Facebook, X. Compare notes, share meals, ask questions.</div>
+      <div class="res-tag">Discord · Reddit · Facebook · X</div>
+    </a>
+    <a class="res-card" href="resources.html">
+      <div class="res-card-top">
+        <span class="res-emoji">🔗</span>
+        <span class="res-arrow">↗</span>
+      </div>
+      <div class="res-img">Community resources preview</div>
+      <div class="res-name">Community Resources</div>
+      <div class="res-desc">Good people posting good content — Reddit threads, podcasts, X accounts, articles, and videos worth your time.</div>
+      <div class="res-tag">Links · Community</div>
+    </a>
+    <a class="res-card" href="contact.html">
+      <div class="res-card-top">
+        <span class="res-emoji">✉️</span>
+        <span class="res-arrow">↗</span>
+      </div>
+      <div class="res-img">Contact preview</div>
+      <div class="res-name">Contact</div>
+      <div class="res-desc">Questions, feedback, or a meal worth adding. Minimal form, human response.</div>
+      <div class="res-tag">Reach out</div>
+    </a>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community-section" id="community">
+  <div class="community-inner">
+    <div>
+      <span class="section-eyebrow">Community</span>
+      <h2 class="community-title">Compare notes.<br>Share what works.</h2>
+      <p class="community-body">The PMAB community is spread across a few platforms. Ask questions, post meals, flag what worked and what didn't. Real people, real food — no supplement pitches.</p>
+      <div class="platform-grid">
+        <div class="platform-card">
+          <span class="p-icon-lg">💬</span>
+          <div><div class="p-card-name">Discord</div><div class="p-card-status">Coming soon</div></div>
+        </div>
+        <div class="platform-card">
+          <span class="p-icon-lg">🟠</span>
+          <div><div class="p-card-name">Reddit</div><div class="p-card-status">Coming soon</div></div>
+        </div>
+        <div class="platform-card">
+          <span class="p-icon-lg">👥</span>
+          <div><div class="p-card-name">Facebook</div><div class="p-card-status">Coming soon</div></div>
+        </div>
+        <div class="platform-card">
+          <span class="p-icon-lg">𝕏</span>
+          <div><div class="p-card-name">X / Twitter</div><div class="p-card-status">Coming soon</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="community-stats">
+      <div class="c-stat">
+        <div class="c-stat-num">120+</div>
+        <div class="c-stat-label">Foods in the PMAB grocery reference</div>
+      </div>
+      <div class="c-stat">
+        <div class="c-stat-num">35</div>
+        <div class="c-stat-label">Framework-aligned recipes in the meal library</div>
+      </div>
+      <div class="c-stat">
+        <div class="c-stat-num">20+</div>
+        <div class="c-stat-label">Foods scored in the database</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <p class="quote-text">"I think people shouldn't eat things that damage them, and should eat things that taste good and that provide the essential nutrients, while making them feel good and function well — <strong>is that a diet?</strong>"</p>
+  <div class="quote-attr">— Ray Peat</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-mark">PM<em>AB</em></div>
+  <ul class="footer-links">
+    <li><a href="framework.html">Framework</a></li>
+    <li><a href="foods.html">Food Database</a></li>
+    <li><a href="groceries.html">Groceries</a></li>
+    <li><a href="meals.html">Meals</a></li>
+    <li><a href="philosophy.html">Philosophy</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
