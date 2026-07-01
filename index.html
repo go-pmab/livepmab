@@ -1366,5 +1366,57 @@
     </div>
   </div>
 </section>
+  <script>
+  const form = document.getElementById('newsletter-form');
+  const messageElement = document.getElementById('form-message');
+  const submitBtn = document.getElementById('submit-btn');
+
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyaW5T6O3jIOgOYF91dBDUPLJVYzS8eBwK9NpCI2Xpm_Pqq59Xx9IArV6CG0FqEvZ9x/exec';
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); 
+    
+    // Disable button to prevent double submissions
+    submitBtn.disabled = true;
+    submitBtn.innerText = 'Sending...';
+    
+    const emailValue = document.getElementById('newsletter-email').value;
+    
+    const formData = new URLSearchParams();
+    formData.append('email', emailValue);
+    
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'cors',
+      redirect: 'follow',
+      body: formData,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.result === 'success') {
+        messageElement.textContent = 'Thanks for subscribing!';
+        messageElement.style.color = '#2e7d32'; // Clean dark green
+        messageElement.style.display = 'block';
+        form.reset(); 
+      } else {
+        throw new Error(data.error);
+      }
+    })
+    .catch(error => {
+      console.error('Error!', error.message);
+      messageElement.textContent = 'Something went wrong. Please try again.';
+      messageElement.style.color = '#c62828'; // Clean dark red
+      messageElement.style.display = 'block';
+    })
+    .finally(() => {
+      // Re-enable button and return text back to normal
+      submitBtn.disabled = false;
+      submitBtn.innerText = 'Sign me up →';
+    });
+  });
+</script>
 </body>
 </html>
