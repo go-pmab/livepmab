@@ -438,7 +438,6 @@
   function handleSubmit(e) {
     e.preventDefault();
     
-    // REPLACE THIS URL STRING WITH YOUR DEPLOYED GOOGLE APPS SCRIPT LINK
     const CONTACT_SCRIPT_URL = 'https://hook.us2.make.com/eqg1noqarf5jx4opa0w2mdxap8nvbq66';
     
     const formElement = document.getElementById('contact-form');
@@ -458,20 +457,17 @@
     formData.append('mealCategory', document.getElementById('meal-category').value);
     formData.append('message', document.getElementById('message').value);
 
-    // Send data to your second Google Apps Script backend
+    // Send data to Make.com Webhook
     fetch(CONTACT_SCRIPT_URL, {
       method: 'POST',
-      mode: 'cors',
-      redirect: 'follow',
       body: formData,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     })
-    .then(response => response.json())
-    .then(data => {
-      if (data.result === 'success') {
-        // Run your existing success panel transformations
+    .then(response => {
+      // Check if Make accepted the data packet successfully
+      if (response.ok) {
         const type = document.getElementById('type').value;
         const isMeal = type === 'submit-meal';
 
@@ -494,7 +490,7 @@
         document.getElementById('success-state').classList.add('visible');
         formElement.reset();
       } else {
-        throw new Error(data.error);
+        throw new Error('Network response from Make was not okay.');
       }
     })
     .catch(error => {
