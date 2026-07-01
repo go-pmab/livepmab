@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Newsletter Test</title>
+</head>
+<body>
+
+  <form id="newsletter-form">
+    <input type="email" id="newsletter-email" placeholder="Enter your email" required />
+    <button type="submit" id="submit-btn">Subscribe</button>
+  </form>
+  <p id="form-message" style="display: none;"></p>
+
+  <script>
+    const form = document.getElementById('newsletter-form');
+    const messageElement = document.getElementById('form-message');
+    const submitBtn = document.getElementById('submit-btn');
+
+    // FIXED: Added the missing closing single quote right after /exec
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyaW5T6O3jIOgOYF91dBDUPLJVYzS8eBwK9NpCI2Xpm_Pqq59Xx9IArV6CG0FqEvZ9x/exec';
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Stop the page from reloading
+      
+      // Visual feedback for the user
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Subscribing...';
+      
+      const emailValue = document.getElementById('newsletter-email').value;
+      
+      // Format the data as URL-encoded parameters
+      const formData = new URLSearchParams();
+      formData.append('email', emailValue);
+      
+      // Send the data to your Google Script backend
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.result === 'success') {
+          messageElement.textContent = 'Thanks for subscribing!';
+          messageElement.style.color = 'green';
+          messageElement.style.display = 'block';
+          form.reset(); // Clear the input field
+        } else {
+          throw new Error(data.error);
+        }
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        messageElement.textContent = 'Something went wrong. Please try again.';
+        messageElement.style.color = 'red';
+        messageElement.style.display = 'block';
+      })
+      .finally(() => {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Subscribe';
+      });
+    });
+  </script>
+
+</body>
+</html>
