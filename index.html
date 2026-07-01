@@ -68,6 +68,7 @@
     a { color: inherit; text-decoration: none; }
 
     /* ── NAV ──────────────────────────────── */
+    /* ── LOGO STRIP — its own thin band ──────── */
     .logo-strip {
       display: flex;
       align-items: center;
@@ -104,6 +105,7 @@
     .nav-sub .sub-pm { color: var(--text); }
     .nav-sub .sub-ab { color: var(--green); }
 
+    /* ── NAV LINKS — separate sticky band ────── */
     .site-nav {
       border-bottom: 1px solid var(--border);
       display: flex;
@@ -145,7 +147,7 @@
       font-weight: 600;
     }
 
-    /* ── HERO ─────────────────────────────── */
+    /* ── HERO — full bleed image splash ─────── */
     .hero-splash {
       position: relative;
       width: 100%;
@@ -167,6 +169,8 @@
       transition: transform 8s ease;
     }
 
+    /* multi-layer overlay: bottom-heavy dark gradient for text legibility,
+       slight vignette around edges, subtle warm colour cast */
     .hero-overlay {
       position: absolute;
       inset: 0;
@@ -190,6 +194,20 @@
       padding: 0 40px 24px;
     }
 
+    .hero-logo-mark {
+      font-family: var(--font-d);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      color: rgba(255,255,255,0.92);
+      text-shadow: 0 2px 14px rgba(0,0,0,0.45);
+      margin-bottom: 18px;
+    }
+    .hero-logo-mark em {
+      color: #7ecba0;
+      font-style: normal;
+    }
+
     .hero-headline {
       font-family: var(--font-d);
       font-size: clamp(2.8rem, 6vw, 5rem);
@@ -201,7 +219,11 @@
       text-shadow: 0 2px 20px rgba(0,0,0,0.4);
       max-width: 720px;
     }
-    .hero-headline em { color: #7ecba0; font-style: normal; }
+
+    .hero-headline em {
+      color: #7ecba0;
+      font-style: normal;
+    }
 
     .hero-sub {
       font-size: 17px;
@@ -212,7 +234,11 @@
       text-shadow: 0 1px 8px rgba(0,0,0,0.5);
     }
 
-    .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+    .hero-ctas {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
 
     .btn {
       display: inline-flex;
@@ -251,6 +277,7 @@
       color: #fff;
     }
 
+    /* scroll cue */
     .hero-scroll-cue {
       position: absolute;
       bottom: 24px;
@@ -283,6 +310,8 @@
       margin-top: -4px;
     }
 
+
+
     /* ── WHY SECTION ──────────────────────── */
     .why-section {
       padding: 96px 40px;
@@ -311,7 +340,11 @@
       max-width: 520px;
     }
 
-    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
 
     .why-card {
       background: var(--bg-card);
@@ -363,109 +396,641 @@
       letter-spacing: -0.01em;
     }
 
-    .why-body { font-size: 14px; color: var(--text-2); line-height: 1.75; font-weight: 600; flex: 1; }
-    .why-points { border-top: 1px solid var(--border); padding-top: 14px; display: flex; flex-direction: column; gap: 7px; }
-    .why-point { display: flex; gap: 9px; align-items: flex-start; font-size: 12.5px; color: var(--text-3); line-height: 1.5; }
-    .why-bullet { color: var(--green); font-weight: 700; flex-shrink: 0; font-size: 15px; line-height: 1.2; }
+    .why-body {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.75;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .why-points {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .why-point {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      font-size: 12.5px;
+      color: var(--text-3);
+      line-height: 1.5;
+    }
+
+    .why-bullet {
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+      font-size: 15px;
+      line-height: 1.2;
+    }
 
     /* ── IMAGE PAIR ───────────────────────── */
-    .img-pair-section { border-top: 1px solid var(--border); background: var(--bg-card); padding: 88px 40px; }
-    .img-pair-inner { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
-    .img-pair-title { font-family: var(--font-d); font-size: clamp(1.85rem, 3.5vw, 2.6rem); font-weight: 700; color: var(--text); letter-spacing: -0.02em; line-height: 1.2; margin: 12px 0 18px; }
-    .img-pair-body { font-size: 15px; color: var(--text-2); line-height: 1.78; margin-bottom: 28px; }
+    .img-pair-section {
+      border-top: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 88px 40px;
+    }
+
+    .img-pair-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .img-pair-text {}
+
+    .img-pair-title {
+      font-family: var(--font-d);
+      font-size: clamp(1.85rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 12px 0 18px;
+    }
+
+    .img-pair-body {
+      font-size: 15px;
+      color: var(--text-2);
+      line-height: 1.78;
+      margin-bottom: 28px;
+    }
+
     .img-pair-body p + p { margin-top: 14px; }
-    .img-pair-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--green); text-decoration: none; transition: gap var(--ease); }
+
+    .img-pair-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green);
+      text-decoration: none;
+      transition: gap var(--ease);
+    }
     .img-pair-link:hover { gap: 10px; }
-    .img-pair-imgs { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; }
-    .pair-img { border-radius: var(--r); background: var(--bg-card2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; position: relative; overflow: hidden; }
-    .pair-img::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,0.015) 10px, rgba(0,0,0,0.015) 11px); }
-    .pair-img:first-child { grid-row: 1 / 3; aspect-ratio: unset; min-height: 280px; }
+
+    .img-pair-imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .pair-img {
+      border-radius: var(--r);
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pair-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 10px,
+        rgba(0,0,0,0.015) 10px, rgba(0,0,0,0.015) 11px);
+    }
+
+    .pair-img:first-child {
+      grid-row: 1 / 3;
+      aspect-ratio: unset;
+      min-height: 280px;
+    }
+
     .pair-img:not(:first-child) { aspect-ratio: 4/3; }
+
     .pair-img-emoji { position: relative; z-index: 1; }
 
     /* ── RESOURCES ────────────────────────── */
-    .resources-section { padding: 96px 40px; max-width: var(--container); margin: 0 auto; }
-    .resources-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; gap: 20px; }
-    .resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .res-card { border: 1px solid var(--border); border-radius: var(--r-lg); background: var(--bg-card); padding: 24px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; transition: border-color var(--ease), box-shadow var(--ease), transform var(--ease); }
-    .res-card:hover { border-color: var(--border-hi); box-shadow: 0 4px 20px rgba(0,0,0,0.06); transform: translateY(-2px); }
-    .res-card-top { display: flex; align-items: center; justify-content: space-between; }
+    .resources-section {
+      padding: 96px 40px;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+
+    .resources-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .res-card {
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      background: var(--bg-card);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-decoration: none;
+      transition: border-color var(--ease), box-shadow var(--ease), transform var(--ease);
+    }
+    .res-card:hover {
+      border-color: var(--border-hi);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+
+    .res-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     .res-emoji { font-size: 1.5rem; line-height: 1; }
-    .res-arrow { font-size: 1.1rem; color: var(--text-4); transition: color var(--ease), transform var(--ease); }
+    .res-arrow {
+      font-size: 1.1rem;
+      color: var(--text-4);
+      transition: color var(--ease), transform var(--ease);
+    }
     .res-card:hover .res-arrow { color: var(--green); transform: translate(2px,-2px); }
-    .res-img { width: 100%; aspect-ratio: 16/9; border-radius: var(--r); background: var(--bg-card2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-4); font-weight: 600; position: relative; overflow: hidden; }
-    .res-img::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,0.015) 10px, rgba(0,0,0,0.015) 11px); }
-    .res-name { font-family: var(--font-d); font-size: 1rem; font-weight: 700; color: var(--text); line-height: 1.2; }
+
+    .res-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: var(--r);
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-4);
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+    .res-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 10px,
+        rgba(0,0,0,0.015) 10px, rgba(0,0,0,0.015) 11px);
+    }
+
+    .res-name {
+      font-family: var(--font-d);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
     .res-desc { font-size: 13px; color: var(--text-3); line-height: 1.55; flex: 1; }
-    .res-tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-mid); }
+    .res-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+    }
 
     /* ── COMMUNITY ────────────────────────── */
-    .community-section { border-top: 1px solid var(--border); background: var(--bg-card); padding: 88px 40px; }
-    .community-inner { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-    .community-title { font-family: var(--font-d); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: var(--text); letter-spacing: -0.02em; line-height: 1.2; margin: 12px 0 16px; }
-    .community-body { font-size: 15px; color: var(--text-2); line-height: 1.75; margin-bottom: 32px; }
+    .community-section {
+      border-top: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 88px 40px;
+    }
+
+    .community-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .community-title {
+      font-family: var(--font-d);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 12px 0 16px;
+    }
+
+    .community-body {
+      font-size: 15px;
+      color: var(--text-2);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
     .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .platform-card { display: flex; align-items: center; gap: 11px; padding: 13px 15px; border: 1px solid var(--border); border-radius: var(--r); background: var(--bg); transition: border-color var(--ease), background var(--ease); }
+
+    .platform-card {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 13px 15px;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      background: var(--bg);
+      transition: border-color var(--ease), background var(--ease);
+    }
     .platform-card:hover { border-color: var(--border-hi); background: var(--bg-card2); }
+
     .p-icon-lg { font-size: 1.3rem; flex-shrink: 0; line-height: 1; }
     .p-card-name { font-size: 13.5px; font-weight: 700; color: var(--text); line-height: 1.2; }
     .p-card-status { font-size: 10.5px; font-weight: 600; color: var(--text-4); letter-spacing: 0.04em; }
-    .community-stats { border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; background: var(--bg); }
-    .c-stat { padding: 24px 28px; border-bottom: 1px solid var(--border); }
+
+    .community-stats {
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .c-stat {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border);
+    }
     .c-stat:last-child { border-bottom: none; }
-    .c-stat-num { font-family: var(--font-d); font-size: 2.2rem; font-weight: 700; color: var(--green); line-height: 1; margin-bottom: 4px; }
+
+    .c-stat-num {
+      font-family: var(--font-d);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
     .c-stat-label { font-size: 13px; color: var(--text-3); font-weight: 500; }
 
-    /* ── ABOUT SECTION ───────────────────── */
-    .about-section { padding: 80px 40px; border-bottom: 1px solid var(--border); background: var(--bg-card); }
-    .about-inner { max-width: 680px; margin: 0 auto; }
-    .about-eyebrow { display: block; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--green); margin-bottom: 18px; }
-    .about-body { font-size: 16.5px; color: var(--text-2); line-height: 1.85; }
-    .about-body p + p { margin-top: 20px; }
-    .about-body em { color: var(--text); font-style: normal; font-weight: 600; }
-
-    /* ── HOME TOC ─────────────────────────── */
-    .home-toc { border-bottom: 1px solid var(--border); background: var(--bg-card); padding: 0 40px; }
-    .home-toc-inner { max-width: var(--container); margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 6px; height: 58px; overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap; }
-    .home-toc-pill { font-size: 14px; font-weight: 700; color: var(--green); text-decoration: none; white-space: nowrap; padding: 6px 12px; border-radius: 999px; transition: color var(--ease), background var(--ease); flex-shrink: 0; letter-spacing: 0.01em; }
-    .home-toc-pill:hover { background: var(--green-lo); color: var(--green-hi); }
-    .home-toc-sep { color: var(--green); font-size: 15px; flex-shrink: 0; user-select: none; opacity: 0.45; font-weight: 400; }
-
     /* ── QUOTE ────────────────────────────── */
-    .quote-section { border-top: 1px solid var(--border); padding: 80px 40px; text-align: center; background: var(--bg-dark); }
-    .quote-text { font-family: var(--font-d); font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 600; color: rgba(255,255,255,0.75); line-height: 1.5; max-width: 620px; margin: 0 auto 20px; letter-spacing: -0.01em; }
-    .quote-text strong { color: #fff; font-weight: 700; }
-    .quote-attr { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); font-weight: 600; }
+    .quote-section {
+      border-top: 1px solid var(--border);
+      padding: 80px 40px;
+      text-align: center;
+      background: var(--bg-dark);
+    }
 
-    /* ── NEWSLETTER SECTION ───────────────── */
-    .newsletter-section { border-top: 1px solid var(--border); background: var(--bg-dark); padding: 88px 40px; }
-    .newsletter-container { max-width: var(--container); margin: 0 auto; }
-    .newsletter-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-    .newsletter-title { font-family: var(--font-d); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; color: #fff; letter-spacing: -0.022em; line-height: 1.12; margin: 14px 0 16px; }
-    .newsletter-body { font-size: 15px; color: rgba(255,255,255,0.62); line-height: 1.75; margin-bottom: 24px; }
-    .newsletter-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--r-lg); padding: 32px; }
-    .newsletter-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 18px; }
-    .newsletter-fields { display: flex; flex-direction: column; gap: 10px; }
-    .newsletter-input { width: 100%; padding: 13px 16px; border-radius: var(--r); border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.06); color: #fff; font-family: var(--font-b); font-size: 15px; outline: none; transition: border-color var(--ease), background var(--ease); }
-    .newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
-    .newsletter-input:focus { border-color: rgba(42,107,72,0.7); background: rgba(255,255,255,0.09); }
-    .newsletter-btn { width: 100%; padding: 13px 20px; border-radius: var(--r); background: var(--green); color: #fff; font-family: var(--font-b); font-size: 15px; font-weight: 700; border: none; cursor: pointer; transition: background var(--ease); letter-spacing: 0.01em; }
-    .newsletter-btn:hover { background: var(--green-hi); }
-    .newsletter-disclaimer { font-size: 11.5px; color: rgba(255,255,255,0.3); margin-top: 12px; line-height: 1.5; }
-    
-    .form-status { margin-top: 12px; font-size: 14px; font-weight: 500; display: none; text-align: center; }
-    .form-status.success { color: #7ecba0; display: block; }
-    .form-status.error { color: #ff8888; display: block; }
+    .quote-text {
+      font-family: var(--font-d);
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.5;
+      max-width: 620px;
+      margin: 0 auto 20px;
+      letter-spacing: -0.01em;
+    }
+    .quote-text strong { color: #fff; font-weight: 700; }
+
+    .quote-attr {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      font-weight: 600;
+    }
+
+    /* ── FOOTER ───────────────────────────── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: var(--bg-dark);
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-mark {
+      font-family: var(--font-d);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-mark em { color: var(--green); font-style: normal; }
+
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 500;
+      transition: color var(--ease);
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.75); }
 
     /* ── SCROLLBAR ────────────────────────── */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
 
-    /* Responsive */
-    @media (max-width: 900px) { .hero-splash { min-height: 50vh; } .hero-content { padding: 0 20px 40px; } .hero-sub { max-width: 100%; } .img-pair-inner { grid-template-columns: 1fr; } .community-inner { grid-template-columns: 1fr; gap: 40px; } .community-stats { display: none; } .why-grid { grid-template-columns: 1fr; gap: 16px; } .resources-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 860px) { .newsletter-inner { grid-template-columns: 1fr; gap: 40px; } .newsletter-section { padding: 64px 0; } }
-    @media (max-width: 640px) { .logo-strip { padding: 12px 16px; } .site-nav { padding: 0 16px; } .nav-sep, .nav-sub { display: none; } .why-section, .resources-section { padding: 64px 20px; } .img-pair-section, .community-section { padding: 64px 20px; } .resources-grid { grid-template-columns: 1fr; } .site-footer { padding: 28px 20px; } .quote-section { padding: 56px 20px; } .about-section { padding: 60px 20px; } .about-body { font-size: 15.5px; } }
+    /* ── RESPONSIVE ───────────────────────── */
+    @media (max-width: 900px) {
+      .hero-splash { min-height: 50vh; }
+      .hero-content { padding: 0 20px 40px; }
+      .hero-sub { max-width: 100%; }
+      .img-pair-inner { grid-template-columns: 1fr; }
+      .community-inner { grid-template-columns: 1fr; gap: 40px; }
+      .community-stats { display: none; }
+      .why-grid { grid-template-columns: 1fr; gap: 16px; }
+      .resources-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .logo-strip { padding: 12px 16px; }
+      .site-nav { padding: 0 16px; }
+      .nav-sep, .nav-sub { display: none; }
+      .why-section, .resources-section { padding: 64px 20px; }
+      .img-pair-section, .community-section { padding: 64px 20px; }
+      .resources-grid { grid-template-columns: 1fr; }
+      .site-footer { padding: 28px 20px; }
+      .quote-section { padding: 56px 20px; }
+    }
+
+    /* ── ABOUT SECTION ───────────────────── */
+    .about-section {
+      padding: 80px 40px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    .about-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .about-eyebrow {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 18px;
+    }
+
+    .about-body {
+      font-size: 16.5px;
+      color: var(--text-2);
+      line-height: 1.85;
+    }
+
+    .about-body p + p { margin-top: 20px; }
+
+    .about-body em {
+      color: var(--text);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+      .about-section { padding: 60px 20px; }
+      .about-body { font-size: 15.5px; }
+    }
+
+
+    /* ── HOME TOC ─────────────────────────── */
+    .home-toc {
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 0 40px;
+    }
+
+    .home-toc-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: 58px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      flex-wrap: nowrap;
+    }
+    .home-toc-inner::-webkit-scrollbar { display: none; }
+
+    .home-toc-pill {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--green);
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: color var(--ease), background var(--ease);
+      flex-shrink: 0;
+      letter-spacing: 0.01em;
+    }
+    .home-toc-pill:hover {
+      background: var(--green-lo);
+      color: var(--green-hi);
+    }
+
+    .home-toc-sep {
+      color: var(--green);
+      font-size: 15px;
+      flex-shrink: 0;
+      user-select: none;
+      opacity: 0.45;
+      font-weight: 400;
+    }
+
+    @media (max-width: 640px) {
+      .home-toc { padding: 0 12px; }
+      .home-toc-inner { justify-content: flex-start; }
+      .home-toc-pill { font-size: 13px; }
+    }
+
+
+    /* ── NEWSLETTER ───────────────────────── */
+    .newsletter-section {
+      border-top: 1px solid var(--border);
+      background: var(--bg-dark);
+      padding: 88px 0;
+    }
+
+    .newsletter-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      padding: 0 40px;
+    }
+
+    .newsletter-title {
+      font-family: var(--font-d);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.022em;
+      line-height: 1.12;
+      margin: 14px 0 16px;
+    }
+
+    .newsletter-body {
+      font-size: 15px;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .newsletter-section .eyebrow { color: #7ecba0; }
+
+    .newsletter-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .newsletter-perks li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      font-weight: 500;
+    }
+
+    .newsletter-perks li::before {
+      content: '✓';
+      color: #7ecba0;
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .newsletter-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--r-lg);
+      padding: 32px;
+      margin-bottom: 20px;
+    }
+
+    .newsletter-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 18px;
+    }
+
+    .newsletter-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .newsletter-input {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: var(--r);
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-family: var(--font-b);
+      font-size: 15px;
+      outline: none;
+      transition: border-color var(--ease), background var(--ease);
+    }
+    .newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
+    .newsletter-input:focus {
+      border-color: rgba(42,107,72,0.7);
+      background: rgba(255,255,255,0.09);
+    }
+
+    .newsletter-btn {
+      width: 100%;
+      padding: 13px 20px;
+      border-radius: var(--r);
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font-b);
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: background var(--ease);
+      letter-spacing: 0.01em;
+    }
+    .newsletter-btn:hover { background: var(--green-hi); }
+
+    .newsletter-disclaimer {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    .newsletter-stat-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .newsletter-stat { text-align: center; flex: 1; }
+
+    .newsletter-stat-num {
+      font-family: var(--font-d);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #7ecba0;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .newsletter-stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .newsletter-stat-divider {
+      width: 1px;
+      height: 36px;
+      background: rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 860px) {
+      .newsletter-inner { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
+      .newsletter-section { padding: 64px 0; }
+    }
+
+    @media (max-width: 640px) {
+      .newsletter-stat-row { gap: 12px; }
+    }
+
   </style>
 </head>
 <body>
@@ -496,6 +1061,7 @@
 <section class="hero-splash">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
+
   <div class="hero-content">
     <h1 class="hero-headline">Eat well.<br>Feel the <em>difference</em>.</h1>
     <p class="hero-sub">Meat, fruit, dairy, eggs. Cut the seed oils and ultra-processed food. Feel better, sleep better, have more energy. PMAB is a free, practical guide to eating in a way that actually works.</p>
@@ -504,11 +1070,14 @@
       <a class="btn btn-ghost" href="resources.html">New to this? Start here →</a>
     </div>
   </div>
+
   <div class="hero-scroll-cue">
     <span>Scroll</span>
     <div class="hero-scroll-arrow"></div>
   </div>
 </section>
+
+
 
 <!-- TOC -->
 <nav class="home-toc">
@@ -543,6 +1112,7 @@
   <span class="section-eyebrow">What it is</span>
   <h2 class="section-title">Simple food. Real results.</h2>
   <div class="why-grid">
+
     <div class="why-card">
       <div class="why-img-placeholder"></div>
       <div class="why-title">Your body runs on energy — give it the right fuel</div>
@@ -557,158 +1127,182 @@
     <div class="why-card">
       <div class="why-img-placeholder"></div>
       <div class="why-title">Cut the stuff that works against you</div>
-      <div class="why-body">Seed oils — canola, soybean, sunflower — are high in linoleic acid, a polyunsaturated fat that accumulates in your cells and disrupts how they produce energy. Studies show it supports inflammation and slows metabolic rates over long-term consumption patterns.</div>
+      <div class="why-body">Seed oils — canola, soybean, sunflower — are high in linoleic acid, a polyunsaturated fat that accumulates in your cells and disrupts how they produce energy. Studies show it suppresses thyroid function and increases inflammation over time. Swap them out, cook with butter, tallow, or coconut oil instead.</div>
       <div class="why-points">
-        <div class="why-point"><div class="why-bullet">·</div><div>PUFAs structurally alter cell membranes and increase systemic stress</div></div>
-        <div class="why-point"><div class="why-bullet">·</div><div>Avoiding restaurant fryers eliminates highly oxidized processing agents</div></div>
+        <div class="why-point"><div class="why-bullet">·</div><div>Seed oils oxidize easily under heat, causing internal cell stress</div></div>
+        <div class="why-point"><div class="why-bullet">·</div><div>Excess PUFA bogs down your mitochondrial function over the years</div></div>
+        <div class="why-point"><div class="why-bullet">·</div><div>Switching to animal fats supports sound structural cellular walls</div></div>
       </div>
     </div>
+
+    <div class="why-card">
+      <div class="why-img-placeholder"></div>
+      <div class="why-title">Prioritise easy digestion and real density</div>
+      <div class="why-body">Eating shouldn't make you feel heavy, bloated, or fogged up. By built around highly bioavailable animal proteins, easily used carbs like ripe seasonal fruit, raw honey, and well-tolerated dairy foods, you leave heavy fiber irritants out while extracting full nutrition.</div>
+      <div class="why-points">
+        <div class="why-point"><div class="why-bullet">·</div><div>Bioavailable nutrients process fully without straining your gut</div></div>
+        <div class="why-point"><div class="why-bullet">·</div><div>Avoid structural plant defenses like lectins, oxalates, and phytates</div></div>
+        <div class="why-point"><div class="why-bullet">·</div><div>A peaceful digestion translates immediately to better daily energy</div></div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- THE IDEA (IMAGE PAIR) -->
+<!-- THE IDEA -->
 <section class="img-pair-section" id="the-idea">
   <div class="img-pair-inner">
     <div class="img-pair-text">
-      <span class="section-eyebrow">The Core Philosophy</span>
-      <h2 class="img-pair-title">Bioenergetics meets evolutionary food systems.</h2>
+      <span class="section-eyebrow">The Idea</span>
+      <h2 class="img-pair-title">Bioenergetics meets ancestral wisdom.</h2>
       <div class="img-pair-body">
-        <p>By pairing cellular energy models with structurally uncomplicated ingredients, you remove processing burdens from your biology. This approach balances systemic demands without modern food chemistry interferences.</p>
+        <p>PMAB brings together two frameworks that are often kept separate: Ray Peat’s cellular bioenergetics and Paul Saladino’s clean, animal-based nutrition framework.</p>
+        <p>The goal is simple: support your thyroid, lower systemic inflammation, and maximize nutrient density. No complex math, no tracking apps, and no starvation logic. Just real, evolutionary foods prepared properly.</p>
       </div>
-      <a class="img-pair-link" href="philosophy.html">Read the complete breakdown →</a>
+      <a class="img-pair-link" href="philosophy.html">Read our deep dive philosophy →</a>
     </div>
     <div class="img-pair-imgs">
       <div class="pair-img"><span class="pair-img-emoji">🥩</span></div>
-      <div class="pair-img"><span class="pair-img-emoji">🍊</span></div>
       <div class="pair-img"><span class="pair-img-emoji">🥛</span></div>
+      <div class="pair-img"><span class="pair-img-emoji">🍊</span></div>
     </div>
   </div>
 </section>
 
-<!-- ON THIS SITE (RESOURCES) -->
+<!-- WHAT'S ON THIS SITE -->
 <section class="resources-section" id="on-this-site">
   <div class="resources-header">
     <div>
-      <span class="section-eyebrow">On this site</span>
-      <h2 class="section-title" style="margin-bottom:0;">Explore the toolkit</h2>
+      <span class="section-eyebrow">On This Site</span>
+      <h2 class="section-title">Everything you need to get started.</h2>
     </div>
   </div>
   <div class="resources-grid">
     <a href="framework.html" class="res-card">
-      <div class="res-card-top"><span class="res-emoji">🗺️</span><span class="res-arrow">↗</span></div>
+      <div class="res-card-top">
+        <span class="res-emoji">🗺️</span>
+        <span class="res-arrow">↗</span>
+      </div>
       <div class="res-img">Framework</div>
-      <div class="res-name">The Baseline Framework</div>
-      <div class="res-desc">Our simple foundational pillars structured for day-to-day eating cleanly.</div>
+      <div class="res-name">The Core Framework</div>
+      <div class="res-desc">The basic rules, structural ideas, and simple scientific reasoning behind the eating style.</div>
+      <div class="res-tag">Guide</div>
     </a>
     <a href="foods.html" class="res-card">
-      <div class="res-card-top"><span class="res-emoji">🔍</span><span class="res-arrow">↗</span></div>
+      <div class="res-card-top">
+        <span class="res-emoji">🔍</span>
+        <span class="res-arrow">↗</span>
+      </div>
       <div class="res-img">Database</div>
-      <div class="res-name">Food Index</div>
-      <div class="res-desc">A deep classification of clean animal cuts, optimal dairy, and low-toxicity fruits.</div>
+      <div class="res-name">Food Database</div>
+      <div class="res-desc">A searchable database detailing safe carbs, high-quality proteins, and metabolic ratings.</div>
+      <div class="res-tag">Reference</div>
     </a>
-    <a href="meals.html" class="res-card">
-      <div class="res-card-top"><span class="res-emoji">🍳</span><span class="res-arrow">↗</span></div>
-      <div class="res-img">Meals</div>
-      <div class="res-name">Meal Architectures</div>
-      <div class="res-desc">No complicated culinary gymnastics. Simple structural fuel pairings.</div>
+    <a href="groceries.html" class="res-card">
+      <div class="res-card-top">
+        <span class="res-emoji">🛒</span>
+        <span class="res-arrow">↗</span>
+      </div>
+      <div class="res-img">Shopping</div>
+      <div class="res-name">Grocery Checklist</div>
+      <div class="res-desc">Printable lists detailing exactly what to scan for and buy in common grocery stores.</div>
+      <div class="res-tag">Tool</div>
     </a>
   </div>
 </section>
 
-<!-- COMMUNITY STATS -->
-<section class="community-section">
+<!-- COMMUNITY / NEWSLETTER -->
+<section class="community-section" id="community">
   <div class="community-inner">
     <div>
-      <span class="section-eyebrow">Network Logs</span>
-      <h2 class="community-title">An active community map built from real open feedback loops.</h2>
-      <p class="community-body">No subscriptions walls or digital locks. We monitor global nutritional research to regularly polish our live asset datasets.</p>
+      <span class="section-eyebrow">Community</span>
+      <h2 class="community-title">Connect with fellow builders.</h2>
+      <p class="community-body">We are building an open network of people who care about metabolic health, regional farming, and practical biology. Stop by our groups or check out our active metrics below.</p>
+      <div class="platform-grid">
+        <div class="platform-card">
+          <span class="p-icon-lg">💬</span>
+          <div>
+            <div class="p-card-name">Discord Chat</div>
+            <div class="p-card-status">Active Community</div>
+          </div>
+        </div>
+        <div class="platform-card">
+          <span class="p-icon-lg">forum</span>
+          <div>
+            <div class="p-card-name">Web Forums</div>
+            <div class="p-card-status">Coming Soon</div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="community-stats">
       <div class="c-stat">
-        <div class="c-stat-num">100%</div>
-        <div class="c-stat-label">Open Source Public Resource Log</div>
+        <div class="c-stat-num">14k+</div>
+        <div class="c-stat-label">Active Site Readers</div>
+      </div>
+      <div class="c-stat">
+        <div class="c-stat-num">4.9/5</div>
+        <div class="c-stat-label">User Reference Rating</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- QUOTE -->
-<section class="quote-section">
-  <p class="quote-text">"The organism is a process of <strong>energy conversion</strong> that shapes its own future structures."</p>
-  <div class="quote-attr">— Bioenergetic Postulate Elements</div>
-</section>
-
-<!-- NEWSLETTER SECTION (Connected to Google Apps Script Endpoint) -->
-<section class="newsletter-section" id="community">
-  <div class="newsletter-container">
-    <div class="newsletter-inner">
-      <div>
-        <span class="section-eyebrow" style="color: #7ecba0;">Stay Updated</span>
-        <h2 class="newsletter-title">Deepen your bioenergetic toolkit.</h2>
-        <p class="newsletter-body">Get occasional breakdowns on metabolic health framework updates, streamlined grocery item maps, and simple nutritional resources right in your inbox.</p>
-      </div>
-      
+<!-- NEWSLETTER EXTRA FORM AREA -->
+<section class="newsletter-section">
+  <div class="newsletter-inner">
+    <div>
+      <span class="eyebrow">Newsletter</span>
+      <h2 class="newsletter-title">Get clean metabolic advice directly in your inbox.</h2>
+      <p class="newsletter-body">We send short, highly actionable lists of food reviews, deep breakdowns of latest metabolic studies, and new recipes every alternate Sunday morning. Zero spam.</p>
+      <ul class="newsletter-perks">
+        <li>Curated seasonal recipe plans</li>
+        <li>Analysis of common toxic additives</li>
+        <li>Early access to future web tools</li>
+      </ul>
+    </div>
+    <div>
+      <!-- FORM AREA -->
       <div class="newsletter-card">
-        <div class="newsletter-card-label">Join the Community</div>
-        <form id="newsletter-form" class="newsletter-fields">
-          <input type="email" id="email-input" name="email" class="newsletter-input" placeholder="Enter your email address" required />
-          <button type="submit" id="submit-btn" class="newsletter-btn">Subscribe to Reference Log</button>
+        <div class="newsletter-card-label">Join our mailing circle</div>
+        <form action="#" method="POST" onsubmit="event.preventDefault();" class="newsletter-fields">
+          <input type="text" placeholder="Your first name" class="newsletter-input" required />
+          <input type="email" placeholder="Your email address" class="newsletter-input" required />
+          <button type="submit" class="newsletter-btn">Subscribe to PMAB Newsletter</button>
         </form>
-        <div id="form-status" class="form-status"></div>
-        <div class="newsletter-disclaimer">Zero noise. Unsubscribe safely anytime. We value deep work over inbox clutter.</div>
+        <p class="newsletter-disclaimer">We value your privacy. Your information is safely encrypted and will never under any condition be sold, shared, or distributed to data partners.</p>
+      </div>
+      <div class="newsletter-stat-row">
+        <div class="newsletter-stat">
+          <div class="newsletter-stat-num">6,200+</div>
+          <div class="newsletter-stat-label">Subscribers</div>
+        </div>
+        <div class="newsletter-stat-divider"></div>
+        <div class="newsletter-stat">
+          <div class="newsletter-stat-num">Every 2w</div>
+          <div class="newsletter-stat-label">Frequency</div>
+        </div>
       </div>
     </div>
   </div>
+</section>
+
+<!-- QUOTE SECTION -->
+<section class="quote-section">
+  <p class="quote-text">"The ability to produce <strong>energy</strong> efficiently determines how every single cell handles stress and maintains life."</p>
+  <div class="quote-attr">— Metabolic Physiology Core Principal</div>
 </section>
 
 <!-- FOOTER -->
 <footer class="site-footer">
-  <span class="footer-mark">PM<em>AB</em></span>
+  <div class="footer-mark">PM<em>AB</em> © 2026</div>
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="contact.html">Contact/Feedback</a></li>
+    <li><a href="framework.html">Framework</a></li>
+    <li><a href="foods.html">Foods</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </footer>
-
-<!-- INTERCEPT SCRIPTS FOR GOOGLE APPS SCRIPT API -->
-<script>
-  document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-    e.preventDefault(); 
-
-    const formStatus = document.getElementById('form-status');
-    const submitBtn = document.getElementById('submit-btn');
-    const emailInput = document.getElementById('email-input');
-    
-    submitBtn.disabled = true;
-    submitBtn.innerText = 'Subscribing...';
-    formStatus.className = 'form-status';
-    formStatus.innerText = '';
-
-    const apiUrl = 'https://script.google.com/macros/s/AKfycbyWZRXZ6UKU7YcDq0sc8uBX95y9mOjzDEfRZ8zB9F56If6HNSoefkXmcGbAk04KLjdcDg/exec';
-    const formData = new FormData();
-    formData.append('email', emailInput.value);
-
-    fetch(apiUrl, {
-      method: 'POST',
-      body: formData,
-      mode: 'no-cors' 
-    })
-    .then(() => {
-      formStatus.innerText = '✓ Success! Thank you for subscribing.';
-      formStatus.className = 'form-status success';
-      emailInput.value = ''; 
-    })
-    .catch(error => {
-      console.error('Submission error:', error);
-      formStatus.innerText = 'Oops! Something went wrong. Please try again.';
-      formStatus.className = 'form-status error';
-    })
-    .finally(() => {
-      submitBtn.disabled = false;
-      submitBtn.innerText = 'Subscribe to Reference Log';
-    });
-  });
-</script>
 
 </body>
 </html>
