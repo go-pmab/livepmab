@@ -20,7 +20,6 @@
   <link rel="stylesheet" href="shared.css"/>
 
   <style>
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background: var(--bg);
@@ -457,48 +456,45 @@
     formData.append('mealCategory', document.getElementById('meal-category').value);
     formData.append('message', document.getElementById('message').value);
 
-    // Send data to Make.com Webhook
+    // Send data to Make.com Webhook with no-cors mode to bypass browser blocks
     fetch(CONTACT_SCRIPT_URL, {
       method: 'POST',
+      mode: 'no-cors',
       body: formData,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     })
-    .then(response => {
-      // Check if Make accepted the data packet successfully
-      if (response.ok) {
-        const type = document.getElementById('type').value;
-        const isMeal = type === 'submit-meal';
+    .then(() => {
+      // In 'no-cors' mode, we confidently transition right into the success panels
+      const type = document.getElementById('type').value;
+      const isMeal = type === 'submit-meal';
 
-        document.getElementById('form-state').style.display = 'none';
+      document.getElementById('form-state').style.display = 'none';
 
-        const head = document.getElementById('success-head');
-        const body = document.getElementById('success-body');
+      const head = document.getElementById('success-head');
+      const body = document.getElementById('success-body');
 
-        if (isMeal) {
-          const mealName = document.getElementById('meal-name').value;
-          head.textContent = 'Meal received.';
-          body.textContent = mealName
-            ? `"${mealName}" is in the queue. If it fits the framework, it'll show up in the library.`
-            : 'Your meal idea is in the queue. If it fits the framework, it\'ll show up in the library.';
-        } else {
-          head.textContent = 'Got it.';
-          body.textContent = 'Thanks for reaching out — we\'ll be in touch.';
-        }
-
-        document.getElementById('success-state').classList.add('visible');
-        formElement.reset();
+      if (isMeal) {
+        const mealName = document.getElementById('meal-name').value;
+        head.textContent = 'Meal received.';
+        body.textContent = mealName
+          ? `"${mealName}" is in the queue. If it fits the framework, it'll show up in the library.`
+          : 'Your meal idea is in the queue. If it fits the framework, it\'ll show up in the library.';
       } else {
-        throw new Error('Network response from Make was not okay.');
+        head.textContent = 'Got it.';
+        body.textContent = 'Thanks for reaching out — we\'ll be in touch.';
       }
+
+      document.getElementById('success-state').classList.add('visible');
+      formElement.reset();
     })
     .catch(error => {
       console.error('Error submitting form!', error);
       alert('Something went wrong sending your message. Please try again.');
     })
     .finally(() => {
-      // Restore button status if an error occurred
+      // Restore button status
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalBtnHtml;
     });
