@@ -437,7 +437,7 @@
   function handleSubmit(e) {
     e.preventDefault();
     
-    const CONTACT_SCRIPT_URL = 'https://hook.us2.make.com/eqg1noqarf5jx4opa0w2mdxap8nvbq66';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx3Oo1ek-NF3mO2HjNdRRCP3o8nwviWzr5qXkn9zx6oja48V2tt2Z62m4VmpljJSleB/exec';
     
     const formElement = document.getElementById('contact-form');
     const submitBtn = formElement.querySelector('.btn-primary');
@@ -447,7 +447,7 @@
     submitBtn.disabled = true;
     submitBtn.innerText = 'Sending...';
 
-    // Package all inputs from the form elements
+    // Package data as a standard Form URL-encoded string for Google Apps Script
     const formData = new URLSearchParams();
     formData.append('name', document.getElementById('name').value);
     formData.append('email', document.getElementById('email').value);
@@ -456,8 +456,8 @@
     formData.append('mealCategory', document.getElementById('meal-category').value);
     formData.append('message', document.getElementById('message').value);
 
-    // Send data to Make.com Webhook with no-cors mode to bypass browser blocks
-    fetch(CONTACT_SCRIPT_URL, {
+    // Send data to Google Script Web App using no-cors mode to elegantly catch execution
+    fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
       body: formData,
@@ -466,7 +466,7 @@
       }
     })
     .then(() => {
-      // In 'no-cors' mode, we confidently transition right into the success panels
+      // In 'no-cors' mode, browser defaults seamlessly into completion blocks
       const type = document.getElementById('type').value;
       const isMeal = type === 'submit-meal';
 
