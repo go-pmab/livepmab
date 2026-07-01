@@ -68,7 +68,6 @@
     a { color: inherit; text-decoration: none; }
 
     /* ── NAV ──────────────────────────────── */
-    /* ── LOGO STRIP — its own thin band ──────── */
     .logo-strip {
       display: flex;
       align-items: center;
@@ -105,7 +104,6 @@
     .nav-sub .sub-pm { color: var(--text); }
     .nav-sub .sub-ab { color: var(--green); }
 
-    /* ── NAV LINKS — separate sticky band ────── */
     .site-nav {
       border-bottom: 1px solid var(--border);
       display: flex;
@@ -147,7 +145,7 @@
       font-weight: 600;
     }
 
-    /* ── HERO — full bleed image splash ─────── */
+    /* ── HERO ─────────────────────────────── */
     .hero-splash {
       position: relative;
       width: 100%;
@@ -166,11 +164,8 @@
       background-position: center 40%;
       background-repeat: no-repeat;
       transform: scale(1.02);
-      transition: transform 8s ease;
     }
 
-    /* multi-layer overlay: bottom-heavy dark gradient for text legibility,
-       slight vignette around edges, subtle warm colour cast */
     .hero-overlay {
       position: absolute;
       inset: 0;
@@ -194,20 +189,6 @@
       padding: 0 40px 24px;
     }
 
-    .hero-logo-mark {
-      font-family: var(--font-d);
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      color: rgba(255,255,255,0.92);
-      text-shadow: 0 2px 14px rgba(0,0,0,0.45);
-      margin-bottom: 18px;
-    }
-    .hero-logo-mark em {
-      color: #7ecba0;
-      font-style: normal;
-    }
-
     .hero-headline {
       font-family: var(--font-d);
       font-size: clamp(2.8rem, 6vw, 5rem);
@@ -219,11 +200,7 @@
       text-shadow: 0 2px 20px rgba(0,0,0,0.4);
       max-width: 720px;
     }
-
-    .hero-headline em {
-      color: #7ecba0;
-      font-style: normal;
-    }
+    .hero-headline em { color: #7ecba0; font-style: normal; }
 
     .hero-sub {
       font-size: 17px;
@@ -234,11 +211,7 @@
       text-shadow: 0 1px 8px rgba(0,0,0,0.5);
     }
 
-    .hero-ctas {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
 
     .btn {
       display: inline-flex;
@@ -277,7 +250,6 @@
       color: #fff;
     }
 
-    /* scroll cue */
     .hero-scroll-cue {
       position: absolute;
       bottom: 24px;
@@ -310,8 +282,6 @@
       margin-top: -4px;
     }
 
-
-
     /* ── WHY SECTION ──────────────────────── */
     .why-section {
       padding: 96px 40px;
@@ -340,11 +310,7 @@
       max-width: 520px;
     }
 
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
     .why-card {
       background: var(--bg-card);
@@ -379,13 +345,6 @@
       position: relative;
       overflow: hidden;
     }
-    .why-img-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(-45deg, transparent, transparent 10px,
-        rgba(0,0,0,0.018) 10px, rgba(0,0,0,0.018) 11px);
-    }
 
     .why-title {
       font-family: var(--font-d);
@@ -396,379 +355,10 @@
       letter-spacing: -0.01em;
     }
 
-    .why-body {
-      font-size: 14px;
-      color: var(--text-2);
-      line-height: 1.75;
-      font-weight: 600;
-      flex: 1;
-    }
-
-    .why-points {
-      border-top: 1px solid var(--border);
-      padding-top: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    .why-point {
-      display: flex;
-      gap: 9px;
-      align-items: flex-start;
-      font-size: 12.5px;
-      color: var(--text-3);
-      line-height: 1.5;
-    }
-
-    .why-bullet {
-      color: var(--green);
-      font-weight: 700;
-      flex-shrink: 0;
-      font-size: 15px;
-      line-height: 1.2;
-    }
-
-    /* ── IMAGE PAIR ───────────────────────── */
-    .img-pair-section {
-      border-top: 1px solid var(--border);
-      background: var(--bg-card);
-      padding: 88px 40px;
-    }
-
-    .img-pair-inner {
-      max-width: var(--container);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .img-pair-text {}
-
-    .img-pair-title {
-      font-family: var(--font-d);
-      font-size: clamp(1.85rem, 3.5vw, 2.6rem);
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin: 12px 0 18px;
-    }
-
-    .img-pair-body {
-      font-size: 15px;
-      color: var(--text-2);
-      line-height: 1.78;
-      margin-bottom: 28px;
-    }
-
-    .img-pair-body p + p { margin-top: 14px; }
-
-    .img-pair-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--green);
-      text-decoration: none;
-      transition: gap var(--ease);
-    }
-    .img-pair-link:hover { gap: 10px; }
-
-    .img-pair-imgs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .pair-img {
-      border-radius: var(--r);
-      background: var(--bg-card2);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pair-img::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(-45deg, transparent, transparent 10px,
-        rgba(0,0,0,0.015) 10px, rgba(0,0,0,0.015) 11px);
-    }
-
-    .pair-img:first-child {
-      grid-row: 1 / 3;
-      aspect-ratio: unset;
-      min-height: 280px;
-    }
-
-    .pair-img:not(:first-child) { aspect-ratio: 4/3; }
-
-    .pair-img-emoji { position: relative; z-index: 1; }
-
-    /* ── RESOURCES ────────────────────────── */
-    .resources-section {
-      padding: 96px 40px;
-      max-width: var(--container);
-      margin: 0 auto;
-    }
-
-    .resources-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .resources-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .res-card {
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      background: var(--bg-card);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      text-decoration: none;
-      transition: border-color var(--ease), box-shadow var(--ease), transform var(--ease);
-    }
-    .res-card:hover {
-      border-color: var(--border-hi);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      transform: translateY(-2px);
-    }
-
-    .res-card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .res-emoji { font-size: 1.5rem; line-height: 1; }
-    .res-arrow {
-      font-size: 1.1rem;
-      color: var(--text-4);
-      transition: color var(--ease), transform var(--ease);
-    }
-    .res-card:hover .res-arrow { color: var(--green); transform: translate(2px,-2px); }
-
-    .res-img {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border-radius: var(--r);
-      background: var(--bg-card2);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-4);
-      font-weight: 600;
-      position: relative;
-      overflow: hidden;
-    }
-    .res-img::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(-45deg, transparent, transparent 10px,
-        rgba(0,0,0,0.015) 10px, rgba(0,0,0,0.015) 11px);
-    }
-
-    .res-name {
-      font-family: var(--font-d);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.2;
-    }
-    .res-desc { font-size: 13px; color: var(--text-3); line-height: 1.55; flex: 1; }
-    .res-tag {
-      font-size: 10.5px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--green-mid);
-    }
-
-    /* ── COMMUNITY ────────────────────────── */
-    .community-section {
-      border-top: 1px solid var(--border);
-      background: var(--bg-card);
-      padding: 88px 40px;
-    }
-
-    .community-inner {
-      max-width: var(--container);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-    }
-
-    .community-title {
-      font-family: var(--font-d);
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin: 12px 0 16px;
-    }
-
-    .community-body {
-      font-size: 15px;
-      color: var(--text-2);
-      line-height: 1.75;
-      margin-bottom: 32px;
-    }
-
-    .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-    .platform-card {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      padding: 13px 15px;
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      background: var(--bg);
-      transition: border-color var(--ease), background var(--ease);
-    }
-    .platform-card:hover { border-color: var(--border-hi); background: var(--bg-card2); }
-
-    .p-icon-lg { font-size: 1.3rem; flex-shrink: 0; line-height: 1; }
-    .p-card-name { font-size: 13.5px; font-weight: 700; color: var(--text); line-height: 1.2; }
-    .p-card-status { font-size: 10.5px; font-weight: 600; color: var(--text-4); letter-spacing: 0.04em; }
-
-    .community-stats {
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      overflow: hidden;
-      background: var(--bg);
-    }
-
-    .c-stat {
-      padding: 24px 28px;
-      border-bottom: 1px solid var(--border);
-    }
-    .c-stat:last-child { border-bottom: none; }
-
-    .c-stat-num {
-      font-family: var(--font-d);
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--green);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .c-stat-label { font-size: 13px; color: var(--text-3); font-weight: 500; }
-
-    /* ── QUOTE ────────────────────────────── */
-    .quote-section {
-      border-top: 1px solid var(--border);
-      padding: 80px 40px;
-      text-align: center;
-      background: var(--bg-dark);
-    }
-
-    .quote-text {
-      font-family: var(--font-d);
-      font-size: clamp(1.3rem, 3vw, 2rem);
-      font-weight: 600;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.5;
-      max-width: 620px;
-      margin: 0 auto 20px;
-      letter-spacing: -0.01em;
-    }
-    .quote-text strong { color: #fff; font-weight: 700; }
-
-    .quote-attr {
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      font-weight: 600;
-    }
-
-    /* ── FOOTER ───────────────────────────── */
-    .site-footer {
-      border-top: 1px solid var(--border);
-      background: var(--bg-dark);
-      padding: 36px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .footer-mark {
-      font-family: var(--font-d);
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.5);
-    }
-    .footer-mark em { color: var(--green); font-style: normal; }
-
-    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
-    .footer-links a {
-      font-size: 13px;
-      color: rgba(255,255,255,0.4);
-      font-weight: 500;
-      transition: color var(--ease);
-    }
-    .footer-links a:hover { color: rgba(255,255,255,0.75); }
-
-    /* ── SCROLLBAR ────────────────────────── */
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
-
-    /* ── RESPONSIVE ───────────────────────── */
-    @media (max-width: 900px) {
-      .hero-splash { min-height: 50vh; }
-      .hero-content { padding: 0 20px 40px; }
-      .hero-sub { max-width: 100%; }
-      .img-pair-inner { grid-template-columns: 1fr; }
-      .community-inner { grid-template-columns: 1fr; gap: 40px; }
-      .community-stats { display: none; }
-      .why-grid { grid-template-columns: 1fr; gap: 16px; }
-      .resources-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 640px) {
-      .logo-strip { padding: 12px 16px; }
-      .site-nav { padding: 0 16px; }
-      .nav-sep, .nav-sub { display: none; }
-      .why-section, .resources-section { padding: 64px 20px; }
-      .img-pair-section, .community-section { padding: 64px 20px; }
-      .resources-grid { grid-template-columns: 1fr; }
-      .site-footer { padding: 28px 20px; }
-      .quote-section { padding: 56px 20px; }
-    }
+    .why-body { font-size: 14px; color: var(--text-2); line-height: 1.75; font-weight: 600; flex: 1; }
+    .why-points { border-top: 1px solid var(--border); padding-top: 14px; display: flex; flex-direction: column; gap: 7px; }
+    .why-point { display: flex; gap: 9px; align-items: flex-start; font-size: 12.5px; color: var(--text-3); line-height: 1.5; }
+    .why-bullet { color: var(--green); font-weight: 700; flex-shrink: 0; font-size: 15px; line-height: 1.2; }
 
     /* ── ABOUT SECTION ───────────────────── */
     .about-section {
@@ -777,257 +367,52 @@
       background: var(--bg-card);
     }
 
-    .about-inner {
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .about-eyebrow {
-      display: block;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--green);
-      margin-bottom: 18px;
-    }
-
-    .about-body {
-      font-size: 16.5px;
-      color: var(--text-2);
-      line-height: 1.85;
-    }
-
+    .about-inner { max-width: 680px; margin: 0 auto; }
+    .about-eyebrow { display: block; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--green); margin-bottom: 18px; }
+    .about-body { font-size: 16.5px; color: var(--text-2); line-height: 1.85; }
     .about-body p + p { margin-top: 20px; }
-
-    .about-body em {
-      color: var(--text);
-      font-style: normal;
-      font-weight: 600;
-    }
-
-    @media (max-width: 640px) {
-      .about-section { padding: 60px 20px; }
-      .about-body { font-size: 15.5px; }
-    }
-
+    .about-body em { color: var(--text); font-style: normal; font-weight: 600; }
 
     /* ── HOME TOC ─────────────────────────── */
-    .home-toc {
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-card);
-      padding: 0 40px;
-    }
+    .home-toc { border-bottom: 1px solid var(--border); background: var(--bg-card); padding: 0 40px; }
+    .home-toc-inner { max-width: var(--container); margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 6px; height: 58px; overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap; }
+    .home-toc-pill { font-size: 14px; font-weight: 700; color: var(--green); text-decoration: none; white-space: nowrap; padding: 6px 12px; border-radius: 999px; transition: color var(--ease), background var(--ease); flex-shrink: 0; letter-spacing: 0.01em; }
+    .home-toc-pill:hover { background: var(--green-lo); color: var(--green-hi); }
+    .home-toc-sep { color: var(--green); font-size: 15px; flex-shrink: 0; user-select: none; opacity: 0.45; font-weight: 400; }
 
-    .home-toc-inner {
-      max-width: var(--container);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      height: 58px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      flex-wrap: nowrap;
-    }
-    .home-toc-inner::-webkit-scrollbar { display: none; }
-
-    .home-toc-pill {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--green);
-      text-decoration: none;
-      white-space: nowrap;
-      padding: 6px 12px;
-      border-radius: 999px;
-      transition: color var(--ease), background var(--ease);
-      flex-shrink: 0;
-      letter-spacing: 0.01em;
-    }
-    .home-toc-pill:hover {
-      background: var(--green-lo);
-      color: var(--green-hi);
-    }
-
-    .home-toc-sep {
-      color: var(--green);
-      font-size: 15px;
-      flex-shrink: 0;
-      user-select: none;
-      opacity: 0.45;
-      font-weight: 400;
-    }
-
-    @media (max-width: 640px) {
-      .home-toc { padding: 0 12px; }
-      .home-toc-inner { justify-content: flex-start; }
-      .home-toc-pill { font-size: 13px; }
-    }
-
-
-    /* ── NEWSLETTER ───────────────────────── */
-    .newsletter-section {
-      border-top: 1px solid var(--border);
-      background: var(--bg-dark);
-      padding: 88px 0;
-    }
-
-    .newsletter-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-    }
-
-    .newsletter-title {
-      font-family: var(--font-d);
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.022em;
-      line-height: 1.12;
-      margin: 14px 0 16px;
-    }
-
-    .newsletter-body {
-      font-size: 15px;
-      color: rgba(255,255,255,0.62);
-      line-height: 1.75;
-      margin-bottom: 24px;
-    }
-
-    .newsletter-section .eyebrow { color: #7ecba0; }
-
-    .newsletter-perks {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-
-    .newsletter-perks li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.55);
-      font-weight: 500;
-    }
-
-    .newsletter-perks li::before {
-      content: '✓';
-      color: #7ecba0;
-      font-weight: 700;
-      font-size: 13px;
-      flex-shrink: 0;
-    }
-
-    .newsletter-card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: var(--r-lg);
-      padding: 32px;
-      margin-bottom: 20px;
-    }
-
-    .newsletter-card-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 18px;
-    }
-
-    .newsletter-fields {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .newsletter-input {
-      width: 100%;
-      padding: 13px 16px;
-      border-radius: var(--r);
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.06);
-      color: #fff;
-      font-family: var(--font-b);
-      font-size: 15px;
-      outline: none;
-      transition: border-color var(--ease), background var(--ease);
-    }
+    /* ── NEWSLETTER SECTION ───────────────── */
+    .newsletter-section { border-top: 1px solid var(--border); background: var(--bg-dark); padding: 88px 40px; }
+    .newsletter-container { max-width: var(--container); margin: 0 auto; }
+    .newsletter-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .newsletter-title { font-family: var(--font-d); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; color: #fff; letter-spacing: -0.022em; line-height: 1.12; margin: 14px 0 16px; }
+    .newsletter-body { font-size: 15px; color: rgba(255,255,255,0.62); line-height: 1.75; margin-bottom: 24px; }
+    .newsletter-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--r-lg); padding: 32px; }
+    .newsletter-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 18px; }
+    .newsletter-fields { display: flex; flex-direction: column; gap: 10px; }
+    .newsletter-input { width: 100%; padding: 13px 16px; border-radius: var(--r); border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.06); color: #fff; font-family: var(--font-b); font-size: 15px; outline: none; transition: border-color var(--ease), background var(--ease); }
     .newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
-    .newsletter-input:focus {
-      border-color: rgba(42,107,72,0.7);
-      background: rgba(255,255,255,0.09);
-    }
-
-    .newsletter-btn {
-      width: 100%;
-      padding: 13px 20px;
-      border-radius: var(--r);
-      background: var(--green);
-      color: #fff;
-      font-family: var(--font-b);
-      font-size: 15px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      transition: background var(--ease);
-      letter-spacing: 0.01em;
-    }
+    .newsletter-input:focus { border-color: rgba(42,107,72,0.7); background: rgba(255,255,255,0.09); }
+    .newsletter-btn { width: 100%; padding: 13px 20px; border-radius: var(--r); background: var(--green); color: #fff; font-family: var(--font-b); font-size: 15px; font-weight: 700; border: none; cursor: pointer; transition: background var(--ease); letter-spacing: 0.01em; }
     .newsletter-btn:hover { background: var(--green-hi); }
+    .newsletter-disclaimer { font-size: 11.5px; color: rgba(255,255,255,0.3); margin-top: 12px; line-height: 1.5; }
+    
+    /* Status Feedback styling */
+    .form-status { margin-top: 12px; font-size: 14px; font-weight: 500; display: none; text-align: center; }
+    .form-status.success { color: #7ecba0; display: block; }
+    .form-status.error { color: #ff8888; display: block; }
 
-    .newsletter-disclaimer {
-      font-size: 11.5px;
-      color: rgba(255,255,255,0.3);
-      margin-top: 12px;
-      line-height: 1.5;
-    }
+    /* ── FOOTER ───────────────────────────── */
+    .site-footer { border-top: 1px solid var(--border); background: var(--bg-dark); padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-mark { font-family: var(--font-d); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); }
+    .footer-mark em { color: var(--green); font-style: normal; }
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 500; transition: color var(--ease); }
+    .footer-links a:hover { color: rgba(255,255,255,0.75); }
 
-    .newsletter-stat-row {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .newsletter-stat { text-align: center; flex: 1; }
-
-    .newsletter-stat-num {
-      font-family: var(--font-d);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #7ecba0;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .newsletter-stat-label {
-      font-size: 11px;
-      color: rgba(255,255,255,0.35);
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    .newsletter-stat-divider {
-      width: 1px;
-      height: 36px;
-      background: rgba(255,255,255,0.1);
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 860px) {
-      .newsletter-inner { grid-template-columns: 1fr; gap: 40px; }
-      .newsletter-section { padding: 64px 0; }
-    }
-
-    @media (max-width: 640px) {
-      .newsletter-stat-row { gap: 12px; }
-    }
-
+    /* Responsive */
+    @media (max-width: 900px) { .hero-splash { min-height: 50vh; } .hero-content { padding: 0 20px 40px; } .hero-sub { max-width: 100%; } .why-grid { grid-template-columns: 1fr; gap: 16px; } }
+    @media (max-width: 860px) { .newsletter-inner { grid-template-columns: 1fr; gap: 40px; } .newsletter-section { padding: 64px 0; } }
+    @media (max-width: 640px) { .logo-strip { padding: 12px 16px; } .site-nav { padding: 0 16px; } .nav-sep, .nav-sub { display: none; } .why-section { padding: 64px 20px; } .site-footer { padding: 28px 20px; } .about-section { padding: 60px 20px; .about-body { font-size: 15.5px; } } }
   </style>
 </head>
 <body>
@@ -1058,7 +443,6 @@
 <section class="hero-splash">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-
   <div class="hero-content">
     <h1 class="hero-headline">Eat well.<br>Feel the <em>difference</em>.</h1>
     <p class="hero-sub">Meat, fruit, dairy, eggs. Cut the seed oils and ultra-processed food. Feel better, sleep better, have more energy. PMAB is a free, practical guide to eating in a way that actually works.</p>
@@ -1067,14 +451,11 @@
       <a class="btn btn-ghost" href="resources.html">New to this? Start here →</a>
     </div>
   </div>
-
   <div class="hero-scroll-cue">
     <span>Scroll</span>
     <div class="hero-scroll-arrow"></div>
   </div>
 </section>
-
-
 
 <!-- TOC -->
 <nav class="home-toc">
@@ -1082,10 +463,6 @@
     <a class="home-toc-pill" href="#why-we-made-this">Why we made this</a>
     <span class="home-toc-sep">→</span>
     <a class="home-toc-pill" href="#what-it-is">What it is</a>
-    <span class="home-toc-sep">→</span>
-    <a class="home-toc-pill" href="#the-idea">The idea</a>
-    <span class="home-toc-sep">→</span>
-    <a class="home-toc-pill" href="#on-this-site">What's on this site</a>
     <span class="home-toc-sep">→</span>
     <a class="home-toc-pill" href="#community">Newsletter</a>
   </div>
@@ -1098,8 +475,7 @@
     <div class="about-body">
       <p>We started PMAB because we were tired of wading through three-hour podcasts, Reddit rabbit holes, and half-baked blog posts just to answer a simple question: <em>what should I actually eat?</em></p>
       <p>There's a lot of good information out there about metabolic health, animal-based eating, and the ideas of people like Ray Peat and Paul Saladino. It's just scattered everywhere. We wanted one place to bring it together — organized, honest, and easy to browse whether you're brand new or already deep in it.</p>
-      <p>We're not claiming these ideas as our own. The thinking belongs to the researchers, physicians, and communities who've been doing this work for years. We just want to make it more accessible — and if it helps some people feel better, great. If it doesn't land for you but unlocks something else that does, that's great too.</p>
-      <p>This isn't a finished project. It's a living thing — we're learning as we go, fixing what's wrong, adding what's missing. Some of what's here will probably turn out to be incomplete or off. That's fine. We'd rather put something real out there and improve it than wait until it's perfect.</p>
+      <p>We're not claiming these ideas as our own. The thinking belongs to the researchers, physicians, and communities who've been doing this work for years. We just want to make it more accessible — and if it helps some people feel better, great.</p>
     </div>
   </div>
 </section>
@@ -1109,314 +485,102 @@
   <span class="section-eyebrow">What it is</span>
   <h2 class="section-title">Simple food. Real results.</h2>
   <div class="why-grid">
-
     <div class="why-card">
       <div class="why-img-placeholder"></div>
-      <div class="why-title">Your body runs on energy — give it the right fuel</div>
-      <div class="why-body">Chronic tiredness, poor sleep, sluggish digestion — research links these to how well your cells produce energy. Saturated fat from animal foods is a stable, clean fuel. Ripe fruit provides sugar in a form your liver actually uses. Together they support your thyroid, which regulates everything else.</div>
+      <div class="why-title">Your body runs on energy</div>
+      <div class="why-body">Chronic tiredness, poor sleep, sluggish digestion — research links these to how well your cells produce energy. Saturated fat from animal foods is a stable, clean fuel. Ripe fruit provides sugar in a form your liver actually uses.</div>
       <div class="why-points">
         <div class="why-point"><div class="why-bullet">·</div><div>Thyroid function drives metabolism, warmth, and mood</div></div>
-        <div class="why-point"><div class="why-bullet">·</div><div>Fruit sugar (glucose + fructose) fuels liver and thyroid conversion</div></div>
-        <div class="why-point"><div class="why-bullet">·</div><div>Saturated fat from beef and dairy is stable and hormone-supporting</div></div>
+        <div class="why-point"><div class="why-bullet">·</div><div>Fruit sugar fuels liver and thyroid conversion</div></div>
       </div>
     </div>
-
     <div class="why-card">
       <div class="why-img-placeholder"></div>
-      <div class="why-title">Cut the stuff that works against you</div>
-      <div class="why-body">Seed oils — canola, soybean, sunflower — are high in linoleic acid, a polyunsaturated fat that accumulates in your cells and disrupts how they produce energy. Studies show it suppresses thyroid function and increases inflammation over time. Swap them out, cook with butter or tallow, and most of the rest takes care of itself.</div>
+      <div class="why-title">Cut the structural interference</div>
+      <div class="why-body">Seed oils — canola, soybean, sunflower — are high in linoleic acid, a polyunsaturated fat that accumulates in your cells and disrupts how they produce energy efficiently.</div>
       <div class="why-points">
-        <div class="why-point"><div class="why-bullet">·</div><div>Linoleic acid from seed oils builds up in tissue over years</div></div>
-        <div class="why-point"><div class="why-bullet">·</div><div>Saturated fats are chemically stable and don't oxidize in your cells</div></div>
-        <div class="why-point"><div class="why-bullet">·</div><div>Whole food cooked in butter beats anything processed</div></div>
+        <div class="why-point"><div class="why-bullet">·</div><div>Eliminate highly oxidized processing agents</div></div>
       </div>
     </div>
-
-    <div class="why-card">
-      <div class="why-img-placeholder"></div>
-      <div class="why-title">The nutrients your body needs are in animal food</div>
-      <div class="why-body">Beef, eggs, dairy, and shellfish deliver vitamins and minerals in forms your body absorbs directly — no conversion required. Iron from red meat absorbs at 25–35%. From plants, 2–5%. Vitamin A from liver is preformed retinol. From vegetables, it's beta-carotene that many people can't convert efficiently. The difference is real.</div>
-      <div class="why-points">
-        <div class="why-point"><div class="why-bullet">·</div><div>Heme iron from beef absorbs 10× better than plant iron</div></div>
-        <div class="why-point"><div class="why-bullet">·</div><div>Liver provides real vitamin A — not the kind you have to convert</div></div>
-        <div class="why-point"><div class="why-bullet">·</div><div>B12 only exists in animal food — no plant source provides it</div></div>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- THE IDEA -->
-<div class="img-pair-section" id="the-idea">
-  <div class="img-pair-inner">
-    <div class="img-pair-text">
-      <span class="section-eyebrow">The idea</span>
-      <h2 class="img-pair-title">Backed by two independent frameworks.</h2>
-      <div class="img-pair-body">
-        <p>Ray Peat spent his career as a biologist studying how food affects energy production in the body. Paul Saladino is a physician who researched what humans evolved to eat. They had different methods — one was studying cells, the other studying evolutionary patterns — and they arrived at the same foods.</p>
-        <p>PMAB is the overlap. Meat, fruit, dairy, eggs. Skip the seed oils. Eat real food. It's not complicated, and the science behind it is solid.</p>
-      </div>
-      <a class="img-pair-link" href="philosophy.html">Read the full philosophy →</a>
-    </div>
-    <div class="img-pair-imgs">
-      <div class="pair-img"><span class="pair-img-emoji">🧬</span></div>
-      <div class="pair-img"><span class="pair-img-emoji">📖</span></div>
-      <div class="pair-img"><span class="pair-img-emoji">🥩</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- ON THIS SITE -->
-<section class="resources-section" id="on-this-site">
-  <div class="resources-header">
-    <div>
-      <span class="section-eyebrow">What's here</span>
-      <h2 class="section-title" style="margin-bottom:0;">What's on this site</h2>
-    </div>
-    <a class="btn btn-ghost" href="framework.html">Start with the Framework →</a>
-  </div>
-
-  <div class="resources-grid">
-    <a class="res-card" href="framework.html">
-      <div class="res-card-top">
-        <span class="res-emoji">🔺</span>
-        <span class="res-arrow">↗</span>
-      </div>
-      <div class="res-img">Food pyramid preview</div>
-      <div class="res-name">PMAB Food Pyramid</div>
-      <div class="res-desc">A visual breakdown of the framework — the hierarchy, the tiers, and the logic behind each one.</div>
-      <div class="res-tag">Visual · Start here</div>
-    </a>
-    <a class="res-card" href="philosophy.html">
-      <div class="res-card-top">
-        <span class="res-emoji">📖</span>
-        <span class="res-arrow">↗</span>
-      </div>
-      <div class="res-img">Philosophy preview</div>
-      <div class="res-name">Philosophy</div>
-      <div class="res-desc">Where Peat and Saladino converge, where they diverge, and the science behind the framework.</div>
-      <div class="res-tag">Reading · Context</div>
-    </a>
-    <a class="res-card" href="foods.html">
-      <div class="res-card-top">
-        <span class="res-emoji">🔍</span>
-        <span class="res-arrow">↗</span>
-      </div>
-      <div class="res-img">Food database preview</div>
-      <div class="res-name">Food Database</div>
-      <div class="res-desc">Search any food. Get a PMAB score, Peat's view, Saladino's view, and a consensus verdict.</div>
-      <div class="res-tag">Interactive · 20+ foods</div>
-    </a>
-    <a class="res-card" href="groceries.html">
-      <div class="res-card-top">
-        <span class="res-emoji">🛒</span>
-        <span class="res-arrow">↗</span>
-      </div>
-      <div class="res-img">Grocery list preview</div>
-      <div class="res-name">Grocery List</div>
-      <div class="res-desc">120+ foods across 8 categories. Check off, filter by category, and export a clean list.</div>
-      <div class="res-tag">Interactive · Exportable</div>
-    </a>
-    <a class="res-card" href="meals.html">
-      <div class="res-card-top">
-        <span class="res-emoji">🍳</span>
-        <span class="res-arrow">↗</span>
-      </div>
-      <div class="res-img"></div>
-      <div class="res-name">Meal Library</div>
-      <div class="res-desc">35 recipes built from the food list. Every meal has a "why" grounded in the framework.</div>
-      <div class="res-tag">35 Recipes · Filterable</div>
-    </a>
-    <a class="res-card" href="resources.html">
-      <div class="res-card-top">
-        <span class="res-emoji">🔗</span>
-        <span class="res-arrow">↗</span>
-      </div>
-      <div class="res-img"></div>
-      <div class="res-name">Community Resources</div>
-      <div class="res-desc">Good people posting good content — Reddit threads, podcasts, X accounts, articles, and videos. Share your own meals and ideas too.</div>
-      <div class="res-tag">Links · Community · Share meals</div>
-    </a>
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
+<!-- NEWSLETTER SECTION (Connected to Google Apps Script Endpoint) -->
 <section class="newsletter-section" id="community">
-  <div class="container">
+  <div class="newsletter-container">
     <div class="newsletter-inner">
-      <div class="newsletter-text">
-        <span class="eyebrow">Stay in the loop</span>
-        <h2 class="newsletter-title">The best of the community,<br>in your inbox.</h2>
-        <p class="newsletter-body">Community picks, seasonal food recommendations, new recipes, and whatever we're currently excited about. No spam, no selling anything. Just good signal, occasionally.</p>
-        <ul class="newsletter-perks">
-          <li>Best community meal submissions</li>
-          <li>Seasonal eating recommendations</li>
-          <li>New content and site updates</li>
-          <li>What we're reading and cooking</li>
-        </ul>
+      <div>
+        <span class="section-eyebrow" style="color: #7ecba0;">Stay Updated</span>
+        <h2 class="newsletter-title">Deepen your bioenergetic toolkit.</h2>
+        <p class="newsletter-body">Get occasional breakdowns on metabolic health framework updates, streamlined grocery item maps, and simple nutritional resources right in your inbox.</p>
       </div>
-      <div class="newsletter-form-wrap">
-        <div class="newsletter-card">
-          <div class="newsletter-card-label">Join the list</div>
-          
-          <!-- CHANGE: Wrapped fields in a form element with an ID -->
-          <form id="newsletter-form">
-            <div class="newsletter-fields">
-              <!-- CHANGE: Added id and required attribute -->
-              <input class="newsletter-input" type="email" id="newsletter-email" placeholder="your@email.com" required />
-              <!-- CHANGE: Added type="submit" and an id -->
-              <button class="newsletter-btn" type="submit" id="submit-btn">Sign me up →</button>
-            </div>
-          </form>
-          
-          <!-- CHANGE: Added an invisible message placeholder that won't ruin layout spacing unless active -->
-          <p id="form-message" style="display: none; font-size: 0.9rem; margin-top: 10px; font-weight: 500;"></p>
-          
-          <p class="newsletter-disclaimer">No spam. Unsubscribe any time. We won't sell your email to anyone, ever.</p>
-        </div>
-        <div class="newsletter-stat-row">
-          <div class="newsletter-stat">
-            <div class="newsletter-stat-num">Free</div>
-            <div class="newsletter-stat-label">Always</div>
-          </div>
-          <div class="newsletter-stat-divider"></div>
-          <div class="newsletter-stat">
-            <div class="newsletter-stat-num">No</div>
-            <div class="newsletter-stat-label">Supplements to sell</div>
-          </div>
-          <div class="newsletter-stat-divider"></div>
-          <div class="newsletter-stat">
-            <div class="newsletter-stat-num">Real</div>
-            <div class="newsletter-stat-label">Community input</div>
-          </div>
-        </div>
+      
+      <div class="newsletter-card">
+        <div class="newsletter-card-label">Join the Community</div>
+        <!-- Form configured to match the Google Sheets API script structure -->
+        <form id="newsletter-form" class="newsletter-fields">
+          <input type="email" id="email-input" name="email" class="newsletter-input" placeholder="Enter your email address" required />
+          <button type="submit" id="submit-btn" class="newsletter-btn">Subscribe to Reference Log</button>
+        </form>
+        <div id="form-status" class="form-status"></div>
+        <div class="newsletter-disclaimer">Zero noise. Unsubscribe safely anytime. We value deep work over inbox clutter.</div>
       </div>
     </div>
   </div>
-</section>
-<!-- QUOTE -->
-<section class="quote-section">
-  <p class="quote-text">"I think people shouldn't eat things that damage them, and should eat things that taste good and that provide the essential nutrients, while making them feel good and function well — <strong>is that a diet?</strong>"</p>
-  <div class="quote-attr">— Ray Peat</div>
 </section>
 
 <!-- FOOTER -->
 <footer class="site-footer">
-  <div class="footer-mark">PM<em>AB</em></div>
+  <span class="footer-mark">PM<em>AB</em></span>
   <ul class="footer-links">
-    <li><a href="framework.html">Framework</a></li>
-    <li><a href="foods.html">Food Database</a></li>
-    <li><a href="groceries.html">Groceries</a></li>
-    <li><a href="meals.html">Meals</a></li>
-    <li><a href="philosophy.html">Philosophy</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="contact.html">Contact/Feedback</a></li>
   </ul>
 </footer>
-<!-- NEWSLETTER -->
-<section class="newsletter-section" id="community">
-  <div class="container">
-    <div class="newsletter-inner">
-      <div class="newsletter-text">
-        <span class="eyebrow">Stay in the loop</span>
-        <h2 class="newsletter-title">The best of the community,<br>in your inbox.</h2>
-        <p class="newsletter-body">Community picks, seasonal food recommendations, new recipes, and whatever we're currently excited about. No spam, no selling anything. Just good signal, occasionally.</p>
-        <ul class="newsletter-perks">
-          <li>Best community meal submissions</li>
-          <li>Seasonal eating recommendations</li>
-          <li>New content and site updates</li>
-          <li>What we're reading and cooking</li>
-        </ul>
-      </div>
-      <div class="newsletter-form-wrap">
-        <div class="newsletter-card">
-          <div class="newsletter-card-label">Join the list</div>
-          
-          <!-- CHANGE: Wrapped fields in a form element with an ID -->
-          <form id="newsletter-form">
-            <div class="newsletter-fields">
-              <!-- CHANGE: Added id and required attribute -->
-              <input class="newsletter-input" type="email" id="newsletter-email" placeholder="your@email.com" required />
-              <!-- CHANGE: Added type="submit" and an id -->
-              <button class="newsletter-btn" type="submit" id="submit-btn">Sign me up →</button>
-            </div>
-          </form>
-          
-          <!-- CHANGE: Added an invisible message placeholder that won't ruin layout spacing unless active -->
-          <p id="form-message" style="display: none; font-size: 0.9rem; margin-top: 10px; font-weight: 500;"></p>
-          
-          <p class="newsletter-disclaimer">No spam. Unsubscribe any time. We won't sell your email to anyone, ever.</p>
-        </div>
-        <div class="newsletter-stat-row">
-          <div class="newsletter-stat">
-            <div class="newsletter-stat-num">Free</div>
-            <div class="newsletter-stat-label">Always</div>
-          </div>
-          <div class="newsletter-stat-divider"></div>
-          <div class="newsletter-stat">
-            <div class="newsletter-stat-num">No</div>
-            <div class="newsletter-stat-label">Supplements to sell</div>
-          </div>
-          <div class="newsletter-stat-divider"></div>
-          <div class="newsletter-stat">
-            <div class="newsletter-stat-num">Real</div>
-            <div class="newsletter-stat-label">Community input</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  <script>
-  const form = document.getElementById('newsletter-form');
-  const messageElement = document.getElementById('form-message');
-  const submitBtn = document.getElementById('submit-btn');
 
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyWZRXZ6UKU7YcDq0sc8uBX95y9mOjzDEfRZ8zB9F56If6HNSoefkXmcGbAk04KLjdcDg/exec';
+<!-- INTERCEPT SCRIPTS FOR GOOGLE APPS SCRIPT API -->
+<script>
+  document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Stop standard browser page redirection
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault(); 
+    const formStatus = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
+    const emailInput = document.getElementById('email-input');
     
-    // Disable button to prevent double submissions
+    // UI Loading state feedback
     submitBtn.disabled = true;
-    submitBtn.innerText = 'Sending...';
-    
-    const emailValue = document.getElementById('newsletter-email').value;
-    
-    const formData = new URLSearchParams();
-    formData.append('email', emailValue);
-    
-    fetch(GOOGLE_SCRIPT_URL, {
+    submitBtn.innerText = 'Subscribing...';
+    formStatus.className = 'form-status';
+    formStatus.innerText = '';
+
+    // Form payload construction matching Google App script's query parser parameters
+    const apiUrl = 'https://script.google.com/macros/s/AKfycbyWZRXZ6UKU7YcDq0sc8uBX95y9mOjzDEfRZ8zB9F56If6HNSoefkXmcGbAk04KLjdcDg/exec';
+    const formData = new FormData();
+    formData.append('email', emailInput.value);
+
+    // Call API via standard fetch request block asynchronously
+    fetch(apiUrl, {
       method: 'POST',
-      mode: 'cors',
-      redirect: 'follow',
       body: formData,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
+      mode: 'no-cors' // Crucial to avoid Google Apps Script CORS domain-blocks on web client executions
     })
-    .then(response => response.json())
-    .then(data => {
-      if (data.result === 'success') {
-        messageElement.textContent = 'Thanks for subscribing!';
-        messageElement.style.color = '#2e7d32'; // Clean dark green
-        messageElement.style.display = 'block';
-        form.reset(); 
-      } else {
-        throw new Error(data.error);
-      }
+    .then(() => {
+      // Handle completion UI update states gracefully
+      formStatus.innerText = '✓ Success! Thank you for subscribing.';
+      formStatus.className = 'form-status success';
+      emailInput.value = ''; // Empty out form layout context fields safely 
     })
     .catch(error => {
-      console.error('Error!', error.message);
-      messageElement.textContent = 'Something went wrong. Please try again.';
-      messageElement.style.color = '#c62828'; // Clean dark red
-      messageElement.style.display = 'block';
+      console.error('Submission processing mistake error logged:', error);
+      formStatus.innerText = 'Oops! Something went wrong. Please try again.';
+      formStatus.className = 'form-status error';
     })
     .finally(() => {
-      // Re-enable button and return text back to normal
       submitBtn.disabled = false;
-      submitBtn.innerText = 'Sign me up →';
+      submitBtn.innerText = 'Subscribe to Reference Log';
     });
   });
 </script>
+
 </body>
 </html>
