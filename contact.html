@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PMAB - Contact</title>
+  <meta name="description" content="Get in touch with PMAB. Questions, feedback, or a meal idea worth adding to the library."/>
+  <meta name="keywords" content="PMAB contact, pro metabolic diet questions, animal based diet feedback, submit meal idea, PMAB community"/>
+  <meta property="og:title" content="PMAB - Contact"/>
+  <meta property="og:description" content="Get in touch with PMAB. Questions, feedback, or a meal idea worth adding to the library."/>
+  <meta property="og:type" content="website"/>
+  <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="shortcut icon" href="/images/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/images/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css"/>
+
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ─────────────────────────────────── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      background: var(--bg);
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .wordmark-main {
+      font-family: var(--font-d);
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      line-height: 1;
+    }
+    .wordmark-main span { color: var(--green); }
+
+    .wordmark-divider { width: 1px; height: 22px; background: var(--border-hi); }
+
+    .wordmark-sub {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+    }
+
+    .nav-link {
+      padding: 7px 13px;
+      border-radius: var(--r);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-3);
+      text-decoration: none;
+      transition: all var(--ease);
+      border: 1px solid transparent;
+    }
+    .nav-link:hover { color: var(--text-2); background: var(--bg-card2); }
+    .nav-link.active {
+      color: var(--green);
+      border-color: var(--green);
+      background: var(--green-lo);
+    }
+
+    /* ── MAIN ────────────────────────────────────── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px 80px;
+    }
+
+    .contact-wrap {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .contact-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .contact-headline {
+      font-family: var(--font-d);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .contact-subhead {
+      font-size: 14px;
+      color: var(--text-3);
+      font-weight: 500;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    /* ── FORM ────────────────────────────────────── */
+    .form-field {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 7px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--r);
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color var(--ease);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--green);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: var(--text-3);
+      font-weight: 400;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237a7060' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    select option {
+      background: var(--bg-card);
+      color: var(--text);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 130px;
+      line-height: 1.6;
+    }
+
+    /* meal fields — revealed when type = submit-meal */
+    .meal-fields {
+      display: none;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+      margin-top: 4px;
+    }
+    .meal-fields.visible { display: block; }
+
+    .meal-fields-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── SUBMIT ──────────────────────────────────── */
+    .form-submit {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 11px 22px;
+      border-radius: var(--r);
+      font-family: var(--font-b);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      background: var(--green);
+      color: var(--bg);
+      transition: background var(--ease);
+      letter-spacing: 0.01em;
+    }
+    .btn-primary:hover { background: var(--green-hi); }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--text-3);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    /* ── SUCCESS ─────────────────────────────────── */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 48px 0;
+    }
+
+    .success-state.visible { display: block; }
+
+    .success-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .success-head {
+      font-family: var(--font-d);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .success-body {
+      font-size: 14px;
+      color: var(--text-3);
+      font-weight: 500;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: var(--r);
+      font-family: var(--font-b);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      background: transparent;
+      border: 1px solid var(--border-hi);
+      color: var(--text-2);
+      text-decoration: none;
+      transition: all var(--ease);
+    }
+    .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 600px) {
+      header { padding: 16px 18px; }
+      .wordmark-divider, .wordmark-sub { display: none; }
+      main { padding: 40px 18px 60px; align-items: flex-start; }
+      .contact-headline { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="logo-strip">
+  <a class="nav-logo" href="index.html">
+    <span class="nav-mark">PM<em>AB</em></span>
+    <span class="nav-sep"></span>
+    <span class="nav-sub"><span class="sub-pm">Pro-Metabolic</span><br><span class="sub-ab">Animal-Based</span></span>
+  </a>
+</div>
+<nav class="site-nav">
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="framework.html">Framework</a></li>
+    <li><a href="foods.html">Food Database</a></li>
+    <li><a href="groceries.html">Groceries</a></li>
+    <li><a href="meals.html">Meals</a></li>
+    <li><a href="lifestyle.html">Lifestyle</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="philosophy.html">Philosophy</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="contact-wrap">
+
+    <div id="form-state">
+      <div class="contact-eyebrow">Get in touch</div>
+      <h1 class="contact-headline">Get in touch.</h1>
+      <p class="contact-subhead">Questions about the framework, feedback on the site, or a meal idea worth adding to the library — send it over.</p>
+
+      <form id="contact-form" onsubmit="handleSubmit(event)">
+
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="form-field">
+          <label for="type">What's this about?</label>
+          <select id="type" name="type" onchange="onTypeChange(this.value)" required>
+            <option value="" disabled selected>Choose a reason…</option>
+            <option value="submit-meal">Submit a meal idea</option>
+            <option value="question">General question</option>
+            <option value="feedback">Site feedback</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+
+        <!-- Meal-specific fields — shown when type = submit-meal -->
+        <div class="meal-fields" id="meal-fields">
+          <div class="meal-fields-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+            Meal details
+          </div>
+
+          <div class="form-field">
+            <label for="meal-name">Meal name</label>
+            <input type="text" id="meal-name" name="meal-name" placeholder="e.g. Butter-poached shrimp over rice" />
+          </div>
+
+          <div class="form-field">
+            <label for="meal-category">Category</label>
+            <select id="meal-category" name="meal-category">
+              <option value="" disabled selected>Choose a category…</option>
+              <option value="breakfast">Breakfast</option>
+              <option value="lunch">Lunch</option>
+              <option value="dinner">Dinner</option>
+              <option value="snack">Snack or drink</option>
+              <option value="side">Side or extra</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Ingredients, method, why it fits the framework — whatever you've got." required></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            Send it
+          </button>
+          <span class="form-note">No newsletters. No spam.<br>Just a human reading your message.</span>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-state" id="success-state">
+      <div class="success-icon">🥩</div>
+      <div class="success-head" id="success-head">Got it.</div>
+      <p class="success-body" id="success-body">Thanks for reaching out — we'll be in touch.</p>
+      <a class="btn-ghost" href="index.html">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        Back to the site
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  // Pre-select "submit a meal" if coming from meals.html?type=meal
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('type') === 'meal') {
+      const sel = document.getElementById('type');
+      sel.value = 'submit-meal';
+      onTypeChange('submit-meal');
+    }
+  });
+
+  function onTypeChange(val) {
+    const fields = document.getElementById('meal-fields');
+    fields.classList.toggle('visible', val === 'submit-meal');
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    
+    // REPLACE THIS URL STRING WITH YOUR DEPLOYED GOOGLE APPS SCRIPT LINK
+    const CONTACT_SCRIPT_URL = 'https://hook.us2.make.com/eqg1noqarf5jx4opa0w2mdxap8nvbq66';
+    
+    const formElement = document.getElementById('contact-form');
+    const submitBtn = formElement.querySelector('.btn-primary');
+    
+    // Visual feedback: Disable button while sending
+    const originalBtnHtml = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerText = 'Sending...';
+
+    // Package all inputs from the form elements
+    const formData = new URLSearchParams();
+    formData.append('name', document.getElementById('name').value);
+    formData.append('email', document.getElementById('email').value);
+    formData.append('type', document.getElementById('type').value);
+    formData.append('mealName', document.getElementById('meal-name').value);
+    formData.append('mealCategory', document.getElementById('meal-category').value);
+    formData.append('message', document.getElementById('message').value);
+
+    // Send data to your second Google Apps Script backend
+    fetch(CONTACT_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'cors',
+      redirect: 'follow',
+      body: formData,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.result === 'success') {
+        // Run your existing success panel transformations
+        const type = document.getElementById('type').value;
+        const isMeal = type === 'submit-meal';
+
+        document.getElementById('form-state').style.display = 'none';
+
+        const head = document.getElementById('success-head');
+        const body = document.getElementById('success-body');
+
+        if (isMeal) {
+          const mealName = document.getElementById('meal-name').value;
+          head.textContent = 'Meal received.';
+          body.textContent = mealName
+            ? `"${mealName}" is in the queue. If it fits the framework, it'll show up in the library.`
+            : 'Your meal idea is in the queue. If it fits the framework, it\'ll show up in the library.';
+        } else {
+          head.textContent = 'Got it.';
+          body.textContent = 'Thanks for reaching out — we\'ll be in touch.';
+        }
+
+        document.getElementById('success-state').classList.add('visible');
+        formElement.reset();
+      } else {
+        throw new Error(data.error);
+      }
+    })
+    .catch(error => {
+      console.error('Error submitting form!', error);
+      alert('Something went wrong sending your message. Please try again.');
+    })
+    .finally(() => {
+      // Restore button status if an error occurred
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnHtml;
+    });
+  }
+</script>
+</body>
+</html>
