@@ -368,23 +368,17 @@
       border-radius: var(--r);
       background: var(--bg-card2);
       border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-4);
-      font-weight: 600;
       position: relative;
       overflow: hidden;
     }
-    .why-img-placeholder::before {
-      content: '';
+
+    .why-img-placeholder img {
       position: absolute;
       inset: 0;
-      background: repeating-linear-gradient(-45deg, transparent, transparent 10px,
-        rgba(0,0,0,0.018) 10px, rgba(0,0,0,0.018) 11px);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .why-title {
@@ -574,23 +568,18 @@
       border-radius: var(--r);
       background: var(--bg-card2);
       border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-4);
-      font-weight: 600;
       position: relative;
       overflow: hidden;
     }
-    .res-img::before {
-      content: '';
+
+    .res-img img {
       position: absolute;
       inset: 0;
-      background: repeating-linear-gradient(-45deg, transparent, transparent 10px,
-        rgba(0,0,0,0.015) 10px, rgba(0,0,0,0.015) 11px);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: var(--r);
     }
 
     .res-name {
@@ -1182,7 +1171,7 @@
   <div class="why-grid">
 
     <div class="why-card">
-      <div class="why-img-placeholder"><img src="/images/orange-light.jpg" alt="Fresh oranges in morning light" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"/></div>
+      <div class="why-img-placeholder"><img src="/images/orange-light.jpg" alt="Fresh oranges in morning light" loading="lazy"/></div>
       <div class="why-title">Your body runs on energy — give it the right fuel</div>
       <div class="why-body">Chronic tiredness, poor sleep, sluggish digestion — research links these to how well your cells produce energy. Saturated fat from animal foods is a stable, clean fuel. Ripe fruit provides sugar in a form your liver actually uses. Together they support your thyroid, which regulates everything else.</div>
       <div class="why-points">
@@ -1193,7 +1182,7 @@
     </div>
 
     <div class="why-card">
-      <div class="why-img-placeholder"><img src="/images/milk-light.jpg" alt="Raw milk pouring into a glass" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"/></div>
+      <div class="why-img-placeholder"><img src="/images/milk-light.jpg" alt="Raw milk pouring into a glass" loading="lazy"/></div>
       <div class="why-title">Cut the stuff that works against you</div>
       <div class="why-body">Seed oils — canola, soybean, sunflower — are high in linoleic acid, a polyunsaturated fat that accumulates in your cells and disrupts how they produce energy. Studies show it suppresses thyroid function and increases inflammation over time. Swap them out, cook with butter or tallow, and most of the rest takes care of itself.</div>
       <div class="why-points">
@@ -1204,7 +1193,7 @@
     </div>
 
     <div class="why-card">
-      <div class="why-img-placeholder"><img src="/images/fruit-light.jpg" alt="Tropical fruit spread" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"/></div>
+      <div class="why-img-placeholder"><img src="/images/fruit-light.jpg" alt="Tropical fruit spread" loading="lazy"/></div>
       <div class="why-title">The nutrients your body needs are in animal food</div>
       <div class="why-body">Beef, eggs, dairy, and shellfish deliver vitamins and minerals in forms your body absorbs directly — no conversion required. Iron from red meat absorbs at 25–35%. From plants, 2–5%. Vitamin A from liver is preformed retinol. From vegetables, it's beta-carotene that many people can't convert efficiently. The difference is real.</div>
       <div class="why-points">
@@ -1252,7 +1241,7 @@
         <span class="res-emoji">🔺</span>
         <span class="res-arrow">↗</span>
       </div>
-      <div class="res-img"><img src="/images/pyramid-fp.jpg" alt="PMAB Food Pyramid" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r);"/></div>
+      <div class="res-img"><img src="/images/pyramid-fp.jpg" alt="PMAB Food Pyramid" loading="lazy"/></div>
       <div class="res-name">PMAB Food Pyramid</div>
       <div class="res-desc">A visual breakdown of the framework — the hierarchy, the tiers, and the logic behind each one.</div>
       <div class="res-tag">Visual · Start here</div>
@@ -1262,7 +1251,7 @@
         <span class="res-emoji">📖</span>
         <span class="res-arrow">↗</span>
       </div>
-      <div class="res-img"><img src="/images/philosophy-fp.jpg" alt="Philosophy" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r);"/></div>
+      <div class="res-img"><img src="/images/philosophy-fp.jpg" alt="Philosophy" loading="lazy"/></div>
       <div class="res-name">Philosophy</div>
       <div class="res-desc">Where Peat and Saladino converge, where they diverge, and the science behind the framework.</div>
       <div class="res-tag">Reading · Context</div>
@@ -1272,7 +1261,7 @@
         <span class="res-emoji">🔍</span>
         <span class="res-arrow">↗</span>
       </div>
-      <div class="res-img"><img src="/images/database-fp.jpg" alt="Food Database" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r);"/></div>
+      <div class="res-img"><img src="/images/database-fp.jpg" alt="Food Database" loading="lazy"/></div>
       <div class="res-name">Food Database</div>
       <div class="res-desc">Search any food. Get a PMAB score, Peat's view, Saladino's view, and a consensus verdict.</div>
       <div class="res-tag">Interactive · 20+ foods</div>
@@ -1282,7 +1271,7 @@
         <span class="res-emoji">🛒</span>
         <span class="res-arrow">↗</span>
       </div>
-      <div class="res-img"><img src="/images/grocery-fp.jpg" alt="Grocery List" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r);"/></div>
+      <div class="res-img"><img src="/images/grocery-fp.jpg" alt="Grocery List" loading="lazy"/></div>
       <div class="res-name">Grocery List</div>
       <div class="res-desc">120+ foods across 8 categories. Check off, filter by category, and export a clean list.</div>
       <div class="res-tag">Interactive · Exportable</div>
@@ -1292,7 +1281,7 @@
         <span class="res-emoji">🍳</span>
         <span class="res-arrow">↗</span>
       </div>
-      <div class="res-img"><img src="/images/library-fp.jpg" alt="Meal Library" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r);"/></div>
+      <div class="res-img"><img src="/images/library-fp.jpg" alt="Meal Library" loading="lazy"/></div>
       <div class="res-name">Meal Library</div>
       <div class="res-desc">35 recipes built from the food list. Every meal has a "why" grounded in the framework.</div>
       <div class="res-tag">35 Recipes · Filterable</div>
@@ -1302,7 +1291,7 @@
         <span class="res-emoji">🔗</span>
         <span class="res-arrow">↗</span>
       </div>
-      <div class="res-img"><img src="/images/resources-fp.jpg" alt="Community Resources" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r);"/></div>
+      <div class="res-img"><img src="/images/resources-fp.jpg" alt="Community Resources" loading="lazy"/></div>
       <div class="res-name">Community Resources</div>
       <div class="res-desc">Good people posting good content — Reddit threads, podcasts, X accounts, articles, and videos. Share your own meals and ideas too.</div>
       <div class="res-tag">Links · Community · Share meals</div>
