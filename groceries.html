@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PMAB - Grocery List</title>
+  <meta name="description" content="The complete PMAB grocery list. 120+ foods across 8 categories. Check off items, filter by category, and export a clean shopping list."/>
+  <meta name="keywords" content="pro metabolic grocery list, animal based grocery list, ray peat diet foods, paul saladino shopping list, seed oil free grocery, whole food shopping list, grass fed beef shopping, raw dairy shopping, PMAB food list, anti inflammatory grocery list"/>
+  <meta property="og:title" content="PMAB - Grocery List"/>
+  <meta property="og:description" content="The complete PMAB grocery list. 120+ foods across 8 categories. Check off items, filter by category, and export a clean shopping list."/>
+  <meta property="og:type" content="website"/>
+  <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="shortcut icon" href="/images/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/images/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
+  <script src="data.js"></script>
+  <link rel="stylesheet" href="shared.css"/>
+
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ──────────────────────────────────────────── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    .wordmark-main {
+      font-family: var(--font-d);
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .wordmark-main span { color: var(--green); }
+
+    .wordmark-divider {
+      width: 1px;
+      height: 22px;
+      background: var(--border-hi);
+    }
+
+    .wordmark-sub {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+    }
+
+    .nav-link {
+      padding: 7px 13px;
+      border-radius: var(--r);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-3);
+      text-decoration: none;
+      transition: all var(--ease);
+      border: 1px solid transparent;
+      letter-spacing: 0.01em;
+    }
+    .nav-link:hover { color: var(--text-2); background: var(--bg-card2); }
+    .nav-link.active {
+      color: var(--green);
+      border-color: var(--green);
+      background: var(--green-lo);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 15px;
+      border-radius: var(--r);
+      font-family: var(--font-b);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--ease);
+      border: none;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border-hi);
+      color: var(--text-2);
+    }
+    .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+
+    .btn-primary {
+      background: var(--green);
+      color: #F6F1E9;
+      font-weight: 700;
+    }
+    .btn-primary:hover { background: var(--green-hi); }
+
+    .btn-danger {
+      background: transparent;
+      border: 1px solid #4a1a1a;
+      color: #b05050;
+    }
+    .btn-danger:hover { background: #200808; border-color: #b05050; }
+
+    /* ── HERO ──────────────────────────────────────────── */
+    .hero {
+      padding: 48px 32px 40px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .hero-headline {
+      font-family: var(--font-d);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-body {
+      color: var(--text-2);
+      font-size: 15px;
+      line-height: 1.75;
+      max-width: 540px;
+      font-weight: 400;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-width: 120px;
+    }
+
+    .stat { text-align: right; }
+
+    .stat-number {
+      font-family: var(--font-d);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      font-weight: 600;
+      margin-top: 3px;
+      display: block;
+    }
+
+    /* ── PRINCIPLE STRIP ───────────────────────────────── */
+    .principle-strip {
+      background: var(--bg-card2);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 32px;
+      display: flex;
+      gap: 32px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .principle-strip::-webkit-scrollbar { display: none; }
+
+    .principle {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      flex-shrink: 0;
+      max-width: 240px;
+    }
+
+    .principle-icon {
+      color: var(--green);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .principle-text {
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .principle-text strong {
+      color: var(--text);
+      display: block;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1px;
+    }
+
+    /* ── TOOLBAR ───────────────────────────────────────── */
+    .toolbar {
+      padding: 14px 32px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+    }
+
+    .toolbar-label {
+      font-size: 11px;
+      color: var(--text-3);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-right: 6px;
+      flex-shrink: 0;
+    }
+
+    .filter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-3);
+      font-size: 12.5px;
+      font-family: var(--font-b);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--ease);
+      white-space: nowrap;
+    }
+
+    .filter-pill:hover { border-color: var(--border-hi); color: var(--text-2); }
+    .filter-pill.active {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-lo);
+    }
+
+    /* ── MAIN GRID ─────────────────────────────────────── */
+    main {
+      padding: 28px 32px 120px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 18px;
+      max-width: 1500px;
+    }
+
+    /* ── CATEGORY CARD ─────────────────────────────────── */
+    .category-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color var(--ease);
+    }
+
+    .category-card:hover { border-color: var(--border-hi); }
+    .category-card.hidden { display: none; }
+
+    .card-header {
+      padding: 15px 18px 13px;
+      border-left: 4px solid;
+      background: var(--bg-card2);
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+    }
+
+    .card-emoji { font-size: 1.5rem; flex-shrink: 0; line-height: 1.2; }
+
+    .card-header-text { flex: 1; }
+
+    .card-title {
+      font-family: var(--font-d);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+    }
+
+    .card-note {
+      font-size: 12px;
+      color: var(--text-3);
+      line-height: 1.45;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .card-count {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-3);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px 9px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── ITEMS ─────────────────────────────────────────── */
+    .items-list { padding: 8px 0; flex: 1; }
+
+    .item-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 8px 18px;
+      cursor: pointer;
+      transition: background var(--ease);
+    }
+
+    .item-row:hover { background: rgba(255,255,255,0.02); }
+
+    .item-row.checked { opacity: 0.38; }
+    .item-row.checked .item-name { text-decoration: line-through; }
+
+    .item-check {
+      width: 17px;
+      height: 17px;
+      border: 1.5px solid var(--border-hi);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--ease);
+    }
+
+    .item-row.checked .item-check {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .item-row.checked .item-check::after {
+      content: '';
+      display: block;
+      width: 9px;
+      height: 5px;
+      border-left: 2px solid #F6F1E9;
+      border-bottom: 2px solid #F6F1E9;
+      transform: rotate(-45deg) translateY(-1px);
+    }
+
+    .item-content { flex: 1; min-width: 0; }
+
+    .item-name-row { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+
+    .item-name {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .star-badge {
+      font-size: 10px;
+      color: var(--green);
+      background: var(--green-lo);
+      border: 1px solid rgba(45,138,94,0.28);
+      border-radius: 999px;
+      padding: 1px 7px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .item-note {
+      font-size: 12px;
+      color: var(--text-3);
+      line-height: 1.5;
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    /* ── SUMMARY PANEL ─────────────────────────────────── */
+    #summary-panel {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-hi);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      transform: translateY(100%);
+      transition: transform 260ms cubic-bezier(0.16,1,0.3,1);
+      z-index: 200;
+    }
+
+    #summary-panel.visible { transform: translateY(0); }
+
+    .summary-left { display: flex; align-items: center; gap: 16px; }
+
+    .summary-count {
+      font-family: var(--font-d);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+    }
+
+    .summary-text { font-size: 13px; color: var(--text-3); line-height: 1.4; font-weight: 500; }
+    .summary-text strong { color: var(--text-2); font-weight: 700; display: block; font-size: 14px; }
+
+    .summary-actions { display: flex; gap: 8px; }
+
+    /* ── EXPORT MODAL ──────────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 200ms;
+    }
+
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-hi);
+      border-radius: 10px;
+      width: 100%;
+      max-width: 560px;
+      max-height: 82vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-family: var(--font-d);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-3);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      transition: color var(--ease);
+    }
+    .modal-close:hover { color: var(--text); }
+
+    .modal-body { padding: 20px 24px; overflow-y: auto; flex: 1; }
+
+    .export-output {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 18px;
+      font-family: var(--font-b);
+      font-size: 12.5px;
+      line-height: 1.75;
+      color: var(--text-2);
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    /* ── SCROLLBAR ─────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 700px) {
+      header { padding: 16px 18px; }
+      .wordmark-divider, .wordmark-sub { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 28px; padding: 28px 18px; }
+      .hero-stats { flex-direction: row; gap: 28px; }
+      .stat { text-align: left; }
+      .principle-strip { padding: 14px 18px; }
+      .toolbar { padding: 12px 18px; }
+      main { padding: 18px 18px 120px; gap: 14px; }
+      #summary-panel { padding: 12px 18px; }
+    }
+
+    @media (max-width: 480px) {
+      main { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      header, .toolbar, .hero, .principle-strip, #summary-panel { display: none !important; }
+      main { padding: 0; display: block; }
+      .category-card { break-inside: avoid; margin-bottom: 24px; border: 1px solid #ccc; }
+      body { background: white; color: black; font-size: 13px; }
+      .card-title, .item-name { color: black; }
+      .card-note, .item-note { color: #555; }
+      .item-check { border: 1px solid #999; }
+      .star-badge { border: 1px solid #999; background: none; color: #555; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="logo-strip">
+  <a class="nav-logo" href="index.html">
+    <span class="nav-mark">PM<em>AB</em></span>
+    <span class="nav-sep"></span>
+    <span class="nav-sub"><span class="sub-pm">Pro-Metabolic</span><br><span class="sub-ab">Animal-Based</span></span>
+  </a>
+</div>
+<nav class="site-nav">
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="framework.html">Framework</a></li>
+    <li><a href="foods.html">Food Database</a></li>
+    <li><a href="groceries.html" class="active">Groceries</a></li>
+    <li><a href="meals.html">Meals</a></li>
+    <li><a href="lifestyle.html">Lifestyle</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+<header style="border-bottom:1px solid var(--border);padding:16px 32px;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;background:var(--bg);">
+  <div class="header-actions" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+    <button class="btn btn-ghost" onclick="selectAll()">
+      <i data-lucide="check-square" style="width:14px;height:14px;"></i> Select All
+    </button>
+    <button class="btn btn-ghost" onclick="clearAll()">
+      <i data-lucide="square" style="width:14px;height:14px;"></i> Clear
+    </button>
+    <button class="btn btn-ghost" onclick="window.print()">
+      <i data-lucide="printer" style="width:14px;height:14px;"></i> Print
+    </button>
+    <button class="btn btn-primary" onclick="openExport()">
+      <i data-lucide="copy" style="width:14px;height:14px;"></i> Export List
+    </button>
+  </div>
+</header><!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Grocery Reference</div>
+    <h1 class="hero-headline">What to buy.<br>What to skip.</h1>
+    <p class="hero-body">Meat, fruit, dairy, and eggs as your foundation. Butter and tallow for cooking. Cut the seed oils. This list covers everything worth putting in your cart — check items off, filter by category, and export a clean list.</p>
+  </div>
+  <div class="hero-stats" id="hero-stats"></div>
+</div>
+
+<!-- PRINCIPLES STRIP -->
+<div class="principle-strip" id="principle-strip"></div>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <span class="toolbar-label">Filter</span>
+  <button class="filter-pill active" data-filter="all" onclick="setFilter('all', this)">All</button>
+  <div id="filter-pills" style="display:contents;"></div>
+</div>
+
+<!-- MAIN -->
+<main id="main-grid"></main>
+
+<!-- SUMMARY PANEL -->
+<div id="summary-panel">
+  <div class="summary-left">
+    <div class="summary-count" id="summary-count">0</div>
+    <div class="summary-text">
+      <strong id="summary-text-main">items selected</strong>
+      <span id="summary-text-sub">Export to copy your list</span>
+    </div>
+  </div>
+  <div class="summary-actions">
+    <button class="btn btn-danger" onclick="clearAll()">Clear</button>
+    <button class="btn btn-primary" onclick="openExport()">
+      <i data-lucide="copy" style="width:14px;height:14px;"></i> Export
+    </button>
+  </div>
+</div>
+
+<!-- EXPORT MODAL -->
+<div class="modal-overlay" id="export-modal" onclick="closeExportIfOutside(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">📋 Your PMAB Grocery List</div>
+      <button class="modal-close" onclick="closeExport()">
+        <i data-lucide="x" style="width:18px;height:18px;"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="export-output" id="export-output"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeExport()">Close</button>
+      <button class="btn btn-primary" onclick="copyExport()">
+        <i data-lucide="copy" style="width:13px;height:13px;"></i> Copy to Clipboard
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+const checked = new Set();
+let activeFilter = 'all';
+
+const PRINCIPLES = [
+  { icon: "zap",        title: "Zero PUFA",       body: "Seed oils suppress thyroid and accelerate aging. Saturated fat only for cooking." },
+  { icon: "sun",        title: "Sugar as Fuel",    body: "Ripe fruit, honey, and cane sugar are pro-metabolic. Fructose + glucose support the liver." },
+  { icon: "beef",       title: "Nose to Tail",     body: "Organ meats weekly. Oysters. Gelatin daily. Muscle meat balanced with glycine." },
+  { icon: "milk",       title: "Full-Fat Dairy",   body: "Milk, cheese, butter, cream. Calcium-to-phosphorus ratio supports metabolic rate." },
+  { icon: "thermometer","title": "Thyroid First",  body: "Every food choice asks: does this support T4→T3 conversion and cellular energy?" },
+  { icon: "droplets",   title: "Hydrate Smart",    body: "Juice, milk, and broth over plain water. Add salt freely — sodium supports metabolism." },
+];
+
+function init() {
+  lucide.createIcons();
+  buildHeroStats();
+  buildPrinciples();
+  buildFilterPills();
+  buildGrid();
+  updateSummary();
+}
+
+function buildHeroStats() {
+  const foods = PMAB_DATA.categories.reduce((a, c) => a + c.items.length, 0);
+  const staples = PMAB_DATA.categories.reduce((a, c) => a + c.items.filter(i => i.starred).length, 0);
+  const cats = PMAB_DATA.categories.length;
+  document.getElementById('hero-stats').innerHTML = `
+    <div class="stat"><span class="stat-number">${foods}</span><span class="stat-label">Foods</span></div>
+    <div class="stat"><span class="stat-number">${staples}</span><span class="stat-label">Core Staples</span></div>
+    <div class="stat"><span class="stat-number">${cats}</span><span class="stat-label">Categories</span></div>
+  `;
+}
+
+function buildPrinciples() {
+  const strip = document.getElementById('principle-strip');
+  strip.innerHTML = PRINCIPLES.map(p => `
+    <div class="principle">
+      <span class="principle-icon"><i data-lucide="${p.icon}" style="width:14px;height:14px;"></i></span>
+      <div class="principle-text"><strong>${p.title}</strong>${p.body}</div>
+    </div>
+  `).join('');
+  lucide.createIcons();
+}
+
+function buildFilterPills() {
+  const container = document.getElementById('filter-pills');
+  PMAB_DATA.categories.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-pill';
+    btn.dataset.filter = cat.id;
+    btn.innerHTML = `${cat.emoji} ${cat.label}`;
+    btn.onclick = () => setFilter(cat.id, btn);
+    container.appendChild(btn);
+  });
+}
+
+function buildGrid() {
+  const grid = document.getElementById('main-grid');
+  grid.innerHTML = '';
+  PMAB_DATA.categories.forEach(cat => {
+    const card = document.createElement('div');
+    card.className = 'category-card' + (activeFilter !== 'all' && activeFilter !== cat.id ? ' hidden' : '');
+    card.dataset.id = cat.id;
+
+    const checkedCount = cat.items.filter(i => checked.has(key(cat.id, i.name))).length;
+
+    card.innerHTML = `
+      <div class="card-header" style="border-left-color:${cat.color}">
+        <div class="card-emoji">${cat.emoji}</div>
+        <div class="card-header-text">
+          <div class="card-title">${cat.label}</div>
+          <div class="card-note">${cat.note}</div>
+        </div>
+        <div class="card-count">${checkedCount > 0 ? checkedCount + '/' : ''}${cat.items.length}</div>
+      </div>
+      <div class="items-list">
+        ${cat.items.map(item => itemRow(cat.id, item)).join('')}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+  lucide.createIcons();
+}
+
+function itemRow(catId, item) {
+  const k = key(catId, item.name);
+  const isChecked = checked.has(k);
+  return `
+    <div class="item-row${isChecked ? ' checked' : ''}" onclick="toggle('${catId}','${esc(item.name)}',this)">
+      <div class="item-check"></div>
+      <div class="item-content">
+        <div class="item-name-row">
+          <span class="item-name">${item.name}</span>
+          ${item.starred ? '<span class="star-badge">★ staple</span>' : ''}
+        </div>
+        ${item.note ? `<div class="item-note">${item.note}</div>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function key(catId, name) { return `${catId}::${name}`; }
+function esc(s) { return s.replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
+
+function toggle(catId, itemName, el) {
+  const k = key(catId, itemName);
+  if (checked.has(k)) { checked.delete(k); el.classList.remove('checked'); }
+  else { checked.add(k); el.classList.add('checked'); }
+  refreshCount(catId);
+  updateSummary();
+}
+
+function refreshCount(catId) {
+  const card = document.querySelector(`.category-card[data-id="${catId}"]`);
+  if (!card) return;
+  const cat = PMAB_DATA.categories.find(c => c.id === catId);
+  const n = cat.items.filter(i => checked.has(key(catId, i.name))).length;
+  card.querySelector('.card-count').textContent = n > 0 ? `${n}/${cat.items.length}` : cat.items.length;
+}
+
+function setFilter(id, el) {
+  activeFilter = id;
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.category-card').forEach(card => {
+    card.classList.toggle('hidden', id !== 'all' && card.dataset.id !== id);
+  });
+}
+
+function selectAll() {
+  PMAB_DATA.categories.forEach(cat => cat.items.forEach(item => checked.add(key(cat.id, item.name))));
+  buildGrid();
+  updateSummary();
+}
+
+function clearAll() {
+  checked.clear();
+  buildGrid();
+  updateSummary();
+}
+
+function updateSummary() {
+  const n = checked.size;
+  document.getElementById('summary-count').textContent = n;
+  document.getElementById('summary-text-main').textContent = n === 1 ? 'item selected' : 'items selected';
+  document.getElementById('summary-text-sub').textContent = n > 0 ? 'Export to copy your list' : 'Check items to build your list';
+  document.getElementById('summary-panel').classList.toggle('visible', n > 0);
+}
+
+function buildExportText() {
+  const lines = ['PMAB GROCERY LIST', 'Pro-Metabolic · Animal-Based', '═'.repeat(38), ''];
+  PMAB_DATA.categories.forEach(cat => {
+    const items = cat.items.filter(i => checked.has(key(cat.id, i.name)));
+    if (!items.length) return;
+    lines.push(`${cat.emoji}  ${cat.label.toUpperCase()}`);
+    lines.push('─'.repeat(38));
+    items.forEach(item => {
+      lines.push(`  ☐  ${item.name}${item.starred ? '  ★' : ''}`);
+      if (item.note) lines.push(`      → ${item.note}`);
+    });
+    lines.push('');
+  });
+  lines.push('─'.repeat(38));
+  lines.push(`${checked.size} items  ·  PMAB  ·  Pro-Metabolic Animal-Based`);
+  return lines.join('\n');
+}
+
+function openExport() {
+  if (!checked.size) { alert('Select some items first!'); return; }
+  document.getElementById('export-output').textContent = buildExportText();
+  document.getElementById('export-modal').classList.add('open');
+}
+
+function closeExport() { document.getElementById('export-modal').classList.remove('open'); }
+function closeExportIfOutside(e) { if (e.target === document.getElementById('export-modal')) closeExport(); }
+
+async function copyExport() {
+  try {
+    await navigator.clipboard.writeText(document.getElementById('export-output').textContent);
+    const btn = document.querySelector('.modal-footer .btn-primary');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<i data-lucide="check" style="width:13px;height:13px;"></i> Copied!';
+    lucide.createIcons();
+    setTimeout(() => { btn.innerHTML = orig; lucide.createIcons(); }, 2200);
+  } catch { alert('Copy failed — select and copy manually.'); }
+}
+
+window.addEventListener('DOMContentLoaded', init);
+</script>
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-mark">PM<em>AB</em></div>
+    <ul class="footer-links">
+      <li><a href="framework.html">Framework</a></li>
+      <li><a href="foods.html">Food Database</a></li>
+      <li><a href="groceries.html">Groceries</a></li>
+      <li><a href="meals.html">Meals</a></li>
+      <li><a href="lifestyle.html">Lifestyle</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-disclaimer"><strong>Not medical advice.</strong> Nothing on this site should be taken as medical or nutritional advice. We are not physicians. Always consult your doctor before making changes to your diet or lifestyle. We do not claim the knowledge or ideas presented here — we are here to share what others have researched and built.</p>
+    <p class="footer-copy">&copy; 2025 LivePMAB.com. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>PMAB - Food Database</title>
+  <meta name="description" content="Search any food and get a PMAB score, Ray Peat's view, Paul Saladino's view, and a plain-language verdict. 20+ foods covered."/>
+  <meta name="keywords" content="ray peat food list, paul saladino food list, animal based food database, pro metabolic foods, PUFA foods to avoid, seed oil free foods, best foods for thyroid, nutrient dense foods, animal based approved foods, raw dairy nutrition, organ meat nutrition"/>
+  <meta property="og:title" content="PMAB - Food Database"/>
+  <meta property="og:description" content="Search any food and get a PMAB score, Ray Peat's view, Paul Saladino's view, and a plain-language verdict. 20+ foods covered."/>
+  <meta property="og:type" content="website"/>
+  <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="shortcut icon" href="/images/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/images/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <script src="foods.js"></script>
+  <style>
+    /* ── TOOLBAR ───────────────────────────── */
+    .db-toolbar {
+      border-bottom: 1px solid var(--border);
+      padding: 14px 32px;
+      background: var(--bg-card2);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 60px;
+      z-index: 100;
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      max-width: 320px;
+    }
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-3);
+    }
+    #search {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--r);
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 12px 8px 32px;
+      outline: none;
+      transition: border-color var(--ease);
+    }
+    #search::placeholder { color: var(--text-3); }
+    #search:focus { border-color: var(--green); }
+
+    .filter-chips {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-3);
+      font-size: 12px;
+      font-family: var(--font-b);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--ease);
+      white-space: nowrap;
+    }
+    .chip:hover { border-color: var(--border-mid); color: var(--text-2); }
+    .chip.active { border-color: var(--green); color: var(--green); background: var(--green-lo); }
+
+    .db-count {
+      margin-left: auto;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-3);
+      white-space: nowrap;
+    }
+
+    /* ── GRID ──────────────────────────────── */
+    .db-grid {
+      padding: 32px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 14px;
+      max-width: var(--container-wide);
+      margin: 0 auto;
+    }
+
+    /* ── FOOD CARD ─────────────────────────── */
+    .food-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color var(--ease), transform var(--ease);
+    }
+    .food-card:hover { border-color: var(--border-mid); transform: translateY(-1px); }
+    .food-card.hidden { display: none; }
+
+    .food-card-header {
+      padding: 16px 18px 14px;
+      border-left: 3px solid;
+      background: var(--bg-card2);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .food-emoji { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
+
+    .food-meta { flex: 1; min-width: 0; }
+
+    .food-name {
+      font-family: var(--font-d);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .food-verdict-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .verdict-badge {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .verdict-yes   { background: rgba(45,138,94,0.15); border: 1px solid rgba(45,138,94,0.3); color: #3db37a; }
+    .verdict-limit { background: rgba(180,130,30,0.15); border: 1px solid rgba(180,130,30,0.3); color: #c8a040; }
+    .verdict-no    { background: rgba(160,50,50,0.15); border: 1px solid rgba(160,50,50,0.3); color: #c06060; }
+    .verdict-never { background: rgba(140,30,30,0.18); border: 1px solid rgba(140,30,30,0.4); color: #e05050; }
+
+    .food-verdict-label {
+      font-size: 12px;
+      color: var(--text-3);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    /* SCORE RING */
+    .score-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+    .score-ring {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-d);
+      font-size: 13px;
+      font-weight: 700;
+      border: 2px solid;
+    }
+    .score-high  { border-color: #3db37a; color: #3db37a; background: rgba(45,138,94,0.1); }
+    .score-mid   { border-color: #c8a040; color: #c8a040; background: rgba(180,130,30,0.1); }
+    .score-low   { border-color: #c06060; color: #c06060; background: rgba(160,50,50,0.1); }
+    .score-never { border-color: #e05050; color: #e05050; background: rgba(140,30,30,0.1); }
+    .score-label { font-size: 9px; color: var(--text-4); font-weight: 600; letter-spacing: 0.05em; }
+
+    /* EXPAND BODY */
+    .food-body {
+      display: none;
+      padding: 0 18px 16px;
+      border-top: 1px solid var(--border);
+    }
+    .food-body.open { display: block; }
+
+    .views-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 14px 0 12px;
+    }
+
+    .view-block {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      background: var(--bg);
+    }
+
+    .view-name {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .view-rating {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .r-strong-yes { background: #3db37a; }
+    .r-yes        { background: #7ab870; }
+    .r-mixed      { background: #c8a040; }
+    .r-limit      { background: #c8a040; }
+    .r-no         { background: #c06060; }
+    .r-strong-no  { background: #e05050; }
+
+    .view-text {
+      font-size: 12px;
+      color: var(--text-2);
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    .pmab-block {
+      padding: 12px 14px;
+      border: 1px solid var(--green-bd);
+      border-radius: var(--r);
+      background: var(--green-lo);
+      margin-bottom: 12px;
+    }
+
+    .pmab-block-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+
+    .pmab-block-text {
+      font-size: 12.5px;
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .nutrients-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .nutrient-chip {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--border-hi);
+      color: var(--text-3);
+    }
+
+    .concerns-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .concern-item {
+      font-size: 12px;
+      color: var(--text-3);
+      display: flex;
+      gap: 7px;
+      align-items: flex-start;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+    .concern-dot { color: #c07050; flex-shrink: 0; font-size: 14px; line-height: 1; }
+
+    .section-micro {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-4);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    /* empty state */
+    .db-empty {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 80px 32px;
+      color: var(--text-3);
+    }
+    .db-empty-icon { font-size: 2rem; margin-bottom: 12px; }
+    .db-empty h3 { font-family: var(--font-d); font-size: 1.1rem; color: var(--text-2); margin-bottom: 6px; }
+
+    @media (max-width: 640px) {
+      .db-toolbar { padding: 12px 16px; top: 54px; }
+      .db-grid { padding: 16px; }
+      .views-grid { grid-template-columns: 1fr; }
+      .search-wrap { max-width: 100%; }
+      .db-count { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="logo-strip">
+  <a class="nav-logo" href="index.html">
+    <span class="nav-mark">PM<em>AB</em></span>
+    <span class="nav-sep"></span>
+    <span class="nav-sub"><span class="sub-pm">Pro-Metabolic</span><br><span class="sub-ab">Animal-Based</span></span>
+  </a>
+</div>
+<nav class="site-nav">
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="framework.html">Framework</a></li>
+    <li><a href="foods.html" class="active">Food Database</a></li>
+    <li><a href="groceries.html">Groceries</a></li>
+    <li><a href="meals.html">Meals</a></li>
+    <li><a href="lifestyle.html">Lifestyle</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Reference</span>
+    <h1 class="page-title">Food Database</h1>
+    <p class="page-sub">How does any given food stack up? Each card shows what Ray Peat and Paul Saladino think about it, a PMAB score, and the honest reasoning behind the verdict. Click to expand.</p>
+  </div>
+</section>
+
+<div class="db-toolbar">
+  <div class="search-wrap">
+    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="search" placeholder="Search foods…" oninput="filterFoods()"/>
+  </div>
+  <div class="filter-chips">
+    <button class="chip active" data-verdict="all" onclick="setVerdict('all',this)">All</button>
+    <button class="chip" data-verdict="yes" onclick="setVerdict('yes',this)">✓ Eat</button>
+    <button class="chip" data-verdict="limit" onclick="setVerdict('limit',this)">~ Limit</button>
+    <button class="chip" data-verdict="no" onclick="setVerdict('no',this)">✕ Avoid</button>
+    <button class="chip" data-verdict="never" onclick="setVerdict('never',this)">⊘ Never</button>
+  </div>
+  <div class="db-count" id="db-count">20 foods</div>
+</div>
+
+<div class="db-grid" id="db-grid"></div>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-mark">PM<em>AB</em></div>
+    <ul class="footer-links">
+      <li><a href="framework.html">Framework</a></li>
+      <li><a href="foods.html">Food Database</a></li>
+      <li><a href="groceries.html">Groceries</a></li>
+      <li><a href="meals.html">Meals</a></li>
+      <li><a href="lifestyle.html">Lifestyle</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-disclaimer"><strong>Not medical advice.</strong> Nothing on this site should be taken as medical or nutritional advice. We are not physicians. Always consult your doctor before making changes to your diet or lifestyle. We do not claim the knowledge or ideas presented here — we are here to share what others have researched and built.</p>
+    <p class="footer-copy">&copy; 2025 LivePMAB.com. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+let activeVerdict = 'all';
+let searchQ = '';
+
+const BORDER_COLORS = {
+  yes: '#2d8a5e', limit: '#b87a20', no: '#8a3030', never: '#7a1a1a'
+};
+
+function scoreClass(s) {
+  if (s >= 80) return 'score-high';
+  if (s >= 55) return 'score-mid';
+  if (s >= 20) return 'score-low';
+  return 'score-never';
+}
+
+function ratingDot(r) {
+  const map = { 'strong-yes':'r-strong-yes','yes':'r-yes','mixed':'r-mixed','limit':'r-limit','no':'r-no','strong-no':'r-strong-no' };
+  return map[r] || 'r-mixed';
+}
+
+function ratingLabel(r) {
+  const map = { 'strong-yes':'Strong Yes','yes':'Yes','mixed':'Mixed','limit':'Limit','no':'No','strong-no':'Strong No' };
+  return map[r] || r;
+}
+
+function buildCard(food) {
+  const borderColor = BORDER_COLORS[food.verdictType] || '#2d8a5e';
+  const sc = scoreClass(food.score);
+
+  const nutrients = food.nutrients.length
+    ? `<div style="margin-bottom:10px;"><span class="section-micro">Key Nutrients</span><div class="nutrients-row">${food.nutrients.map(n=>`<span class="nutrient-chip">${n}</span>`).join('')}</div></div>`
+    : '';
+
+  const concerns = food.concerns.length
+    ? `<div><span class="section-micro">Watch Out</span><div class="concerns-list">${food.concerns.map(c=>`<div class="concern-item"><span class="concern-dot">·</span><span>${c}</span></div>`).join('')}</div></div>`
+    : '';
+
+  return `
+    <div class="food-card" data-verdict="${food.verdictType}" data-name="${food.name.toLowerCase()}" id="card-${food.id}" onclick="toggleCard('${food.id}')">
+      <div class="food-card-header" style="border-left-color:${borderColor}">
+        <div class="food-emoji">${food.emoji}</div>
+        <div class="food-meta">
+          <div class="food-name">${food.name}</div>
+          <div class="food-verdict-row">
+            <span class="verdict-badge verdict-${food.verdictType}">${food.verdictType === 'never' ? 'Never' : food.verdictType === 'no' ? 'Avoid' : food.verdictType === 'limit' ? 'Limit' : 'Eat'}</span>
+            <span class="food-verdict-label">${food.verdict}</span>
+          </div>
+        </div>
+        <div class="score-wrap">
+          <div class="score-ring ${sc}">${food.score}</div>
+          <div class="score-label">Score</div>
+        </div>
+      </div>
+      <div class="food-body" id="body-${food.id}">
+        <div class="views-grid">
+          <div class="view-block">
+            <div class="view-name">
+              <span class="view-rating ${ratingDot(food.peat.rating)}"></span>
+              Ray Peat — ${ratingLabel(food.peat.rating)}
+            </div>
+            <div class="view-text">${food.peat.summary}</div>
+          </div>
+          <div class="view-block">
+            <div class="view-name">
+              <span class="view-rating ${ratingDot(food.saladino.rating)}"></span>
+              Saladino — ${ratingLabel(food.saladino.rating)}
+            </div>
+            <div class="view-text">${food.saladino.summary}</div>
+          </div>
+        </div>
+        <div class="pmab-block">
+          <div class="pmab-block-label">PMAB Verdict</div>
+          <div class="pmab-block-text">${food.pmab}</div>
+        </div>
+        ${nutrients}
+        ${concerns}
+      </div>
+    </div>
+  `;
+}
+
+function render() {
+  const grid = document.getElementById('db-grid');
+  const visible = FOODS_DB.filter(f => {
+    const matchV = activeVerdict === 'all' || f.verdictType === activeVerdict;
+    const matchS = !searchQ || f.name.toLowerCase().includes(searchQ) || f.category.toLowerCase().includes(searchQ);
+    return matchV && matchS;
+  });
+
+  if (!visible.length) {
+    grid.innerHTML = `<div class="db-empty"><div class="db-empty-icon">🔍</div><h3>No matches</h3><p>Try adjusting your search or filter.</p></div>`;
+    document.getElementById('db-count').textContent = '0 foods';
+    return;
+  }
+
+  grid.innerHTML = visible.map(buildCard).join('');
+  document.getElementById('db-count').textContent = `${visible.length} food${visible.length !== 1 ? 's' : ''}`;
+}
+
+function toggleCard(id) {
+  const body = document.getElementById(`body-${id}`);
+  body.classList.toggle('open');
+}
+
+function setVerdict(v, el) {
+  activeVerdict = v;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  render();
+}
+
+function filterFoods() {
+  searchQ = document.getElementById('search').value.toLowerCase().trim();
+  render();
+}
+
+render();
+</script>
+</body>
+</html>

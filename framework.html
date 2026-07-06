@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>PMAB - The Food Pyramid & Framework</title>
+  <meta name="description" content="The PMAB food pyramid explained tier by tier. Meat, fruit, dairy, eggs, organs. Understand why this way of eating works — backed by research."/>
+  <meta name="keywords" content="PMAB food pyramid, pro metabolic food pyramid, animal based food pyramid, ray peat bioenergetics, paul saladino animal based, seed oil alternatives, saturated fat nutrition, thyroid health diet, bone broth gelatin, pro metabolic framework"/>
+  <meta property="og:title" content="PMAB - The Food Pyramid & Framework"/>
+  <meta property="og:description" content="The PMAB food pyramid explained tier by tier. Meat, fruit, dairy, eggs, organs. Understand why this way of eating works — backed by research."/>
+  <meta property="og:type" content="website"/>
+  <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="shortcut icon" href="/images/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/images/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+
+    .page-hero {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .page-title {
+      font-family: var(--font-d);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin: 14px 0 16px;
+    }
+    .page-sub {
+      font-size: 16px;
+      color: var(--text-2);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── PYRAMID ─────────────────────────── */
+    .pyramid-section {
+      padding: 72px 0 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pyramid-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .pyramid-svg-wrap {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+
+    /* pyramid SVG levels */
+    .pyr-tier {
+      cursor: default;
+      transition: opacity 130ms ease;
+    }
+    .pyr-tier:hover { opacity: 0.88; }
+
+    /* LEGEND */
+    .pyramid-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      border-radius: var(--r);
+      transition: border-color var(--ease);
+    }
+    .legend-row:hover { border-color: var(--border-mid); }
+    .legend-row:first-child { border-radius: var(--r) var(--r) 0 0; }
+    .legend-row:last-child { border-radius: 0 0 var(--r) var(--r); }
+    .legend-row + .legend-row { border-top: none; }
+
+    .legend-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .legend-content { flex: 1; }
+    .legend-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+    .legend-desc {
+      font-size: 12.5px;
+      color: var(--text-3);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .legend-freq {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-4);
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    /* ── HOW IT WORKS ────────────────────── */
+    .how-section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .how-header { margin-bottom: 48px; }
+
+    .section-title {
+      font-family: var(--font-d);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      margin-top: 12px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0 24px;
+      position: relative;
+    }
+
+    .step-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border-hi);
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-d);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--green);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-line {
+      width: 1px;
+      flex: 1;
+      background: var(--border);
+      margin: 6px 0;
+    }
+
+    .step:last-child .step-line { display: none; }
+
+    .step-body {
+      padding: 8px 0 40px;
+    }
+    .step:last-child .step-body { padding-bottom: 8px; }
+
+    .step-title {
+      font-family: var(--font-d);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.7;
+      font-weight: 400;
+      max-width: 560px;
+    }
+
+    .step-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .step-tag {
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-hi);
+      color: var(--text-3);
+      background: var(--bg-card);
+    }
+
+    /* ── PEAT vs SALADINO ────────────────── */
+    .compare-section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 56px 1fr;
+      gap: 0;
+      margin-top: 40px;
+    }
+
+    .compare-col {
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      background: var(--bg-card);
+      padding: 24px;
+    }
+
+    .compare-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 4px;
+    }
+
+    .compare-center-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-4);
+      font-weight: 700;
+      writing-mode: vertical-rl;
+    }
+
+    .compare-center-line {
+      flex: 1;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .compare-center-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--green-lo);
+      border: 1px solid var(--green-bd);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .compare-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+
+    .compare-name {
+      font-family: var(--font-d);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .compare-points {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .compare-point {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .compare-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .compare-point-text {
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+
+    .pyramid-intro {
+      max-width: 640px;
+      margin: 0 auto 40px;
+      text-align: center;
+      font-size: 15px;
+      color: var(--text-2);
+      line-height: 1.75;
+    }
+
+    /* ── THINKERS ─────────────────────────── */
+    .thinkers-row {
+      display: grid;
+      grid-template-columns: 1fr 48px 1fr;
+      gap: 0;
+      margin-top: 48px;
+      align-items: start;
+    }
+
+    .thinker-card {
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      background: var(--bg-card);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .thinker-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: var(--r);
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .thinker-photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 12px,
+        rgba(255,255,255,0.015) 12px, rgba(255,255,255,0.015) 13px);
+    }
+    .thinker-photo-placeholder {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-4);
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+
+    .thinker-name {
+      font-family: var(--font-d);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .thinker-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+    .thinker-desc {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.65;
+      font-weight: 400;
+    }
+
+    .thinker-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-d);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--green);
+      padding-top: 100px;
+    }
+
+    @media (max-width: 640px) {
+      .thinkers-row { grid-template-columns: 1fr; }
+      .thinker-divider { padding-top: 0; font-size: 1.2rem; }
+    }
+
+    @media (max-width: 760px) {
+      .compare-grid { grid-template-columns: 1fr; }
+      .compare-center { flex-direction: row; writing-mode: horizontal-tb; height: 40px; padding: 0; }
+      .compare-center-label { writing-mode: horizontal-tb; }
+      .compare-center-line { height: 1px; width: auto; flex: 1; }
+    }
+
+    @media (max-width: 560px) {
+      .step { grid-template-columns: 44px 1fr; }
+    }
+
+    /* ── AGREEMENT MAP (merged) ─────────── */
+    .agreement-map-section { padding: 72px 0; border-top: 1px solid var(--border); }
+    .map-intro { padding: 48px 0; border-bottom: 1px solid var(--border); }
+
+    .legend-row-outer {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      font-weight: 500;
+    }
+    .leg-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
+    /* TABLE */
+    .table-section { padding: 48px 0 72px; }
+
+    .table-header-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .category-block { margin-bottom: 40px; }
+
+    .cat-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 1px;
+      display: grid;
+      grid-template-columns: 1fr 80px 80px 80px 1fr;
+      gap: 12px;
+    }
+    .cat-label span:nth-child(1) { color: var(--text-4); }
+    .cat-label span:nth-child(2),
+    .cat-label span:nth-child(3) { text-align: center; }
+    .cat-label span:nth-child(4) { text-align: center; color: var(--green); }
+
+    .agreement-row {
+      display: grid;
+      grid-template-columns: 1fr 80px 80px 80px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--ease);
+    }
+    .agreement-row:hover { background: var(--bg-card); }
+    .agreement-row:last-child { border-bottom: none; }
+
+    .food-cell {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .food-cell-emoji { font-size: 1.1rem; flex-shrink: 0; line-height: 1.3; }
+    .food-cell-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .food-cell-note {
+      font-size: 11.5px;
+      color: var(--text-3);
+      font-weight: 500;
+      line-height: 1.4;
+      margin-top: 2px;
+    }
+
+    .rating-cell {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 2px;
+    }
+
+    .r-pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+      text-align: center;
+    }
+    .r-syes  { background: rgba(45,138,94,0.15); border: 1px solid rgba(45,138,94,0.3); color: #3db37a; }
+    .r-yes   { background: rgba(90,160,110,0.12); border: 1px solid rgba(90,160,110,0.25); color: #78b88a; }
+    .r-mixed { background: rgba(180,130,30,0.12); border: 1px solid rgba(180,130,30,0.28); color: #c8a040; }
+    .r-limit { background: rgba(180,100,30,0.12); border: 1px solid rgba(180,100,30,0.28); color: #c07030; }
+    .r-no    { background: rgba(160,50,50,0.12); border: 1px solid rgba(160,50,50,0.28); color: #c06060; }
+    .r-sno   { background: rgba(140,30,30,0.15); border: 1px solid rgba(140,30,30,0.35); color: #e05050; }
+
+    .verdict-cell {
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.55;
+      font-weight: 400;
+    }
+    .verdict-cell strong {
+      color: var(--text);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+      font-size: 12.5px;
+    }
+
+    /* mobile */
+    @media (max-width: 720px) {
+      .agreement-row { grid-template-columns: 1fr 60px 60px; }
+      .cat-label { grid-template-columns: 1fr 60px 60px; }
+      .agreement-row > .rating-cell:nth-child(4),
+      .agreement-row > .verdict-cell,
+      .cat-label > span:nth-child(4),
+      .cat-label > span:nth-child(5) { display: none; }
+    }
+    @media (max-width: 480px) {
+      .agreement-row { grid-template-columns: 1fr 56px; }
+      .cat-label { grid-template-columns: 1fr 56px; }
+      .agreement-row > .rating-cell:nth-child(3),
+      .cat-label > span:nth-child(3) { display: none; }
+    }
+
+    /* ── TABLE OF CONTENTS ──────────────── */
+    .toc-section {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    .toc-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .toc-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .toc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-2);
+      text-decoration: none;
+      background: var(--bg);
+      transition: all var(--ease);
+      white-space: nowrap;
+    }
+
+    .toc-link:hover {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-lo);
+    }
+
+    .toc-arrow { color: var(--text-4); font-size: 11px; }
+
+  </style>
+</head>
+<body>
+
+<div class="logo-strip">
+  <a class="nav-logo" href="index.html">
+    <span class="nav-mark">PM<em>AB</em></span>
+    <span class="nav-sep"></span>
+    <span class="nav-sub"><span class="sub-pm">Pro-Metabolic</span><br><span class="sub-ab">Animal-Based</span></span>
+  </a>
+</div>
+<nav class="site-nav">
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="framework.html" class="active">Framework</a></li>
+    <li><a href="foods.html">Food Database</a></li>
+    <li><a href="groceries.html">Groceries</a></li>
+    <li><a href="meals.html">Meals</a></li>
+    <li><a href="lifestyle.html">Lifestyle</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="eyebrow">Visual Reference</div>
+    <h1 class="page-title">The PMAB Pyramid</h1>
+    <p class="page-sub">A visual guide to what goes on your plate most — and why. Meat, fruit, dairy, and eggs form the base. Everything else builds on that.</p>
+  </div>
+</section>
+
+<!-- TABLE OF CONTENTS -->
+<section class="toc-section">
+  <div class="container">
+    <span class="toc-label">On this page</span>
+    <div class="toc-links">
+      <a class="toc-link" href="#pyramid">🔺 Food Pyramid</a>
+      <a class="toc-link" href="#how-it-works">📋 How It Works</a>
+      <a class="toc-link" href="#peat-vs-saladino">⚖️ Peat vs Saladino</a>
+      <a class="toc-link" href="#agreement-map">🗺️ Agreement Map</a>
+    </div>
+  </div>
+</section>
+
+<!-- PYRAMID -->
+<section class="pyramid-section" id="pyramid">
+  <div class="container">
+
+    <div class="pyramid-intro">
+      <p>Two researchers — one a biologist studying cell energy, one a physician studying human evolution — independently arrived at the same food list. Beef, dairy, fruit, eggs. No seed oils. Minimal processing. The pyramid below shows how to build your plate from that foundation, tier by tier.</p>
+    </div>
+
+    <div class="pyramid-wrap">
+
+      <!-- REDESIGNED SVG PYRAMID -->
+      <div class="pyramid-svg-wrap">
+        <svg viewBox="0 0 660 440" xmlns="http://www.w3.org/2000/svg" width="100%" style="display:block;">
+
+  <!-- ── LEFT FREQUENCY LABELS ─────────────────── -->
+  <!-- dashed vertical rule -->
+  <line x1="90" y1="20" x2="90" y2="415" stroke="#2A6B48" stroke-width="1" stroke-dasharray="3,5" opacity="0.2"/>
+
+  <text x="86" y="62" text-anchor="end" font-family="'Inter',sans-serif" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#2A6B48" opacity="0.75">AS NEEDED</text>
+  <text x="86" y="152" text-anchor="end" font-family="'Inter',sans-serif" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#2A6B48" opacity="0.75">WEEKLY</text>
+  <text x="86" y="242" text-anchor="end" font-family="'Inter',sans-serif" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#2A6B48" opacity="0.75">DAILY</text>
+  <text x="86" y="320" text-anchor="end" font-family="'Inter',sans-serif" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#2A6B48" opacity="0.75">DAILY</text>
+  <text x="86" y="392" text-anchor="end" font-family="'Inter',sans-serif" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#2A6B48" opacity="0.75">FOUNDATION</text>
+
+  <!-- ── PYRAMID TIERS (Option D — single green, opacity steps) ── -->
+  <!-- Pyramid center = 380, apex y=16, base y=414 -->
+
+  <!-- Tier 5 — peak: AS NEEDED -->
+  <polygon points="380,16 316,96 444,96" fill="#2A6B48" opacity="0.30"/>
+
+  <!-- Tier 4 — WEEKLY -->
+  <polygon points="316,100 252,180 508,180 444,100" fill="#2A6B48" opacity="0.48"/>
+
+  <!-- Tier 3 — DAILY (Dairy & Eggs) -->
+  <polygon points="252,184 188,264 572,264 508,184" fill="#2A6B48" opacity="0.65"/>
+
+  <!-- Tier 2 — DAILY (Fruit) -->
+  <polygon points="188,268 124,348 636,348 572,268" fill="#2A6B48" opacity="0.82"/>
+
+  <!-- Tier 1 — FOUNDATION -->
+  <polygon points="124,352 96,414 664,414 636,352" fill="#2A6B48" opacity="1"/>
+
+  <!-- ── SEPARATOR LINES ─────────────────────────── -->
+  <line x1="316" y1="98" x2="444" y2="98" stroke="white" stroke-width="2.5" opacity="0.85"/>
+  <line x1="252" y1="182" x2="508" y2="182" stroke="white" stroke-width="2.5" opacity="0.85"/>
+  <line x1="188" y1="266" x2="572" y2="266" stroke="white" stroke-width="2.5" opacity="0.85"/>
+  <line x1="124" y1="350" x2="636" y2="350" stroke="white" stroke-width="2.5" opacity="0.85"/>
+
+  <!-- ── OUTER BORDER ──────────────────────────── -->
+  <polygon points="380,16 96,414 664,414" fill="none" stroke="#2A6B48" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- ── TIER LABELS — clear, bold, readable ────── -->
+
+  <!-- Tier 5: Functional — dark text on light tier -->
+  <text x="380" y="58" text-anchor="middle" font-family="'Zilla Slab',Georgia,serif" font-size="12" font-weight="700" fill="#1B4332">Functional</text>
+  <text x="380" y="75" text-anchor="middle" font-family="'Inter',sans-serif" font-size="8.5" font-weight="600" letter-spacing="1.4" fill="rgba(27,67,50,0.55)">GELATIN · SUPPLEMENTS</text>
+
+  <!-- Tier 4: Organs — still slightly light, use dark text -->
+  <text x="380" y="143" text-anchor="middle" font-family="'Zilla Slab',Georgia,serif" font-size="14" font-weight="700" fill="#1B4332">Organs &amp; Shellfish</text>
+  <text x="380" y="162" text-anchor="middle" font-family="'Inter',sans-serif" font-size="8.5" font-weight="600" letter-spacing="1.4" fill="rgba(27,67,50,0.55)">LIVER · HEART · OYSTERS · KIDNEY</text>
+
+  <!-- Tier 3: Dairy — mid opacity, white text -->
+  <text x="380" y="227" text-anchor="middle" font-family="'Zilla Slab',Georgia,serif" font-size="15" font-weight="700" fill="white">Dairy &amp; Eggs</text>
+  <text x="380" y="246" text-anchor="middle" font-family="'Inter',sans-serif" font-size="8.5" font-weight="600" letter-spacing="1.4" fill="rgba(255,255,255,0.72)">MILK · BUTTER · CHEESE · EGGS</text>
+
+  <!-- Tier 2: Fruit — white text -->
+  <text x="380" y="311" text-anchor="middle" font-family="'Zilla Slab',Georgia,serif" font-size="15" font-weight="700" fill="white">Fruit &amp; Natural Sugar</text>
+  <text x="380" y="330" text-anchor="middle" font-family="'Inter',sans-serif" font-size="8.5" font-weight="600" letter-spacing="1.4" fill="rgba(255,255,255,0.72)">OJ · MANGO · HONEY · DATES</text>
+
+  <!-- Tier 1: Base — white text, biggest -->
+  <text x="380" y="385" text-anchor="middle" font-family="'Zilla Slab',Georgia,serif" font-size="17" font-weight="700" fill="white">Ruminant Meat &amp; Fat</text>
+
+</svg>
+      </div>
+
+      <!-- LEGEND -->
+      <div class="pyramid-legend">
+        <div class="legend-row">
+          <div class="legend-swatch" style="background:#0b1e12;border:1px solid #2d8a5e;"></div>
+          <div class="legend-content">
+            <div class="legend-name">Foundation — Ruminant Meat &amp; Fat</div>
+            <div class="legend-desc">Grass-fed beef, lamb, bison. Tallow, butter, bone broth. The metabolic base — saturated fat, complete protein, heme iron, zinc, creatine. Every meal.</div>
+          </div>
+          <div class="legend-freq">Every meal</div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-swatch" style="background:#102419;border:1px solid rgba(45,138,94,0.4);"></div>
+          <div class="legend-content">
+            <div class="legend-name">Tier 2 — Fruit &amp; Natural Sugar</div>
+            <div class="legend-desc">OJ, mango, watermelon, honey, dates. Peat's primary carbohydrate source — fructose and glucose support thyroid conversion and liver glycogen.</div>
+          </div>
+          <div class="legend-freq">Daily</div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-swatch" style="background:#152c21;border:1px solid rgba(45,138,94,0.3);"></div>
+          <div class="legend-content">
+            <div class="legend-name">Tier 3 — Dairy &amp; Eggs</div>
+            <div class="legend-desc">Whole milk, aged cheese, butter, pasture-raised eggs. Calcium, K2, choline, fat-soluble vitamins. Peat's most emphasized food group alongside meat.</div>
+          </div>
+          <div class="legend-freq">Daily</div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-swatch" style="background:#193528;border:1px solid rgba(45,138,94,0.25);"></div>
+          <div class="legend-content">
+            <div class="legend-name">Tier 4 — Organs &amp; Shellfish</div>
+            <div class="legend-desc">Beef liver, heart, kidney, oysters, clams. Retinol, CoQ10, copper, zinc. Both Peat and Saladino prioritize weekly consumption.</div>
+          </div>
+          <div class="legend-freq">2–3× week</div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-swatch" style="background:#1d3d2e;border:1px solid rgba(45,138,94,0.2);"></div>
+          <div class="legend-content">
+            <div class="legend-name">Peak — Functional &amp; Supplements</div>
+            <div class="legend-desc">Gelatin, collagen, magnesium, K2, iodine, selenium. Targeted additions when diet alone falls short. Food first, always.</div>
+          </div>
+          <div class="legend-freq">As needed</div>
+        </div>
+      </div>
+
+      <!-- PHOTO PLACEHOLDERS -->
+      <div class="thinkers-row">
+        <div class="thinker-card">
+          <div class="thinker-photo">
+            <div class="thinker-photo-placeholder">Photo · Ray Peat</div>
+          </div>
+          <div class="thinker-name">Ray Peat</div>
+          <div class="thinker-title">PhD · Biologist &amp; Bioenergetics Researcher</div>
+          <div class="thinker-desc">Peat spent decades studying cellular respiration, thyroid function, and the pro-metabolic role of saturated fat and natural sugar. His work on PUFA toxicity and hormonal health laid the bioenergetic foundation of PMAB.</div>
+        </div>
+        <div class="thinker-divider">+</div>
+        <div class="thinker-card">
+          <div class="thinker-photo">
+            <div class="thinker-photo-placeholder">Photo · Paul Saladino</div>
+          </div>
+          <div class="thinker-name">Paul Saladino, MD</div>
+          <div class="thinker-title">Physician &amp; Animal-Based Nutrition Researcher</div>
+          <div class="thinker-desc">Saladino built the animal-based framework from clinical practice and research — prioritizing organ meats, ruminant fat, shellfish, and ripe fruit as the most nutrient-dense, low-toxin foods available.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="container">
+    <div class="how-header">
+      <div class="eyebrow">The logic</div>
+      <h2 class="section-title">Why this way of eating works</h2>
+    </div>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">1</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">Your body runs on energy</div>
+          <div class="step-desc">Every cell in your body generates energy through a process called oxidative phosphorylation. When this works well, you feel it — steady energy, good sleep, stable mood, strong digestion. When it doesn't, fatigue and poor health follow. The food you eat is either feeding that process or getting in the way of it.</div>
+          <div class="step-tags">
+            <span class="step-tag">Mitochondria</span>
+            <span class="step-tag">ATP production</span>
+            <span class="step-tag">Thyroid function</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">2</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">Remove what disrupts your cells</div>
+          <div class="step-desc">Seed oils — canola, soybean, sunflower, safflower — are high in linoleic acid, a polyunsaturated fat (PUFA) that accumulates in your cells over time. Research shows PUFA in cell membranes slows energy production, suppresses thyroid hormone conversion, and produces toxic byproducts when oxidized. Swapping seed oils for butter and tallow is the single biggest lever here.</div>
+          <div class="step-tags">
+            <span class="step-tag">Zero seed oils</span>
+            <span class="step-tag">Anti-PUFA</span>
+            <span class="step-tag">No linoleic acid</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">3</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">Build your meals around meat and dairy</div>
+          <div class="step-desc">Beef, lamb, eggs, butter, cheese, whole milk. These are the most nutrient-dense foods available — complete proteins, fat-soluble vitamins (A, D, K2), minerals that absorb readily. Saturated fat is chemically stable, hormone-supporting, and the fat our cells evolved to work with. Aim for these at every meal.</div>
+          <div class="step-tags">
+            <span class="step-tag">Saturated fat</span>
+            <span class="step-tag">Grass-fed ruminants</span>
+            <span class="step-tag">Nose-to-tail</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">4</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">Add fruit, honey, and natural sugar</div>
+          <div class="step-desc">Ripe fruit and honey provide glucose and fructose that fuel your liver and support thyroid hormone conversion from T4 to active T3. Clinical research consistently shows that low-carb diets reduce T3 levels and slow metabolic rate. Orange juice, mango, banana, honey — these aren't treats. They're part of how this way of eating works.</div>
+          <div class="step-tags">
+            <span class="step-tag">Fructose + glucose</span>
+            <span class="step-tag">Liver glycogen</span>
+            <span class="step-tag">T3 conversion</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">5</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">Balance muscle meat with gelatin</div>
+          <div class="step-desc">Muscle meat is high in methionine. Gelatin from bone broth and slow-cooked cuts is high in glycine. Research shows excess methionine without adequate glycine accelerates aging and raises homocysteine. Balancing the two is simple: make bone broth, cook oxtail or short ribs, stir gelatin powder into juice or coffee. One habit, significant benefit.</div>
+          <div class="step-tags">
+            <span class="step-tag">Glycine</span>
+            <span class="step-tag">Gelatin + broth</span>
+            <span class="step-tag">Methionine balance</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">6</div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">Fill gaps with organ meats and shellfish</div>
+          <div class="step-desc">Beef liver is the most nutrient-dense food on earth — a 3oz serving provides a week's worth of retinol (real vitamin A), copper, folate, and B12. Oysters are the highest zinc food available. These aren't exotic — they're just the parts of the animal we stopped eating. Once or twice a week covers most micronutrient gaps without a supplement cabinet.</div>
+          <div class="step-tags">
+            <span class="step-tag">Liver — retinol + copper</span>
+            <span class="step-tag">Oysters — zinc + iodine</span>
+            <span class="step-tag">Mag + K2 + D3</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PEAT vs SALADINO -->
+<section class="compare-section" id="peat-vs-saladino">
+  <div class="container">
+    <div class="eyebrow">The sources</div>
+    <h2 class="section-title" style="margin:12px 0 0;">Peat &amp; Saladino — where they meet</h2>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <div class="compare-label">Ray Peat</div>
+        <div class="compare-name">Bioenergetic framework</div>
+        <div class="compare-points">
+          <div class="compare-point"><div class="compare-dot"></div><div class="compare-point-text">Thyroid and mitochondria as the metabolic master switches</div></div>
+          <div class="compare-point"><div class="compare-dot"></div><div class="compare-point-text">Sugar (OJ, milk, fruit, honey) as an active metabolic accelerant</div></div>
+          <div class="compare-point"><div class="compare-dot"></div><div class="compare-point-text">Gelatin and glycine as daily, anti-aging protein interventions</div></div>
+          <div class="compare-point"><div class="compare-dot"></div><div class="compare-point-text">Coffee as anti-estrogenic, liver-protective, and pro-thyroid</div></div>
+          <div class="compare-point"><div class="compare-dot"></div><div class="compare-point-text">Hydrate with juice and milk rather than plain water</div></div>
+          <div class="compare-point"><div class="compare-dot"></div><div class="compare-point-text">Raw carrot daily to bind gut endotoxin and excess estrogen</div></div>
+        </div>
+      </div>
+      <div class="compare-center">
+        <div class="compare-center-line"></div>
+        <div class="compare-center-dot">+</div>
+        <div class="compare-center-line"></div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-label">Paul Saladino</div>
+        <div class="compare-name">Animal-based framework</div>
+        <div class="compare-points">
+          <div class="compare-point"><div class="compare-dot"></div><div class="compare-point-text">Ruminant meat and fat as the complete nutritional foundation</div></div>
+          <div class="compare-point"><div class="compare-dot"></div><div class="compare-point-text">Organs weekly as non-negotiable — liver especially</div></div>
+          <div class="compare-point"><div class="compare-dot"></div><div class="compare-point-text">Fruit and honey as acceptable, evolutionarily coherent carbs</div></div>
+          <div class="compare-point"><div class="compare-dot"></div><div class="compare-point-text">Zinc, copper, retinol from food (not supplements) first</div></div>
+          <div class="compare-point"><div class="compare-dot"></div><div class="compare-point-text">Elimination of plant toxins, lectins, oxalates, and PUFA</div></div>
+          <div class="compare-point"><div class="compare-dot"></div><div class="compare-point-text">Nose-to-tail eating to maximize nutrient density per animal</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGREEMENT MAP -->
+<section class="agreement-map-section" id="agreement-map">
+  <div class="container">
+    <div class="section-header-row" style="margin-bottom:24px;">
+      <span class="eyebrow" style="margin-bottom:10px;display:block;">Reference</span>
+      <h2 class="section-title">Agreement Map</h2>
+      <p style="font-size:15px;color:var(--text-2);line-height:1.72;margin-top:12px;max-width:580px;">Where Peat and Saladino agree, where they diverge, and the PMAB verdict on every major food. The convergence points are the strongest signals.</p>
+    </div>
+    <div class="map-intro">
+  <div class="container">
+    <p style="color:var(--text-2);font-size:14px;line-height:1.7;max-width:600px;margin-bottom:20px;">When two frameworks built from different starting points land on the same food, that alignment is meaningful. The areas of disagreement are also valuable — they show where individual variation matters and where you need to experiment.</p>
+    <div class="legend-row-outer">
+      <div class="legend-item"><div class="leg-dot" style="background:#3db37a;"></div> Strong Yes</div>
+      <div class="legend-item"><div class="leg-dot" style="background:#78b88a;"></div> Yes</div>
+      <div class="legend-item"><div class="leg-dot" style="background:#c8a040;"></div> Mixed</div>
+      <div class="legend-item"><div class="leg-dot" style="background:#c07030;"></div> Limit</div>
+      <div class="legend-item"><div class="leg-dot" style="background:#c06060;"></div> No</div>
+      <div class="legend-item"><div class="leg-dot" style="background:#e05050;"></div> Strong No</div>
+    </div>
+  </div>
+</div>
+  </div>
+  <section class="table-section">
+  <div class="container-wide">
+
+    <!-- MEATS & PROTEIN -->
+    <div class="category-block">
+      <div class="cat-label">
+        <span>🥩 Meats & Protein</span>
+        <span>Peat</span>
+        <span>Saladino</span>
+        <span>PMAB</span>
+        <span>Notes</span>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🐄</div><div><div class="food-cell-name">Grass-fed beef</div><div class="food-cell-note">Ribeye, chuck, ground</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Foundation</div></div>
+        <div class="verdict-cell"><strong>Clearest agreement in the framework.</strong> Eat it daily, grass-finished, fattier cuts preferred. Pair with gelatin/broth.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🫀</div><div><div class="food-cell-name">Beef liver</div><div class="food-cell-note">3–4 oz, 1–2x per week</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Weekly</div></div>
+        <div class="verdict-cell"><strong>Strong agreement, minor nuance.</strong> Saladino more emphatic. Peat cautioned against excess retinol at very high doses. 3–4 oz weekly is the sweet spot.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">❤️</div><div><div class="food-cell-name">Beef heart, kidney, tongue</div><div class="food-cell-note">Other organs</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Weekly</div></div>
+        <div class="verdict-cell"><strong>Full agreement.</strong> Heart = CoQ10. Kidney = selenium. Tongue = collagen. Rotate through them.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🐑</div><div><div class="food-cell-name">Lamb</div><div class="food-cell-note">Chops, shoulder, rack</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="verdict-cell"><strong>Full agreement.</strong> CLA-rich, grass-finished standard in most supply chains. Excellent ruminant alternative to beef.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🐔</div><div><div class="food-cell-name">Chicken breast</div><div class="food-cell-note">Conventional, skinless</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-limit">Limit</div></div>
+        <div class="rating-cell"><div class="r-pill r-limit">Limit</div></div>
+        <div class="rating-cell"><div class="r-pill r-limit">Limit</div></div>
+        <div class="verdict-cell"><strong>Agreement to limit.</strong> High PUFA (linoleic acid) especially in skin. Breast is the highest-PUFA cut. Pasture-raised whole chicken occasionally is fine — not a daily staple.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🐷</div><div><div class="food-cell-name">Pork (pasture-raised)</div><div class="food-cell-note">Belly, ribs, shoulder</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">Mixed</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">Occasional</div></div>
+        <div class="verdict-cell"><strong>Mild divergence.</strong> Peat cautious about higher PUFA vs. ruminants. Saladino includes pasture-raised pork positively. Ribs and belly over lean cuts.</div>
+      </div>
+    </div>
+
+    <!-- SEAFOOD -->
+    <div class="category-block">
+      <div class="cat-label">
+        <span>🌊 Seafood</span>
+        <span>Peat</span>
+        <span>Saladino</span>
+        <span>PMAB</span>
+        <span>Notes</span>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🦪</div><div><div class="food-cell-name">Oysters</div><div class="food-cell-note">Fresh, smoked canned</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Weekly</div></div>
+        <div class="verdict-cell"><strong>Unanimous.</strong> Highest zinc food. Both frameworks treat oysters as organ-meat-equivalent in terms of nutritional priority.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🦐</div><div><div class="food-cell-name">Shrimp, crab, lobster</div><div class="food-cell-note">Low-PUFA shellfish</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Regular</div></div>
+        <div class="verdict-cell"><strong>Full agreement.</strong> Low PUFA, high iodine, selenium, zinc. Wild-caught. Easy weekly rotation.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🐟</div><div><div class="food-cell-name">Wild salmon</div><div class="food-cell-note">Sockeye, king</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-limit">Limit</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-limit">1–2x/wk</div></div>
+        <div class="verdict-cell"><strong>Divergence.</strong> Peat cautious about overall PUFA load even in omega-3 fish. Saladino includes more positively. PMAB: wild only, occasional, not daily.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🐠</div><div><div class="food-cell-name">White fish (cod, sole)</div><div class="food-cell-note">Low-PUFA wild fish</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Regular</div></div>
+        <div class="verdict-cell"><strong>Strong agreement.</strong> Peat's preferred seafood — near-zero PUFA, clean protein, iodine, selenium. Wild-caught only.</div>
+      </div>
+    </div>
+
+    <!-- DAIRY -->
+    <div class="category-block">
+      <div class="cat-label">
+        <span>🥛 Dairy</span>
+        <span>Peat</span>
+        <span>Saladino</span>
+        <span>PMAB</span>
+        <span>Notes</span>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🥛</div><div><div class="food-cell-name">Whole milk</div><div class="food-cell-note">Raw or A2 preferred</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">Mixed</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Prioritize</div></div>
+        <div class="verdict-cell"><strong>Key divergence.</strong> Peat's single most recommended food. Saladino more cautious, acknowledges individual variation. If you tolerate dairy, prioritize whole milk.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🧈</div><div><div class="food-cell-name">Butter & ghee</div><div class="food-cell-note">Grass-fed</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Daily</div></div>
+        <div class="verdict-cell"><strong>Full agreement.</strong> K2, butyrate, saturated fat. Primary cooking fat alongside tallow.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🧀</div><div><div class="food-cell-name">Aged hard cheese</div><div class="food-cell-note">Cheddar, parmesan, gruyère</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Daily</div></div>
+        <div class="verdict-cell"><strong>Strong agreement.</strong> Low lactose, K2, complete protein, calcium. Aged cheese is the most universally tolerated dairy product.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🍦</div><div><div class="food-cell-name">Ice cream (clean label)</div><div class="food-cell-note">Cream, milk, sugar, eggs only</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">Mixed</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Occasional</div></div>
+        <div class="verdict-cell"><strong>Mild divergence.</strong> Peat explicitly approved ice cream as fat + calcium + sugar. Saladino less enthusiastic. Read labels: no seed oils, gums, or additives.</div>
+      </div>
+    </div>
+
+    <!-- CARBS & SUGAR -->
+    <div class="category-block">
+      <div class="cat-label">
+        <span>🍊 Carbs & Sugar</span>
+        <span>Peat</span>
+        <span>Saladino</span>
+        <span>PMAB</span>
+        <span>Notes</span>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🍊</div><div><div class="food-cell-name">Orange juice (fresh)</div><div class="food-cell-note">Not from concentrate</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Daily</div></div>
+        <div class="verdict-cell"><strong>Strong agreement.</strong> Peat's flagship beverage. Fructose-glucose for thyroid support, potassium, folate. Fresh-squeezed only.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🥭</div><div><div class="food-cell-name">Ripe tropical fruit</div><div class="food-cell-note">Mango, papaya, pineapple</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Daily</div></div>
+        <div class="verdict-cell"><strong>Full agreement.</strong> Must be ripe. Dense sucrose, beta-carotene, enzymes. Saladino eats mango and watermelon daily.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🍯</div><div><div class="food-cell-name">Raw honey</div><div class="food-cell-note">Primary sweetener</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Daily</div></div>
+        <div class="verdict-cell"><strong>Full agreement.</strong> Best sweetener in the framework. Fructose + glucose + trace enzymes and minerals. Use freely.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🍬</div><div><div class="food-cell-name">White / cane sugar</div><div class="food-cell-note">Pure sucrose</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">Mixed</div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">In context</div></div>
+        <div class="verdict-cell"><strong>Divergence.</strong> Peat explicitly defended white sugar as pro-metabolic. Saladino prefers honey and fruit. PMAB: acceptable when honey/fruit isn't available, not a staple.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🥔</div><div><div class="food-cell-name">White potato</div><div class="food-cell-note">Always well-cooked</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Regular</div></div>
+        <div class="verdict-cell"><strong>Full agreement.</strong> Best potassium-per-calorie starch. Cook thoroughly, avoid green/sprouted. Fried in tallow is the PMAB preparation.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🍚</div><div><div class="food-cell-name">White rice</div><div class="food-cell-note">Well-cooked</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">Mixed</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Regular</div></div>
+        <div class="verdict-cell"><strong>Mild divergence.</strong> Peat includes rice as a clean starch. Saladino prefers fruit and tubers. PMAB: fine as a starch vehicle alongside meat dishes.</div>
+      </div>
+    </div>
+
+    <!-- FATS -->
+    <div class="category-block">
+      <div class="cat-label">
+        <span>🧈 Fats & Oils</span>
+        <span>Peat</span>
+        <span>Saladino</span>
+        <span>PMAB</span>
+        <span>Notes</span>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🧈</div><div><div class="food-cell-name">Butter & tallow</div><div class="food-cell-note">Grass-fed</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Foundation</div></div>
+        <div class="verdict-cell"><strong>Full agreement.</strong> Primary cooking fats. No upper limit. Grass-fed for K2.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🥥</div><div><div class="food-cell-name">Coconut oil</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="verdict-cell"><strong>Strong agreement.</strong> Peat was an early coconut oil advocate. MCTs, zero PUFA, high smoke point. Use alongside animal fats.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🫒</div><div><div class="food-cell-name">Olive oil</div><div class="food-cell-note">Cold use only</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">Mixed</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">Cold only</div></div>
+        <div class="verdict-cell"><strong>Mild divergence.</strong> Peat allowed olive oil in moderation, cautious about heating. Saladino includes it more freely. PMAB: drizzle only, never for high-heat cooking.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🚫</div><div><div class="food-cell-name">Seed oils (canola, soy, etc.)</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-sno">Never</div></div>
+        <div class="rating-cell"><div class="r-pill r-sno">Never</div></div>
+        <div class="rating-cell"><div class="r-pill r-sno">Never</div></div>
+        <div class="verdict-cell"><strong>The one unanimous, absolute no.</strong> Both frameworks agree entirely. No exceptions. Read every label.</div>
+      </div>
+    </div>
+
+    <!-- CONTROVERSIAL -->
+    <div class="category-block">
+      <div class="cat-label">
+        <span>⚖️ Contested Foods</span>
+        <span>Peat</span>
+        <span>Saladino</span>
+        <span>PMAB</span>
+        <span>Notes</span>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🥬</div><div><div class="food-cell-name">Raw leafy greens</div><div class="food-cell-note">Kale, spinach raw</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-no">No</div></div>
+        <div class="rating-cell"><div class="r-pill r-no">No</div></div>
+        <div class="rating-cell"><div class="r-pill r-no">Skip</div></div>
+        <div class="verdict-cell"><strong>Agreement to avoid.</strong> Peat: goitrogens suppress thyroid. Saladino: high-toxin plant food. Cooked is a different conversation.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🫘</div><div><div class="food-cell-name">Legumes</div><div class="food-cell-note">Beans, lentils, chickpeas</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-limit">Limit</div></div>
+        <div class="rating-cell"><div class="r-pill r-no">No</div></div>
+        <div class="rating-cell"><div class="r-pill r-limit">Not a staple</div></div>
+        <div class="verdict-cell"><strong>Both cautious.</strong> Lectin load, PUFA in larger quantities. Not foundational foods. Test individually if you want to include occasionally.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🌰</div><div><div class="food-cell-name">Nuts (almonds, walnuts)</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-no">No</div></div>
+        <div class="rating-cell"><div class="r-pill r-no">No</div></div>
+        <div class="rating-cell"><div class="r-pill r-no">Avoid</div></div>
+        <div class="verdict-cell"><strong>Agreement.</strong> High linoleic acid (PUFA). Walnuts especially. Oxalates and phytate reduce mineral absorption. Not a PMAB snack food.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">☕</div><div><div class="food-cell-name">Coffee</div><div class="food-cell-note">With milk, not black</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-syes">Strong Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">Mixed</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes, with milk</div></div>
+        <div class="verdict-cell"><strong>Divergence.</strong> Peat's most consistent beverage recommendation. Saladino more cautious about cortisol. PMAB: drink with whole milk and honey — buffers the cortisol effect.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🍫</div><div><div class="food-cell-name">Dark chocolate 85%+</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">Mixed</div></div>
+        <div class="rating-cell"><div class="r-pill r-yes">Yes</div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">Occasional</div></div>
+        <div class="verdict-cell"><strong>Mild divergence.</strong> Saladino includes dark chocolate for magnesium and stearic acid. Peat cautious about oxalates and some polyphenols. Clean label only — no soy lecithin.</div>
+      </div>
+      <div class="agreement-row">
+        <div class="food-cell"><div class="food-cell-emoji">🍞</div><div><div class="food-cell-name">Sourdough bread</div><div class="food-cell-note">Long-fermented</div></div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">Mixed</div></div>
+        <div class="rating-cell"><div class="r-pill r-mixed">Mixed</div></div>
+        <div class="rating-cell"><div class="r-pill r-limit">Context only</div></div>
+        <div class="verdict-cell"><strong>Both cautiously mixed.</strong> Better than conventional wheat. Not a foundation food. Use rice and potatoes as primary starches. Sourdough for social eating or transition.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</section>
+
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-mark">PM<em>AB</em></div>
+    <ul class="footer-links">
+      <li><a href="framework.html">Framework</a></li>
+      <li><a href="foods.html">Food Database</a></li>
+      <li><a href="groceries.html">Groceries</a></li>
+      <li><a href="meals.html">Meals</a></li>
+      <li><a href="lifestyle.html">Lifestyle</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-disclaimer"><strong>Not medical advice.</strong> Nothing on this site should be taken as medical or nutritional advice. We are not physicians. Always consult your doctor before making changes to your diet or lifestyle. We do not claim the knowledge or ideas presented here — we are here to share what others have researched and built.</p>
+    <p class="footer-copy">&copy; 2025 LivePMAB.com. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>document.addEventListener("DOMContentLoaded",()=>lucide.createIcons());</script>
+</body>
+</html>

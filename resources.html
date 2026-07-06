@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>PMAB - Resources & Guides</title>
+  <meta name="description" content="Beginner guides, community links, podcasts, Reddit threads, and articles for the pro-metabolic and animal-based community."/>
+  <meta name="keywords" content="pro metabolic beginner guide, animal based diet guide, ray peat forum, r/raypeat, r/animalbased, jay feldman wellness podcast, paul saladino podcast, danny roddy youtube, metabolic health resources, pro metabolic community, animal based community"/>
+  <meta property="og:title" content="PMAB - Resources & Guides"/>
+  <meta property="og:description" content="Beginner guides, community links, podcasts, Reddit threads, and articles for the pro-metabolic and animal-based community."/>
+  <meta property="og:type" content="website"/>
+  <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="shortcut icon" href="/images/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/images/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+
+    /* ── INTRO NOTE ───────────────────────── */
+    .resources-intro {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    .intro-note {
+      max-width: 620px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .intro-note-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.5; }
+
+    .intro-note-text {
+      font-size: 14.5px;
+      color: var(--text-2);
+      line-height: 1.72;
+    }
+
+    .intro-note-text strong { color: var(--text); font-weight: 600; }
+
+    /* ── SECTION LAYOUT ───────────────────── */
+    .resources-body {
+      padding: 64px 0 80px;
+    }
+
+    .resources-block {
+      margin-bottom: 56px;
+    }
+
+    .resources-block:last-child { margin-bottom: 0; }
+
+    .block-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .block-platform-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .block-platform-name {
+      font-family: var(--font-d);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .block-count {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-4);
+      text-transform: uppercase;
+      margin-left: auto;
+    }
+
+    /* ── RESOURCE CARDS ───────────────────── */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .resource-card {
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      background: var(--bg-card);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-decoration: none;
+      transition: border-color var(--ease), box-shadow var(--ease), transform var(--ease);
+    }
+
+    .resource-card:hover {
+      border-color: var(--border-hi);
+      box-shadow: 0 3px 16px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+    }
+
+    .resource-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .resource-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      flex: 1;
+    }
+
+    .resource-arrow {
+      font-size: 1rem;
+      color: var(--text-4);
+      flex-shrink: 0;
+      transition: color var(--ease), transform var(--ease);
+      line-height: 1.3;
+    }
+    .resource-card:hover .resource-arrow { color: var(--green); transform: translate(2px,-2px); }
+
+    .resource-desc {
+      font-size: 13px;
+      color: var(--text-3);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .resource-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .resource-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+    }
+
+    .resource-tag-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--border-hi);
+    }
+
+    .resource-handle {
+      font-size: 11px;
+      color: var(--text-4);
+      font-weight: 600;
+    }
+
+    /* ── SUGGEST BOX ──────────────────────── */
+    .suggest-box {
+      margin-top: 64px;
+      padding: 32px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--green);
+      border-radius: var(--r-lg);
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .suggest-text { flex: 1; min-width: 240px; }
+
+    .suggest-title {
+      font-family: var(--font-d);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .suggest-body {
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    /* ── DRAFT BADGE ──────────────────────── */
+    .draft-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: var(--bg-card2);
+      border: 1px dashed var(--border-hi);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-3);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 560px) {
+      .resource-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── TABLE OF CONTENTS ──────────────── */
+    .toc-section {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    .toc-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .toc-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .toc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-2);
+      text-decoration: none;
+      background: var(--bg);
+      transition: all var(--ease);
+      white-space: nowrap;
+    }
+
+    .toc-link:hover {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-lo);
+    }
+
+    .toc-arrow { color: var(--text-4); font-size: 11px; }
+
+    /* ── GUIDES (merged) ─────────────────── */
+    .guides-merged-section { padding: 56px 0; border-bottom: 1px solid var(--border); background: var(--bg-card); }
+    /* GUIDE CARDS HUB */
+    .guides-grid {
+      padding: 48px 0 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 14px;
+    }
+
+    .guide-card {
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      background: var(--bg-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: border-color var(--ease), transform var(--ease);
+    }
+    .guide-card:hover { border-color: var(--border-mid); transform: translateY(-2px); }
+    .guide-card.open { border-color: var(--green); }
+
+    .guide-header {
+      padding: 20px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--bg-card2);
+      border-left: 3px solid var(--green);
+    }
+
+    .guide-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+
+    .guide-header-text { flex: 1; }
+
+    .guide-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 5px;
+    }
+
+    .guide-title {
+      font-family: var(--font-d);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .guide-desc {
+      font-size: 12.5px;
+      color: var(--text-3);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .guide-toggle {
+      flex-shrink: 0;
+      color: var(--text-3);
+      font-size: 1.1rem;
+      transition: transform var(--ease), color var(--ease);
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .guide-card.open .guide-toggle { transform: rotate(45deg); color: var(--green); }
+
+    .guide-body {
+      display: none;
+      padding: 20px 22px;
+    }
+    .guide-card.open .guide-body { display: block; }
+
+    /* Guide content blocks */
+    .guide-section { margin-bottom: 20px; }
+    .guide-section:last-child { margin-bottom: 0; }
+
+    .gs-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .gs-items { display: flex; flex-direction: column; gap: 6px; }
+
+    .gs-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 13px;
+      color: var(--text-2);
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .gs-bullet {
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+      font-size: 14px;
+      line-height: 1.3;
+    }
+
+    .gs-day {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 8px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .gs-day:last-child { border-bottom: none; }
+
+    .gs-day-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-3);
+      padding-top: 1px;
+    }
+
+    .gs-day-meals { font-size: 12.5px; color: var(--text-2); line-height: 1.55; }
+
+    .gs-callout {
+      padding: 12px 14px;
+      background: var(--green-lo);
+      border: 1px solid var(--green-bd);
+      border-radius: var(--r);
+      font-size: 12.5px;
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 500;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .guides-grid { grid-template-columns: 1fr; padding: 32px 0 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="logo-strip">
+  <a class="nav-logo" href="index.html">
+    <span class="nav-mark">PM<em>AB</em></span>
+    <span class="nav-sep"></span>
+    <span class="nav-sub"><span class="sub-pm">Pro-Metabolic</span><br><span class="sub-ab">Animal-Based</span></span>
+  </a>
+</div>
+<nav class="site-nav">
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="framework.html">Framework</a></li>
+    <li><a href="foods.html">Food Database</a></li>
+    <li><a href="groceries.html">Groceries</a></li>
+    <li><a href="meals.html">Meals</a></li>
+    <li><a href="lifestyle.html">Lifestyle</a></li>
+    <li><a href="resources.html" class="active">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Community</span>
+    <h1 class="page-title">Resources & Guides</h1>
+    <p class="page-sub">Practical guides for getting started, links to the best community spaces, podcasts, articles, and people worth following. Everything in one place.</p>
+  </div>
+</section>
+
+
+<!-- STARTER GUIDES -->
+<section class="guides-merged-section" id="starter-guides">
+  <div class="container">
+    <div style="margin-bottom:32px;">
+      <span class="eyebrow" style="display:block;margin-bottom:10px;">Practical Starting Points</span>
+      <h2 class="section-title">Beginner Guides</h2>
+      <p style="font-size:15px;color:var(--text-2);line-height:1.72;margin-top:12px;max-width:560px;">Start here if you're new. Practical, no-nonsense guides covering what to eat tomorrow, how to eat on a budget, where to shop, and how to make this work in real life.</p>
+    </div>
+    <div class="container">
+  <div class="guides-grid">
+
+    <!-- GUIDE 1: PMAB IN 10 MINUTES -->
+    <div class="guide-card" onclick="toggleGuide(this)">
+      <div class="guide-header">
+        <div class="guide-icon">⚡</div>
+        <div class="guide-header-text">
+          <div class="guide-label">Start Here</div>
+          <div class="guide-title">PMAB in 10 Minutes</div>
+          <div class="guide-desc">The entire framework compressed into one read. For anyone starting from scratch.</div>
+        </div>
+        <div class="guide-toggle">+</div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-section">
+          <div class="gs-title">The Three Moves</div>
+          <div class="gs-items">
+            <div class="gs-item"><div class="gs-bullet">1</div><div><strong>Remove seed oils.</strong> This is the first and most important step. Canola, soybean, sunflower, safflower, corn, grapeseed — all out. Cook with butter, tallow, or coconut oil. Read every label. This single change eliminates the most damaging input in the modern diet.</div></div>
+            <div class="gs-item"><div class="gs-bullet">2</div><div><strong>Build around ruminant meat and dairy.</strong> Ground beef, butter, whole milk, eggs, aged cheese. These are your daily foods. Eat until satisfied. Don't count calories or limit fat.</div></div>
+            <div class="gs-item"><div class="gs-bullet">3</div><div><strong>Add ripe fruit and honey for carbohydrates.</strong> OJ daily. Mango, watermelon, berries, bananas. Honey freely. This supports thyroid hormone conversion — don't restrict carbs from whole fruit sources.</div></div>
+          </div>
+        </div>
+        <div class="guide-section">
+          <div class="gs-title">Add These Weekly</div>
+          <div class="gs-items">
+            <div class="gs-item"><div class="gs-bullet">·</div><div>Beef liver — 3–4 oz, once or twice. Nature's multivitamin.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div>Oysters — 4–6, canned or fresh. Highest zinc food available.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div>Bone broth — homemade, salted, daily if possible. Glycine from gelatin balances methionine from muscle meat.</div></div>
+          </div>
+        </div>
+        <div class="gs-callout">That's the core. Everything else is refinement. Most people feel meaningfully different within 2–3 weeks of doing just these three things.</div>
+      </div>
+    </div>
+
+    <!-- GUIDE 2: WHAT TO EAT TOMORROW -->
+    <div class="guide-card" onclick="toggleGuide(this)">
+      <div class="guide-header">
+        <div class="guide-icon">📅</div>
+        <div class="guide-header-text">
+          <div class="guide-label">Day One</div>
+          <div class="guide-title">What Do I Eat Tomorrow?</div>
+          <div class="guide-desc">A concrete day of eating for someone starting PMAB for the first time.</div>
+        </div>
+        <div class="guide-toggle">+</div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-section">
+          <div class="gs-title">A Sample PMAB Day</div>
+          <div class="gs-day"><div class="gs-day-label">Morning</div><div class="gs-day-meals">8 oz fresh-squeezed OJ with a tablespoon of gelatin stirred in. Coffee with whole milk and a teaspoon of honey. 3 eggs scrambled low and slow in butter, topped with aged cheddar.</div></div>
+          <div class="gs-day"><div class="gs-day-label">Lunch</div><div class="gs-day-meals">Ground beef (5–6 oz) cooked in tallow, seasoned with salt. Half a cup of white rice cooked in bone broth. A cup of ripe mango or watermelon on the side.</div></div>
+          <div class="gs-day"><div class="gs-day-label">Snack</div><div class="gs-day-meals">A glass of whole milk with a teaspoon of honey and a pinch of salt. Or a plate of aged cheese with medjool dates.</div></div>
+          <div class="gs-day"><div class="gs-day-label">Dinner</div><div class="gs-day-meals">Ribeye or lamb chops cooked in tallow. Boiled potato with butter and salt. A cup of bone broth to drink alongside.</div></div>
+          <div class="gs-day"><div class="gs-day-label">Evening</div><div class="gs-day-meals">A small bowl of ice cream (cream, milk, sugar, eggs — read the label) or a cup of milk with honey.</div></div>
+        </div>
+        <div class="gs-callout">This looks like a lot of food. It is. You should eat until satisfied — calorie restriction is not part of this framework. Your metabolism needs fuel to run well.</div>
+      </div>
+    </div>
+
+    <!-- GUIDE 3: BUDGET -->
+    <div class="guide-card" onclick="toggleGuide(this)">
+      <div class="guide-header">
+        <div class="guide-icon">💰</div>
+        <div class="guide-header-text">
+          <div class="guide-label">Budget</div>
+          <div class="guide-title">PMAB on $75/Week</div>
+          <div class="guide-desc">The framework on a tight budget. Ground beef and eggs are your anchors.</div>
+        </div>
+        <div class="guide-toggle">+</div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-section">
+          <div class="gs-title">Budget Staples — Weekly Shopping</div>
+          <div class="gs-items">
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>3 lbs ground beef (~$15–18)</strong> — Daily protein anchor. 80/20 is cheaper and fattier — correct choice.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>1 dozen eggs (~$5)</strong> — Daily. Conventional is fine as a budget measure; upgrade to pasture-raised when you can.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>1 gallon whole milk (~$5)</strong> — Daily staple. Generic store brand is fine.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>1 lb butter (~$5)</strong> — Kerrygold is worth the extra $1–2 for K2. Otherwise generic.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Seasonal fruit (~$12)</strong> — Buy what's ripe and on sale. Bananas, oranges, watermelon, mangoes are consistently cheap.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Potatoes 5 lb bag (~$4)</strong> — Best budget starch. Boiled in salted water.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Canned smoked oysters 2–3 tins (~$8)</strong> — Crown Prince brand. Zinc anchor for the week.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Raw honey small jar (~$8)</strong> — Lasts 2–3 weeks. Use as primary sweetener.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Beef bones for broth (~$5)</strong> — Ask the butcher — often cheap or free. Make a batch Sunday.</div></div>
+          </div>
+        </div>
+        <div class="gs-callout"><strong>Liver is the highest-ROI food in the framework.</strong> 1 lb of beef liver costs ~$4–6 and covers a week of organ meat needs. It's also the food most people avoid — which keeps the price low.</div>
+      </div>
+    </div>
+
+    <!-- GUIDE 4: COSTCO -->
+    <div class="guide-card" onclick="toggleGuide(this)">
+      <div class="guide-header">
+        <div class="guide-icon">🏪</div>
+        <div class="guide-header-text">
+          <div class="guide-label">Store Guide</div>
+          <div class="guide-title">PMAB at Costco</div>
+          <div class="guide-desc">The best Costco finds for this framework. Bulk buying cuts cost significantly.</div>
+        </div>
+        <div class="guide-toggle">+</div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-section">
+          <div class="gs-title">Always Buy</div>
+          <div class="gs-items">
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Kirkland grass-fed ground beef (3 lb packs)</strong> — Best per-lb price on grass-fed. Freeze in portions.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Kirkland pasture-raised eggs (24 pk)</strong> — Consistently cheapest pasture-raised option.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Kerrygold butter (3-pack)</strong> — Grass-fed, K2-rich. Best price per pound outside of wholesale.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Aged cheddar or parmesan block</strong> — Cheap per ounce, long shelf life, K2 content.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Wild Alaskan sockeye salmon (frozen)</strong> — Decent price for wild-caught. Limit to 1–2x/week.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Organic manuka or raw honey (large jar)</strong> — Bulk honey for daily use pays off quickly.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Organic frozen mango chunks</strong> — Convenient, ripened at peak, no prep.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Collagen peptides (large tub)</strong> — Great Lakes or similar. Stir into coffee or OJ daily.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Organic coconut oil (large jar)</strong> — Refined for cooking, virgin for other uses.</div></div>
+          </div>
+        </div>
+        <div class="guide-section">
+          <div class="gs-title">Check Labels First</div>
+          <div class="gs-items">
+            <div class="gs-item"><div class="gs-bullet">·</div><div>Any prepared food — seed oils hide in almost every Costco prepared product</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div>Rotisserie chicken — often contains soybean oil in the seasoning blend</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div>Trail mixes and nut blends — usually roasted in seed oils</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GUIDE 5: TRANSITION -->
+    <div class="guide-card" onclick="toggleGuide(this)">
+      <div class="guide-header">
+        <div class="guide-icon">🔄</div>
+        <div class="guide-header-text">
+          <div class="guide-label">Transition</div>
+          <div class="guide-title">Coming from Keto or Carnivore</div>
+          <div class="guide-desc">The key shifts when transitioning from low-carb or strict carnivore into PMAB.</div>
+        </div>
+        <div class="guide-toggle">+</div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-section">
+          <div class="gs-title">What Changes</div>
+          <div class="gs-items">
+            <div class="gs-item"><div class="gs-bullet">→</div><div><strong>Add fruit back gradually.</strong> Start with OJ (4–6 oz) and ripe banana. Many people coming from keto experience brief energy swings — this normalizes within 1–2 weeks as liver glycogen replenishes.</div></div>
+            <div class="gs-item"><div class="gs-bullet">→</div><div><strong>Add dairy if you removed it.</strong> Whole milk and butter first. Test hard cheese before soft. Raw milk if available in your state.</div></div>
+            <div class="gs-item"><div class="gs-bullet">→</div><div><strong>Reduce emphasis on fat-only eating.</strong> PMAB combines fat with sugar from fruit and dairy — not fat alone. The combination is different from keto in metabolic effect.</div></div>
+            <div class="gs-item"><div class="gs-bullet">→</div><div><strong>Carnivore to PMAB:</strong> The main addition is fruit and dairy. Keep all the meat. Add organs if you weren't already eating them. Fruit and honey are the primary carbohydrate sources — not grains.</div></div>
+          </div>
+        </div>
+        <div class="gs-callout">Both keto and carnivore eliminate seed oils — so if you're coming from there, the most important PMAB principle is already handled. The shift is about adding pro-metabolic carbohydrates back, not undoing everything else.</div>
+      </div>
+    </div>
+
+    <!-- GUIDE 6: FAMILIES -->
+    <div class="guide-card" onclick="toggleGuide(this)">
+      <div class="guide-header">
+        <div class="guide-icon">👨‍👩‍👧</div>
+        <div class="guide-header-text">
+          <div class="guide-label">Lifestyle</div>
+          <div class="guide-title">PMAB for Families</div>
+          <div class="guide-desc">Feeding kids and partners who aren't fully on board. What works, what doesn't.</div>
+        </div>
+        <div class="guide-toggle">+</div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-section">
+          <div class="gs-title">The PMAB Family Anchors</div>
+          <div class="gs-items">
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Ground beef is the universal win.</strong> Tacos, burgers, bolognese, rice bowls — all PMAB-compatible and kid-friendly.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Whole milk instead of alternatives.</strong> Kids should be drinking whole milk anyway. This is one of the easiest household switches.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Cook everything in butter or tallow.</strong> Doesn't change the flavor in a way anyone notices. Eliminates the most damaging ingredient passively.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Fruit is kid-friendly by default.</strong> Mango, watermelon, berries — this is one framework principle that requires zero convincing for children.</div></div>
+            <div class="gs-item"><div class="gs-bullet">·</div><div><strong>Hide liver in ground beef.</strong> Blend 2–4 oz of raw liver into a pound of ground beef — disappears completely into the flavor. Weekly liver dose, zero resistance.</div></div>
+          </div>
+        </div>
+        <div class="guide-section">
+          <div class="gs-title">One Change at a Time</div>
+          <div class="gs-items">
+            <div class="gs-item"><div class="gs-bullet">1</div><div>Switch all cooking oils to butter/tallow — invisible change, huge impact</div></div>
+            <div class="gs-item"><div class="gs-bullet">2</div><div>Whole milk replaces skim or 2% — easy sell for most families</div></div>
+            <div class="gs-item"><div class="gs-bullet">3</div><div>Add more beef to existing meals — expand portions, reduce processed sides</div></div>
+            <div class="gs-item"><div class="gs-bullet">4</div><div>Replace packaged snacks with fruit, cheese, and whole milk</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+  </div>
+</section>
+
+<div class="resources-intro">
+  <div class="container">
+    <div class="intro-note">
+      <span class="intro-note-icon">👋</span>
+      <p class="intro-note-text"><strong>How this works:</strong> This page is a living list — we add things as we find them and remove things that go stale. Nothing here is sponsored or paid placement. If you've found something genuinely useful that belongs here, <a href="contact.html" style="color:var(--green);font-weight:600;">send it over</a> and we'll take a look.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<section class="toc-section">
+  <div class="container">
+    <span class="toc-label">On this page</span>
+    <div class="toc-links">
+      <a class="toc-link" href="#starter-guides">📋 Starter Guides</a>
+      <a class="toc-link" href="#reddit">🟠 Reddit</a>
+      <a class="toc-link" href="#twitter">𝕏 X / Twitter</a>
+      <a class="toc-link" href="#podcasts">🎙️ Podcasts</a>
+      <a class="toc-link" href="#reading">📄 Reading</a>
+      <a class="toc-link" href="#suggest">✉️ Suggest</a>
+    </div>
+  </div>
+</section>
+
+<div class="resources-body">
+  <div class="container">
+
+    <div class="draft-badge">📝 Draft — being filled in</div>
+
+    <!-- REDDIT -->
+    <div class="resources-block" id="reddit">
+      <div class="block-header">
+        <span class="block-platform-icon">🟠</span>
+        <span class="block-platform-name">Reddit</span>
+        <span class="block-count">Communities & threads</span>
+      </div>
+      <div class="resource-grid">
+
+        <a class="resource-card" href="https://reddit.com/r/raypeat" target="_blank" rel="noopener">
+          <div class="resource-card-top">
+            <span class="resource-name">r/raypeat</span>
+            <span class="resource-arrow">↗</span>
+          </div>
+          <p class="resource-desc">The main Ray Peat community on Reddit. A mix of questions, food logs, protocol discussions, and links to Peat's original writing. Useful for getting started and finding old threads on specific foods.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Community</span>
+            <span class="resource-tag-dot"></span>
+            <span class="resource-handle">r/raypeat</span>
+          </div>
+        </a>
+
+        <a class="resource-card" href="https://reddit.com/r/carnivorediet" target="_blank" rel="noopener">
+          <div class="resource-card-top">
+            <span class="resource-name">r/carnivorediet</span>
+            <span class="resource-arrow">↗</span>
+          </div>
+          <p class="resource-desc">Mostly carnivore-focused but overlaps significantly with the animal-based framework. Good for meal ideas, troubleshooting, and seeing how people handle real-life situations on animal foods.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Community</span>
+            <span class="resource-tag-dot"></span>
+            <span class="resource-handle">r/carnivorediet</span>
+          </div>
+        </a>
+
+        <a class="resource-card" href="https://reddit.com/r/animalbased" target="_blank" rel="noopener">
+          <div class="resource-card-top">
+            <span class="resource-name">r/animalbased</span>
+            <span class="resource-arrow">↗</span>
+          </div>
+          <p class="resource-desc">Saladino-adjacent community. Closer to PMAB than strict carnivore — includes fruit, honey, and dairy. Good mix of newcomers and experienced people posting meals and results.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Community</span>
+            <span class="resource-tag-dot"></span>
+            <span class="resource-handle">r/animalbased</span>
+          </div>
+        </a>
+
+        <div class="resource-card" style="cursor:default;opacity:0.5;">
+          <div class="resource-card-top">
+            <span class="resource-name">More threads being added</span>
+          </div>
+          <p class="resource-desc">Got a subreddit or thread worth adding? Send it through the contact page.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Coming soon</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- X / TWITTER -->
+    <div class="resources-block" id="twitter">
+      <div class="block-header">
+        <span class="block-platform-icon">𝕏</span>
+        <span class="block-platform-name">X / Twitter</span>
+        <span class="block-count">Accounts worth following</span>
+      </div>
+      <div class="resource-grid">
+
+        <a class="resource-card" href="https://x.com/carnivoremd2" target="_blank" rel="noopener">
+          <div class="resource-card-top">
+            <span class="resource-name">Paul Saladino</span>
+            <span class="resource-arrow">↗</span>
+          </div>
+          <p class="resource-desc">Saladino's X account. Regular posts on animal-based eating, lifestyle, and research. Good for keeping up with his evolving thinking and new content.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Animal-based</span>
+            <span class="resource-tag-dot"></span>
+            <span class="resource-handle">@carnivoremd2</span>
+          </div>
+        </a>
+
+        <a class="resource-card" href="https://x.com/jayfeldmanwellness" target="_blank" rel="noopener">
+          <div class="resource-card-top">
+            <span class="resource-name">Jay Feldman</span>
+            <span class="resource-arrow">↗</span>
+          </div>
+          <p class="resource-desc">One of the clearest communicators in the Peat-adjacent space. Posts frequently on energy metabolism, thyroid, and practical food guidance. Worth following if you want the deeper reasoning behind the framework.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Pro-metabolic</span>
+            <span class="resource-tag-dot"></span>
+            <span class="resource-handle">@jayfeldmanwellness</span>
+          </div>
+        </a>
+
+        <a class="resource-card" href="https://x.com/bioenergetic_" target="_blank" rel="noopener">
+          <div class="resource-card-top">
+            <span class="resource-name">Georgi Dinkov</span>
+            <span class="resource-arrow">↗</span>
+          </div>
+          <p class="resource-desc">Prolific poster on Peat-influenced research. Dense and scientific but consistently interesting. If you want the deep end of the bioenergetics rabbit hole, start here.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Bioenergetics</span>
+            <span class="resource-tag-dot"></span>
+            <span class="resource-handle">@bioenergetic_</span>
+          </div>
+        </a>
+
+        <div class="resource-card" style="cursor:default;opacity:0.5;">
+          <div class="resource-card-top">
+            <span class="resource-name">More accounts being added</span>
+          </div>
+          <p class="resource-desc">Know someone posting great content in this space? Let us know.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Coming soon</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PODCASTS & VIDEO -->
+    <div class="resources-block" id="podcasts">
+      <div class="block-header">
+        <span class="block-platform-icon">🎙️</span>
+        <span class="block-platform-name">Podcasts & Video</span>
+        <span class="block-count">Episodes & channels</span>
+      </div>
+      <div class="resource-grid">
+
+        <a class="resource-card" href="https://www.youtube.com/@jayfeldmanwellness" target="_blank" rel="noopener">
+          <div class="resource-card-top">
+            <span class="resource-name">Jay Feldman Wellness Podcast</span>
+            <span class="resource-arrow">↗</span>
+          </div>
+          <p class="resource-desc">Deep-dive episodes on pro-metabolic nutrition, thyroid function, and practical implementation. Probably the most accessible entry point into the Peat framework for people who learn through listening.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Podcast</span>
+            <span class="resource-tag-dot"></span>
+            <span class="resource-handle">YouTube / Spotify</span>
+          </div>
+        </a>
+
+        <a class="resource-card" href="https://www.carnivoremd.com/podcast" target="_blank" rel="noopener">
+          <div class="resource-card-top">
+            <span class="resource-name">Fundamental Health — Paul Saladino</span>
+            <span class="resource-arrow">↗</span>
+          </div>
+          <p class="resource-desc">Saladino's podcast. Good for the animal-based side of the framework — interviews with researchers, practitioners, and athletes. The early episodes on organ meats and seed oils are still some of the best.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Podcast</span>
+            <span class="resource-tag-dot"></span>
+            <span class="resource-handle">carnivoremd.com</span>
+          </div>
+        </a>
+
+        <a class="resource-card" href="https://www.youtube.com/@dannyroddy" target="_blank" rel="noopener">
+          <div class="resource-card-top">
+            <span class="resource-name">Danny Roddy</span>
+            <span class="resource-arrow">↗</span>
+          </div>
+          <p class="resource-desc">One of the earliest and most prolific communicators of Peat's ideas. YouTube channel covers hair loss, metabolism, thyroid, and diet. Unusually accessible given the complexity of the material.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">YouTube</span>
+            <span class="resource-tag-dot"></span>
+            <span class="resource-handle">@dannyroddy</span>
+          </div>
+        </a>
+
+        <div class="resource-card" style="cursor:default;opacity:0.5;">
+          <div class="resource-card-top">
+            <span class="resource-name">More episodes being added</span>
+          </div>
+          <p class="resource-desc">Specific episodes that are worth listening to are being compiled. Back soon.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Coming soon</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- READING -->
+    <div class="resources-block" id="reading">
+      <div class="block-header">
+        <span class="block-platform-icon">📄</span>
+        <span class="block-platform-name">Reading</span>
+        <span class="block-count">Articles, essays & writing</span>
+      </div>
+      <div class="resource-grid">
+
+        <a class="resource-card" href="https://raypeat.com/articles/" target="_blank" rel="noopener">
+          <div class="resource-card-top">
+            <span class="resource-name">Ray Peat's original articles</span>
+            <span class="resource-arrow">↗</span>
+          </div>
+          <p class="resource-desc">Peat's own writing, archived on his website. Dense, scientific, and written for an academic audience — but the primary source. If you want to understand where the ideas actually come from rather than secondhand, start here.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Primary source</span>
+            <span class="resource-tag-dot"></span>
+            <span class="resource-handle">raypeat.com</span>
+          </div>
+        </a>
+
+        <a class="resource-card" href="https://raypeatforum.com" target="_blank" rel="noopener">
+          <div class="resource-card-top">
+            <span class="resource-name">Ray Peat Forum</span>
+            <span class="resource-arrow">↗</span>
+          </div>
+          <p class="resource-desc">The main hub for Peat-influenced discussion. A decade of threads on every imaginable food, supplement, and protocol question. Search-first — most questions have been asked and answered many times.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Forum</span>
+            <span class="resource-tag-dot"></span>
+            <span class="resource-handle">raypeatforum.com</span>
+          </div>
+        </a>
+
+        <a class="resource-card" href="https://www.carnivoremd.com/blog" target="_blank" rel="noopener">
+          <div class="resource-card-top">
+            <span class="resource-name">Carnivore MD Blog — Saladino</span>
+            <span class="resource-arrow">↗</span>
+          </div>
+          <p class="resource-desc">Written explainers on organ meats, seed oils, the animal-based framework, and specific foods. More accessible than academic papers and well-sourced. Good starting point for Saladino's reasoning.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Articles</span>
+            <span class="resource-tag-dot"></span>
+            <span class="resource-handle">carnivoremd.com</span>
+          </div>
+        </a>
+
+        <div class="resource-card" style="cursor:default;opacity:0.5;">
+          <div class="resource-card-top">
+            <span class="resource-name">Articles & Medium posts being added</span>
+          </div>
+          <p class="resource-desc">Specific articles and longer reads from across the community are being compiled. If you've written something or found something great, send it over.</p>
+          <div class="resource-meta">
+            <span class="resource-tag">Coming soon</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SUGGEST -->
+    <div class="suggest-box" id="suggest">
+      <div class="suggest-text">
+        <div class="suggest-title">Know something that belongs here?</div>
+        <p class="suggest-body">A Reddit thread, a Twitter account, a podcast episode, an article — if it's genuinely useful for someone trying to understand this way of eating, send it over. No pitches, no affiliate links.</p>
+      </div>
+      <a class="btn btn-primary" href="contact.html" style="flex-shrink:0;">Suggest a resource →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-mark">PM<em>AB</em></div>
+    <ul class="footer-links">
+      <li><a href="framework.html">Framework</a></li>
+      <li><a href="foods.html">Food Database</a></li>
+      <li><a href="groceries.html">Groceries</a></li>
+      <li><a href="meals.html">Meals</a></li>
+      <li><a href="lifestyle.html">Lifestyle</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-disclaimer"><strong>Not medical advice.</strong> Nothing on this site should be taken as medical or nutritional advice. We are not physicians. Always consult your doctor before making changes to your diet or lifestyle. We do not claim the knowledge or ideas presented here — we are here to share what others have researched and built.</p>
+    <p class="footer-copy">&copy; 2025 LivePMAB.com. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

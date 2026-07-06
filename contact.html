@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="shared.css"/>
 
   <style>
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background: var(--bg);
@@ -327,7 +328,6 @@
     <li><a href="meals.html">Meals</a></li>
     <li><a href="lifestyle.html">Lifestyle</a></li>
     <li><a href="resources.html">Resources</a></li>
-    <li><a href="philosophy.html">Philosophy</a></li>
     <li><a href="contact.html" class="active">Contact</a></li>
   </ul>
 </nav>
@@ -419,6 +419,7 @@
 </main>
 
 <script>
+
   // Pre-select "submit a meal" if coming from meals.html?type=meal
   window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
@@ -432,73 +433,49 @@
   function onTypeChange(val) {
     const fields = document.getElementById('meal-fields');
     fields.classList.toggle('visible', val === 'submit-meal');
-  }
+    }
 
   function handleSubmit(e) {
     e.preventDefault();
-    
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx3Oo1ek-NF3mO2HjNdRRCP3o8nwviWzr5qXkn9zx6oja48V2tt2Z62m4VmpljJSleB/exec';
-    
-    const formElement = document.getElementById('contact-form');
-    const submitBtn = formElement.querySelector('.btn-primary');
-    
-    // Visual feedback: Disable button while sending
-    const originalBtnHtml = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerText = 'Sending...';
+    const type = document.getElementById('type').value;
+    const isMeal = type === 'submit-meal';
 
-    // Package data as a standard Form URL-encoded string for Google Apps Script
-    const formData = new URLSearchParams();
-    formData.append('name', document.getElementById('name').value);
-    formData.append('email', document.getElementById('email').value);
-    formData.append('type', document.getElementById('type').value);
-    formData.append('mealName', document.getElementById('meal-name').value);
-    formData.append('mealCategory', document.getElementById('meal-category').value);
-    formData.append('message', document.getElementById('message').value);
+    document.getElementById('form-state').style.display = 'none';
 
-    // Send data to Google Script Web App using no-cors mode to elegantly catch execution
-    fetch(GOOGLE_SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: formData,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    })
-    .then(() => {
-      // In 'no-cors' mode, browser defaults seamlessly into completion blocks
-      const type = document.getElementById('type').value;
-      const isMeal = type === 'submit-meal';
+    const head = document.getElementById('success-head');
+    const body = document.getElementById('success-body');
 
-      document.getElementById('form-state').style.display = 'none';
+    if (isMeal) {
+      const mealName = document.getElementById('meal-name').value;
+      head.textContent = 'Meal received.';
+      body.textContent = mealName
+        ? `"${mealName}" is in the queue. If it fits the framework, it'll show up in the library.`
+        : 'Your meal idea is in the queue. If it fits the framework, it\'ll show up in the library.';
+    } else {
+      head.textContent = 'Got it.';
+      body.textContent = 'Thanks for reaching out — we\'ll be in touch.';
+    }
 
-      const head = document.getElementById('success-head');
-      const body = document.getElementById('success-body');
-
-      if (isMeal) {
-        const mealName = document.getElementById('meal-name').value;
-        head.textContent = 'Meal received.';
-        body.textContent = mealName
-          ? `"${mealName}" is in the queue. If it fits the framework, it'll show up in the library.`
-          : 'Your meal idea is in the queue. If it fits the framework, it\'ll show up in the library.';
-      } else {
-        head.textContent = 'Got it.';
-        body.textContent = 'Thanks for reaching out — we\'ll be in touch.';
-      }
-
-      document.getElementById('success-state').classList.add('visible');
-      formElement.reset();
-    })
-    .catch(error => {
-      console.error('Error submitting form!', error);
-      alert('Something went wrong sending your message. Please try again.');
-    })
-    .finally(() => {
-      // Restore button status
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalBtnHtml;
-    });
-  }
+    document.getElementById('success-state').classList.add('visible');
+    }
 </script>
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-mark">PM<em>AB</em></div>
+    <ul class="footer-links">
+      <li><a href="framework.html">Framework</a></li>
+      <li><a href="foods.html">Food Database</a></li>
+      <li><a href="groceries.html">Groceries</a></li>
+      <li><a href="meals.html">Meals</a></li>
+      <li><a href="lifestyle.html">Lifestyle</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-disclaimer"><strong>Not medical advice.</strong> Nothing on this site should be taken as medical or nutritional advice. We are not physicians. Always consult your doctor before making changes to your diet or lifestyle. We do not claim the knowledge or ideas presented here — we are here to share what others have researched and built.</p>
+    <p class="footer-copy">&copy; 2025 LivePMAB.com. All rights reserved.</p>
+  </div>
+</footer>
 </body>
 </html>
