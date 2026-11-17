@@ -369,7 +369,17 @@
     <button class="chip" data-verdict="no" onclick="setVerdict('no',this)">✕ Avoid</button>
     <button class="chip" data-verdict="never" onclick="setVerdict('never',this)">⊘ Never</button>
   </div>
-  <div class="db-count" id="db-count">20 foods</div>
+  <div class="filter-chips" style="flex-basis:100%;order:3;">
+    <button class="chip" data-category="meat" onclick="setCategory('meat',this)">🥩 Meat &amp; Eggs</button>
+    <button class="chip" data-category="seafood" onclick="setCategory('seafood',this)">🦐 Seafood</button>
+    <button class="chip" data-category="dairy" onclick="setCategory('dairy',this)">🥛 Dairy</button>
+    <button class="chip" data-category="fruit" onclick="setCategory('fruit',this)">🍊 Fruit</button>
+    <button class="chip" data-category="veg" onclick="setCategory('veg',this)">🥕 Vegetables &amp; Legumes</button>
+    <button class="chip" data-category="starch" onclick="setCategory('starch',this)">🥔 Grains &amp; Starches</button>
+    <button class="chip" data-category="fats" onclick="setCategory('fats',this)">🧈 Fats &amp; Nuts</button>
+    <button class="chip" data-category="other" onclick="setCategory('other',this)">🍯 Sweets, Drinks &amp; Extras</button>
+  </div>
+  <div class="db-count" id="db-count">57 foods</div>
 </div>
 
 <div class="db-grid" id="db-grid"></div>
@@ -479,7 +489,8 @@ function render() {
   const visible = FOODS_DB.filter(f => {
     const matchV = activeVerdict === 'all' || f.verdictType === activeVerdict;
     const matchS = !searchQ || f.name.toLowerCase().includes(searchQ) || f.category.toLowerCase().includes(searchQ);
-    return matchV && matchS;
+    const matchCat = activeCategory === 'all' || (CATEGORY_GROUPS[activeCategory] || []).includes(f.category);
+    return matchV && matchS && matchCat;
   });
 
   if (!visible.length) {
@@ -499,8 +510,30 @@ function toggleCard(id) {
 
 function setVerdict(v, el) {
   activeVerdict = v;
-  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.chip[data-verdict]').forEach(c => c.classList.remove('active'));
   el.classList.add('active');
+  render();
+}
+
+let activeCategory = 'all';
+
+const CATEGORY_GROUPS = {
+  meat: ['meat', 'organs', 'protein'],
+  seafood: ['fish', 'shellfish'],
+  dairy: ['dairy'],
+  fruit: ['fruit'],
+  veg: ['vegetable', 'legume'],
+  starch: ['grain', 'starch'],
+  fats: ['fats', 'nuts', 'seed-oil'],
+  other: ['sweetener', 'beverage', 'functional']
+};
+
+// Clicking the active category chip again clears it
+function setCategory(cat, btn) {
+  const wasActive = activeCategory === cat;
+  activeCategory = wasActive ? 'all' : cat;
+  document.querySelectorAll('.chip[data-category]').forEach(b => b.classList.remove('active'));
+  if (!wasActive) btn.classList.add('active');
   render();
 }
 
